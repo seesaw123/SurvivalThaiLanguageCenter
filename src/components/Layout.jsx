@@ -54,11 +54,13 @@ export function Header() {
 
   useEffect(() => {
     if (!open) return;
+    // Close on a press outside the menu. `pointerdown` runs before any re-render,
+    // so the pressed element is still in the page when we check it.
     const onDoc = (e) => { if (!wrapRef.current?.contains(e.target)) setOpen(false); };
     const onKey = (e) => { if (e.key === 'Escape') { setOpen(false); btnRef.current?.focus(); } };
-    document.addEventListener('click', onDoc);
+    document.addEventListener('pointerdown', onDoc);
     document.addEventListener('keydown', onKey);
-    return () => { document.removeEventListener('click', onDoc); document.removeEventListener('keydown', onKey); };
+    return () => { document.removeEventListener('pointerdown', onDoc); document.removeEventListener('keydown', onKey); };
   }, [open]);
 
   return (
@@ -73,7 +75,9 @@ export function Header() {
           <div className="menu-wrap" ref={wrapRef}>
             <button ref={btnRef} type="button" className="menu-btn" aria-expanded={open} aria-controls="menuPanel"
               onClick={() => setOpen((o) => !o)}>
-              {open ? <CloseIcon /> : <MenuIcon />}
+              {/* Both icons stay in the page; CSS shows one based on aria-expanded. */}
+              <MenuIcon className="i-open" />
+              <CloseIcon className="i-close" />
               <span className="lbl">{t.menu}</span>
             </button>
             {open && (
