@@ -7,6 +7,19 @@ import { CheckIcon } from './Icons.jsx';
 // shows up live in /admin. Row Level Security lets anyone insert but only a
 // signed-in admin read, update or delete.
 
+// Honeypot: a field real visitors never see (off-screen, unfocusable, skipped
+// by autofill) but most spam bots fill in anyway because they fill every field.
+// If it's non-empty on submit, we pretend to succeed without actually writing
+// anything, so the bot gets no signal that it was caught.
+function Honeypot({ id }) {
+  return (
+    <div style={{ position: 'absolute', left: '-9999px', top: '-9999px' }} aria-hidden="true">
+      <label htmlFor={id}>Leave this field blank</label>
+      <input id={id} name="company" type="text" tabIndex={-1} autoComplete="off" />
+    </div>
+  );
+}
+
 function Sent({ title, body, again, onAgain, big }) {
   return (
     <div className="sent" role="status">
@@ -30,6 +43,7 @@ export function TrialForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
+    if (data.get('company')) { setSent(true); return; }
     setSending(true);
     setErr('');
     const { error } = await supabase.from('inquiries').insert({
@@ -46,6 +60,7 @@ export function TrialForm() {
 
   return (
     <form className="form" noValidate onSubmit={onSubmit}>
+      <Honeypot id="tfCompany" />
       <label htmlFor="tfName">{h.fName}<input id="tfName" name="name" type="text" autoComplete="name" placeholder={h.fNamePh} required /></label>
       <label htmlFor="tfContact">{h.fContact}<input id="tfContact" name="contact" type="text" placeholder="you@example.com" required /></label>
       <label htmlFor="tfLevel">{h.fLevel}
@@ -70,6 +85,7 @@ export function ContactForm() {
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
+    if (data.get('company')) { setSent(true); return; }
     setSending(true);
     setErr('');
     const { error } = await supabase.from('inquiries').insert({
@@ -86,6 +102,7 @@ export function ContactForm() {
 
   return (
     <form className="form" noValidate onSubmit={onSubmit}>
+      <Honeypot id="cfCompany" />
       <h2 className="disp h3">{p.formT}</h2>
       <label htmlFor="cfName">{h.fName}<input id="cfName" name="name" type="text" autoComplete="name" placeholder={h.fNamePh} required /></label>
       <label htmlFor="cfContact">{h.fContact}<input id="cfContact" name="contact" type="text" placeholder="you@example.com" required /></label>
