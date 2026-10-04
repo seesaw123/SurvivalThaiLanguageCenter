@@ -86,14 +86,6 @@ export const COURSES =[
   desc:{en:"The 44 consonants, vowels and tone rules, so you can read menus, signs and street names.",my:"ဗျည်း ၄၄ လုံး၊ သရများနဲ့ tone စည်းမျဉ်းများ — မီနူး၊ ဆိုင်းဘုတ်နဲ့ လမ်းနာမည်တွေကို ဖတ်နိုင်အောင်။"},
   topics:{en:["The 44 consonants and the vowels","Tone rules","Reading signs, menus and forms"],my:["ဗျည်း ၄၄ လုံးနဲ့ သရများ","tone စည်းမျဉ်းများ","ဆိုင်းဘုတ်၊ မီနူးနဲ့ ဖောင်များ ဖတ်ခြင်း"]}}
 ];
-export const ROWS =[
- {day:{en:"Mon & Wed",my:"တနင်္လာ နှင့် ဗုဒ္ဓဟူး"},time:"18:00–19:30",lv:1,online:false,seats:3},
- {day:{en:"Tue & Thu",my:"အင်္ဂါ နှင့် ကြာသပတေး"},time:"18:00–19:30",lv:2,online:false,seats:5},
- {day:{en:"Saturday",my:"စနေ"},time:"09:00–12:00",lv:1,online:true,seats:6},
- {day:{en:"Saturday",my:"စနေ"},time:"13:00–16:00",lv:3,online:false,seats:2},
- {day:{en:"Sunday",my:"တနင်္ဂနွေ"},time:"09:00–12:00",lv:2,online:true,seats:4},
- {day:{en:"Sunday",my:"တနင်္ဂနွေ"},time:"13:00–16:00",lv:1,online:false,seats:0}
-];
 export const LANGN ={th:{en:"Thai",my:"ထိုင်း"},my:{en:"Burmese",my:"မြန်မာ"},en:{en:"English",my:"အင်္ဂလိပ်"}};
 export const TEACHERS =[
  {name:"Kru Ploy",native:"ครูพลอย",cls:"th",ini:"KP",langs:["th","en"],teaches:["Everyday Thai","Read & Write"],role:{en:"Head teacher",my:"ဆရာမကြီး"},
