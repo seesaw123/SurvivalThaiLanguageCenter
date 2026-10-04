@@ -3,7 +3,7 @@ import { toMyDigits } from '../utils.js';
 
 export const T ={
  en:{
-  menu:"Menu",cta:"Book a free trial",ctaTitle:"Ready for your first class?",ctaSub:"Try one class free. No experience needed.",next:"Next: ",theme:"Color theme",copy:"© 2026 SurvivalThai",
+  menu:"Menu",cta:"Register",ctaTitle:"Ready for your first class?",ctaSub:"Try one class free. No experience needed.",next:"Next: ",theme:"Color theme",copy:"© 2026 SurvivalThai",
   pages:{home:"Home",courses:"Courses & schedule",teachers:"Teachers",resources:"Learning resources",faq:"FAQ",contact:"Contact",about:"About us"},
   level:"Level ",
   home:{eyebrow:"Thai lessons in Myanmar",title:"Speak Thai from day one.",sub:"Practical lessons for the Thai you actually need: ordering food, bargaining at the market, and getting a songthaew home.",
@@ -39,7 +39,7 @@ export const T ={
    sentT:"Thank you!",sentB:"We’ll reply within one day. (Demo: nothing was actually sent.)",again:"Send another message",map:"Map placeholder: embed your map here"}
  },
  my:{
-  menu:"မီနူး",cta:"အခမဲ့ အစမ်းတက်ရန်",ctaTitle:"ပထမဆုံး အတန်းအတွက် အသင့်ဖြစ်ပြီလား?",ctaSub:"အတန်းတစ်ခု အခမဲ့ စမ်းတက်ကြည့်ပါ — အတွေ့အကြုံ မလိုပါ။",next:"နောက်တစ်ခု - ",theme:"အရောင်ပုံစံ",copy:"© 2026 SurvivalThai",
+  menu:"မီနူး",cta:"စာရင်းသွင်းရန်",ctaTitle:"ပထမဆုံး အတန်းအတွက် အသင့်ဖြစ်ပြီလား?",ctaSub:"အတန်းတစ်ခု အခမဲ့ စမ်းတက်ကြည့်ပါ — အတွေ့အကြုံ မလိုပါ။",next:"နောက်တစ်ခု - ",theme:"အရောင်ပုံစံ",copy:"© 2026 SurvivalThai",
   pages:{home:"ပင်မစာမျက်နှာ",courses:"သင်တန်းနှင့် အချိန်ဇယား",teachers:"ဆရာ၊ ဆရာမများ",resources:"လေ့လာရန် အရင်းအမြစ်များ",faq:"မေးလေ့ရှိသော မေးခွန်းများ",contact:"ဆက်သွယ်ရန်",about:"ကျွန်ုပ်တို့အကြောင်း"},
   level:"အဆင့် ",
   home:{eyebrow:"မြန်မာနိုင်ငံရှိ ထိုင်းဘာသာ သင်တန်း",title:"ပထမနေ့ကစပြီး ထိုင်းစကား ပြောနိုင်မယ်။",sub:"အစားအသောက်မှာတာ၊ ဈေးထဲမှာ ဈေးဆစ်တာ၊ ဆောင်တေးကားစီးပြီး အိမ်ပြန်တာအထိ — နေ့စဉ်ဘဝမှာ တကယ်လိုအပ်တဲ့ ထိုင်းစကားကို လက်တွေ့ကျကျ သင်ပေးပါတယ်။",
