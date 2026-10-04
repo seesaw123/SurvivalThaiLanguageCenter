@@ -202,6 +202,18 @@ body.lang-my .course .price{font-family:var(--f-my)}
 .admin-field.chk{flex-direction:row-reverse;align-items:center;justify-content:flex-end;gap:8px;flex:0 0 auto}
 .admin-field.chk input{min-height:0;width:18px;height:18px}
 .admin-actions{display:flex;gap:8px;margin-left:auto}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-left:10px;background:var(--field);border:1.5px solid var(--field-border);color:var(--on-deep-muted)}
+.badge.new{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.badge.done{opacity:.6}
+.inquiry-list{display:flex;flex-direction:column}
+.inquiry-card{display:flex;flex-direction:column;gap:6px;padding:16px 0;border-bottom:1px solid var(--field-border)}
+.inquiry-card:last-child{border-bottom:0}
+.inquiry-head{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+.inquiry-date{margin-left:auto;font-size:13px;color:var(--on-deep-muted)}
+.inquiry-contact{color:var(--on-deep-muted);font-size:15px}
+.inquiry-msg{background:var(--field);border:1.5px solid var(--field-border);border-radius:10px;padding:10px 14px;font-size:15px}
+.inquiry-card .admin-actions{margin-left:0}
+.inquiry-card select{min-height:38px;padding:4px 10px;border-radius:8px;border:1.5px solid var(--field-border);background:var(--field);color:var(--on-deep);font-size:14px}
 
 /* page hero */
 .page-hero .wrap{display:flex;flex-direction:column;gap:20px}
