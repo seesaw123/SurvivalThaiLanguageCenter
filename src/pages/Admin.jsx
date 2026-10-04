@@ -20,6 +20,9 @@ export default function Admin() {
   const [saving, setSaving] = useState(false);
   const [err, setErr] = useState('');
 
+  const [inquiries, setInquiries] = useState([]);
+  const [loadingInquiries, setLoadingInquiries] = useState(true);
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => { setSession(data.session); setChecking(false); });
     const { data: sub } = supabase.auth.onAuthStateChange((_event, s) => setSession(s));
@@ -33,7 +36,28 @@ export default function Admin() {
     setLoading(false);
   };
 
-  useEffect(() => { if (session) loadRows(); }, [session]);
+  const loadInquiries = async () => {
+    setLoadingInquiries(true);
+    const { data, error } = await supabase.from('inquiries').select('*').order('created_at', { ascending: false });
+    if (!error) setInquiries(data);
+    setLoadingInquiries(false);
+  };
+
+  useEffect(() => { if (session) { loadRows(); loadInquiries(); } }, [session]);
+
+  const setInquiryStatus = async (id, status) => {
+    setInquiries((rs) => rs.map((r) => (r.id === id ? { ...r, status } : r)));
+    const { error } = await supabase.from('inquiries').update({ status }).eq('id', id);
+    if (error) setErr(error.message);
+  };
+
+  const deleteInquiry = async (id) => {
+    if (!window.confirm('Delete this inquiry?')) return;
+    setErr('');
+    const { error } = await supabase.from('inquiries').delete().eq('id', id);
+    if (error) setErr(error.message);
+    else setInquiries((rs) => rs.filter((r) => r.id !== id));
+  };
 
   const login = async (e) => {
     e.preventDefault();
@@ -97,10 +121,12 @@ export default function Admin() {
     );
   }
 
+  const newCount = inquiries.filter((i) => i.status === 'new').length;
+
   return (
     <>
-      <PageHero eyebrow="Admin" title="Class schedule">
-        Add, edit or remove the slots shown on /courses. Changes appear on the site within moments.
+      <PageHero eyebrow="Admin" title="Dashboard">
+        Customer inquiries and the class schedule shown on /courses. Changes appear on the site within moments.
       </PageHero>
       <section>
         <div className="wrap">
@@ -108,6 +134,37 @@ export default function Admin() {
 
           {err && <p style={{ color: 'var(--accent-text)', marginTop: 16 }}>{err}</p>}
 
+          <h2 className="disp h3" style={{ marginTop: 32 }}>
+            Inquiries{newCount > 0 && <span className="badge new">{newCount} new</span>}
+          </h2>
+          <div className="form-box admin-panel">
+            {loadingInquiries ? <p>Loading…</p> : (
+              <div className="inquiry-list">
+                {inquiries.map((i) => (
+                  <div className="inquiry-card" key={i.id}>
+                    <div className="inquiry-head">
+                      <strong>{i.name}</strong>
+                      <span className={'badge ' + i.status}>{i.status}</span>
+                      <span className="inquiry-date">{new Date(i.created_at).toLocaleString()}</span>
+                    </div>
+                    <p className="inquiry-contact">{i.contact} · {i.topic} · <span style={{ textTransform: 'capitalize' }}>{i.source}</span> form</p>
+                    {i.message && <p className="inquiry-msg">{i.message}</p>}
+                    <div className="admin-actions">
+                      <select value={i.status} onChange={(e) => setInquiryStatus(i.id, e.target.value)}>
+                        <option value="new">New</option>
+                        <option value="contacted">Contacted</option>
+                        <option value="done">Done</option>
+                      </select>
+                      <button type="button" className="btn btn-line" onClick={() => deleteInquiry(i.id)}>Delete</button>
+                    </div>
+                  </div>
+                ))}
+                {inquiries.length === 0 && <p>No inquiries yet.</p>}
+              </div>
+            )}
+          </div>
+
+          <h2 className="disp h3" style={{ marginTop: 32 }}>Class schedule</h2>
           <div className="form-box admin-panel">
             {loading ? <p>Loading…</p> : (
               <div className="admin-rows">
