@@ -3,13 +3,62 @@
 export const ORDER =["home","courses","teachers","resources","faq","contact","about"];
 export const PALETTES =[["teal","Original","#12302D","#E8913A","#F5EFE3"],["lanna","Lanna temple","#5E1414","#D4A62A","#FBF3E4"],["lantern","Lantern night","#1A1B3F","#FF7A59","#FFF6E8"],["jungle","Jungle green","#173A2A","#B5D94A","#F3F5EC"],["bright","Light & bright","#EAF1FF","#2563EB","#FFFFFF"]];
 
-export const LETTERS =[
- {g:"ก",name:"gor gài",word:"ไก่",mean:{en:"chicken",my:"ကြက်"},x:0,y:0,face:"rotateY(0deg)"},
- {g:"ข",name:"khǒr khài",word:"ไข่",mean:{en:"egg",my:"ကြက်ဥ"},x:0,y:-90,face:"rotateY(90deg)"},
- {g:"ค",name:"khor khwaai",word:"ควาย",mean:{en:"buffalo",my:"ကျွဲ"},x:0,y:-180,face:"rotateY(180deg)"},
- {g:"ง",name:"ngor nguu",word:"งู",mean:{en:"snake",my:"မြွေ"},x:0,y:90,face:"rotateY(-90deg)"},
- {g:"จ",name:"jor jaan",word:"จาน",mean:{en:"plate",my:"ပန်းကန်ပြား"},x:-90,y:0,face:"rotateX(90deg)"},
- {g:"ม",name:"mor máa",word:"ม้า",mean:{en:"horse",my:"မြင်း"},x:90,y:0,face:"rotateX(-90deg)"}
+// All 44 Thai consonants (the full script, including the two obsolete letters
+// still taught as part of the 44). Used to randomly deal letters onto the cube.
+export const ALPHABET =[
+ {g:"ก",name:"gor gài",word:"ไก่",mean:{en:"chicken",my:"ကြက်"}},
+ {g:"ข",name:"khǒr khài",word:"ไข่",mean:{en:"egg",my:"ကြက်ဥ"}},
+ {g:"ฃ",name:"khǒr khùat",word:"ขวด",mean:{en:"bottle",my:"ပုလင်း"}},
+ {g:"ค",name:"khor khwaai",word:"ควาย",mean:{en:"buffalo",my:"ကျွဲ"}},
+ {g:"ฅ",name:"khor khon",word:"คน",mean:{en:"person",my:"လူ"}},
+ {g:"ฆ",name:"khor rákhang",word:"ระฆัง",mean:{en:"bell",my:"ခေါင်းလောင်း"}},
+ {g:"ง",name:"ngor nguu",word:"งู",mean:{en:"snake",my:"မြွေ"}},
+ {g:"จ",name:"jor jaan",word:"จาน",mean:{en:"plate",my:"ပန်းကန်ပြား"}},
+ {g:"ฉ",name:"chǒr chìng",word:"ฉิ่ง",mean:{en:"small cymbals",my:"လက်ခုန်း"}},
+ {g:"ช",name:"chor cháang",word:"ช้าง",mean:{en:"elephant",my:"ဆင်"}},
+ {g:"ซ",name:"sor sôo",word:"โซ่",mean:{en:"chain",my:"သံကြိုး"}},
+ {g:"ฌ",name:"chor cher",word:"เฌอ",mean:{en:"tree",my:"သစ်ပင်"}},
+ {g:"ญ",name:"yor yǐng",word:"หญิง",mean:{en:"woman",my:"မိန်းမ"}},
+ {g:"ฎ",name:"dor chádaa",word:"ชฎา",mean:{en:"headdress",my:"ဦးထုပ်"}},
+ {g:"ฏ",name:"tor patàk",word:"ปฏัก",mean:{en:"goad",my:"ဆင်ထိုးချောင်း"}},
+ {g:"ฐ",name:"thǒr thǎan",word:"ฐาน",mean:{en:"pedestal",my:"ခြေခံပေါက်"}},
+ {g:"ฑ",name:"thor montho",word:"มณโฑ",mean:{en:"Montho (a character name)",my:"မုန်းထို (ဇာတ်ကောင်)"}},
+ {g:"ฒ",name:"thor phûuthâo",word:"ผู้เฒ่า",mean:{en:"elder",my:"အသက်ကြီးသူ"}},
+ {g:"ณ",name:"nor nen",word:"เณร",mean:{en:"novice monk",my:"ကိုရင်"}},
+ {g:"ด",name:"dor dèk",word:"เด็ก",mean:{en:"child",my:"ကလေး"}},
+ {g:"ต",name:"tor tào",word:"เต่า",mean:{en:"turtle",my:"လိပ်"}},
+ {g:"ถ",name:"thǒr thǔng",word:"ถุง",mean:{en:"sack",my:"အိတ်"}},
+ {g:"ท",name:"thor thahǎan",word:"ทหาร",mean:{en:"soldier",my:"စစ်သား"}},
+ {g:"ธ",name:"thor thong",word:"ธง",mean:{en:"flag",my:"အလံ"}},
+ {g:"น",name:"nor nǔu",word:"หนู",mean:{en:"mouse",my:"ကြွက်"}},
+ {g:"บ",name:"bor baimái",word:"ใบไม้",mean:{en:"leaf",my:"အရွက်"}},
+ {g:"ป",name:"por plaa",word:"ปลา",mean:{en:"fish",my:"ငါး"}},
+ {g:"ผ",name:"phǒr phûeng",word:"ผึ้ง",mean:{en:"bee",my:"ပျား"}},
+ {g:"ฝ",name:"fǒr fǎa",word:"ฝา",mean:{en:"lid",my:"အဖုံး"}},
+ {g:"พ",name:"phor phaan",word:"พาน",mean:{en:"offering tray",my:"ပန်းကန်ခုံ"}},
+ {g:"ฟ",name:"for fan",word:"ฟัน",mean:{en:"teeth",my:"သွား"}},
+ {g:"ภ",name:"phor sǎmphao",word:"สำเภา",mean:{en:"junk (ship)",my:"သင်္ဘော"}},
+ {g:"ม",name:"mor máa",word:"ม้า",mean:{en:"horse",my:"မြင်း"}},
+ {g:"ย",name:"yor yák",word:"ยักษ์",mean:{en:"giant",my:"ဘီလူး"}},
+ {g:"ร",name:"ror ruea",word:"เรือ",mean:{en:"boat",my:"လှေ"}},
+ {g:"ล",name:"lor ling",word:"ลิง",mean:{en:"monkey",my:"မျောက်"}},
+ {g:"ว",name:"wor wǎen",word:"แหวน",mean:{en:"ring",my:"လက်စွပ်"}},
+ {g:"ศ",name:"sǒr sǎalaa",word:"ศาลา",mean:{en:"pavilion",my:"မဏ္ဍပ်"}},
+ {g:"ษ",name:"sǒr rʉ̌ʉsǐi",word:"ฤๅษี",mean:{en:"hermit",my:"ရသေ့"}},
+ {g:"ส",name:"sǒr sʉ̌ea",word:"เสือ",mean:{en:"tiger",my:"ကျား"}},
+ {g:"ห",name:"hǒr hìip",word:"หีบ",mean:{en:"chest",my:"သေတ္တာ"}},
+ {g:"ฬ",name:"lor jùlaa",word:"จุฬา",mean:{en:"kite",my:"လေကူးစားအရုပ်"}},
+ {g:"อ",name:"or àang",word:"อ่าง",mean:{en:"basin",my:"ကန်"}},
+ {g:"ฮ",name:"hor nók-hûuk",word:"นกฮูก",mean:{en:"owl",my:"ဇီးကွက်"}}
+];
+// Fixed 3D positions for the cube's six faces (geometry only — letters are dealt onto them at random).
+export const CUBE_FACES =[
+ {x:0,y:0,face:"rotateY(0deg)"},
+ {x:0,y:-90,face:"rotateY(90deg)"},
+ {x:0,y:-180,face:"rotateY(180deg)"},
+ {x:0,y:90,face:"rotateY(-90deg)"},
+ {x:-90,y:0,face:"rotateX(90deg)"},
+ {x:90,y:0,face:"rotateX(-90deg)"}
 ];
 export const PHRASES =[
  {pic:"hello",th:"สวัสดีครับ / ค่ะ",rom:"sà-wàt-dee khráp / khâ",en:{en:"Hello",my:"မင်္ဂလာပါ"},tip:{en:"Men end with khráp, women with khâ. It makes any sentence polite.",my:"ယောက်ျားလေးတွေက khráp၊ မိန်းကလေးတွေက khâ နဲ့ အဆုံးသတ်ပါ — ဘယ်စကားကိုမဆို ယဉ်ကျေးစေပါတယ်။"}},

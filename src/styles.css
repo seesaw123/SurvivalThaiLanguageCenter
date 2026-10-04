@@ -110,6 +110,7 @@ section{padding-block:clamp(64px,8vw,112px)}
 .chip-btn{width:48px;height:48px;border-radius:12px;border:1.5px solid var(--on-dark);background:transparent;color:var(--on-dark);font-family:var(--f-thai);font-size:22px;font-weight:700;display:grid;place-items:center}
 .chip-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .round{border-radius:999px;font-family:var(--f-body)}
+.roll-btn{min-height:42px;padding:0 20px;font-size:15px}
 .cube-cap{text-align:center;max-width:52ch;color:var(--on-dark-muted);font-size:16px}
 .cube-cap .th{font-size:22px;color:var(--on-dark)}
 
