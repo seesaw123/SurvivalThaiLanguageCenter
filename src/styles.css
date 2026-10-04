@@ -7,7 +7,7 @@
   --field:#26251F; --field-border:#6E685C; --line:#E4DCCB;
   --f-display:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;
   --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-thai:"Noto Serif Thai","Thonburi",serif;
+  --f-thai:"Noto Serif Thai","Thonburi","Leelawadee UI","Noto Sans Thai",serif;
   --f-my:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;
   --gut:clamp(16px,5vw,80px);
   --cube:240px;
@@ -110,6 +110,7 @@ section{padding-block:clamp(64px,8vw,112px)}
 .chip-btn{width:48px;height:48px;border-radius:12px;border:1.5px solid var(--on-dark);background:transparent;color:var(--on-dark);font-family:var(--f-thai);font-size:22px;font-weight:700;display:grid;place-items:center}
 .chip-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .round{border-radius:999px;font-family:var(--f-body)}
+.roll-btn{min-height:42px;padding:0 20px;font-size:15px}
 .cube-cap{text-align:center;max-width:52ch;color:var(--on-dark-muted);font-size:16px}
 .cube-cap .th{font-size:22px;color:var(--on-dark)}
 
@@ -188,6 +189,19 @@ body.lang-my .course .price{font-family:var(--f-my)}
 .form textarea{resize:vertical;line-height:1.5}
 .form input::placeholder,.form textarea::placeholder{color:var(--on-deep-muted);opacity:.7}
 .link-u{align-self:flex-start;min-height:44px;display:inline-flex;align-items:center;font-weight:600;text-underline-offset:4px}
+
+/* admin schedule editor */
+.admin-panel{margin-top:20px}
+.admin-rows{display:flex;flex-direction:column}
+.admin-row{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;padding:16px 0;border-bottom:1px solid var(--field-border)}
+.admin-row:last-child{border-bottom:0}
+.admin-field{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;flex:1 1 90px;min-width:80px;color:var(--on-deep-muted)}
+.admin-field.grow{flex:2 1 160px}
+.admin-field.time{flex:1 1 130px;min-width:120px}
+.admin-field input,.admin-field select{min-height:42px;width:100%;padding:8px 12px;border-radius:10px;border:1.5px solid var(--field-border);background:var(--field);color:var(--on-deep);font-size:15px}
+.admin-field.chk{flex-direction:row-reverse;align-items:center;justify-content:flex-end;gap:8px;flex:0 0 auto}
+.admin-field.chk input{min-height:0;width:18px;height:18px}
+.admin-actions{display:flex;gap:8px;margin-left:auto}
 
 /* page hero */
 .page-hero .wrap{display:flex;flex-direction:column;gap:20px}

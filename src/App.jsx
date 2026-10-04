@@ -9,6 +9,7 @@ import Resources from './pages/Resources.jsx';
 import Faq from './pages/Faq.jsx';
 import Contact from './pages/Contact.jsx';
 import About from './pages/About.jsx';
+import Admin from './pages/Admin.jsx';
 
 export default function App() {
   const { fading, t } = useSettings();
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />

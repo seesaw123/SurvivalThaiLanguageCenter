@@ -45,6 +45,16 @@ export const ChatIcon = (p) => (
 export const ClockIcon = (p) => (
   <Svg size={22} {...p}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></Svg>
 );
+export const DiceIcon = (p) => (
+  <Svg size={18} sw={2.2} {...p}>
+    <rect x="4" y="4" width="16" height="16" rx="4" />
+    <circle cx="9" cy="9" r="1.1" fill="currentColor" stroke="none" />
+    <circle cx="15" cy="9" r="1.1" fill="currentColor" stroke="none" />
+    <circle cx="9" cy="15" r="1.1" fill="currentColor" stroke="none" />
+    <circle cx="15" cy="15" r="1.1" fill="currentColor" stroke="none" />
+    <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none" />
+  </Svg>
+);
 
 // Illustrations for the six phrase cards (48×48 grid).
 const PICTURES = {

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSettings } from '../context/SettingsContext.jsx';
-import { COURSES, ROWS } from '../data/content.js';
+import { COURSES } from '../data/content.js';
+import { useSchedule } from '../hooks/useSchedule.js';
 import { CheckIcon } from '../components/Icons.jsx';
 import { CtaBand, FilterSelect, PageHero, SectionHead } from '../components/Layout.jsx';
 
@@ -9,7 +10,8 @@ export default function Courses() {
   const { t, lang, num } = useSettings();
   const p = t.courses;
   const [level, setLevel] = useState(0);
-  const rows = ROWS.filter((r) => level === 0 || r.lv === level);
+  const { rows: schedule, loading } = useSchedule();
+  const rows = schedule.filter((r) => level === 0 || r.level === level);
   const levelOptions = [0, 1, 2, 3].map((lv) => ({ value: lv, label: lv === 0 ? p.all : t.level + num(lv) }));
 
   return (
@@ -47,16 +49,16 @@ export default function Courses() {
               {p.cols.map((c) => <span key={c}>{c}</span>)}
               <span />
             </div>
-            {rows.map((r, i) => {
+            {rows.map((r) => {
               const full = r.seats === 0;
               const seatClass = full ? 'full' : r.seats <= 3 ? 'low' : '';
               return (
-                <div className="srow" key={r.time + r.day.en + i}>
-                  <span className="day" data-label={p.cols[0]}>{r.day[lang]}</span>
+                <div className="srow" key={r.id}>
+                  <span className="day" data-label={p.cols[0]}>{lang === 'my' ? r.day_my : r.day_en}</span>
                   <span data-label={p.cols[1]}>{r.time}</span>
                   <span className="course-cell" data-label={p.cols[2]}>
-                    <span style={{ fontWeight: 600 }}>{COURSES[r.lv - 1].name}</span>
-                    <small>{t.level}{num(r.lv)}</small>
+                    <span style={{ fontWeight: 600 }}>{COURSES[r.level - 1].name}</span>
+                    <small>{t.level}{num(r.level)}</small>
                   </span>
                   <span data-label={p.cols[3]}><span className="tag">{r.online ? p.online : p.inPerson}</span></span>
                   <span className={'seats ' + seatClass} data-label={p.cols[4]}>{full ? p.full : p.left(r.seats)}</span>
@@ -66,6 +68,7 @@ export default function Courses() {
                 </div>
               );
             })}
+            {loading && <p className="note">{p.loading}</p>}
           </div>
           <p className="note">{p.note}</p>
         </div>
