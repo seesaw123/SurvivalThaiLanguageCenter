@@ -190,6 +190,19 @@ body.lang-my .course .price{font-family:var(--f-my)}
 .form input::placeholder,.form textarea::placeholder{color:var(--on-deep-muted);opacity:.7}
 .link-u{align-self:flex-start;min-height:44px;display:inline-flex;align-items:center;font-weight:600;text-underline-offset:4px}
 
+/* admin schedule editor */
+.admin-panel{margin-top:20px}
+.admin-rows{display:flex;flex-direction:column}
+.admin-row{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;padding:16px 0;border-bottom:1px solid var(--field-border)}
+.admin-row:last-child{border-bottom:0}
+.admin-field{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600;flex:1 1 90px;min-width:80px;color:var(--on-deep-muted)}
+.admin-field.grow{flex:2 1 160px}
+.admin-field.time{flex:1 1 130px;min-width:120px}
+.admin-field input,.admin-field select{min-height:42px;width:100%;padding:8px 12px;border-radius:10px;border:1.5px solid var(--field-border);background:var(--field);color:var(--on-deep);font-size:15px}
+.admin-field.chk{flex-direction:row-reverse;align-items:center;justify-content:flex-end;gap:8px;flex:0 0 auto}
+.admin-field.chk input{min-height:0;width:18px;height:18px}
+.admin-actions{display:flex;gap:8px;margin-left:auto}
+
 /* page hero */
 .page-hero .wrap{display:flex;flex-direction:column;gap:20px}
 .page-hero .lead{color:var(--on-dark-muted);max-width:62ch}
