@@ -5,7 +5,7 @@ import { scrollToId } from '../utils.js';
 import { ArrowIcon, PinIcon } from '../components/Icons.jsx';
 import { SectionHead } from '../components/Layout.jsx';
 import LetterCube from '../components/LetterCube.jsx';
-import PhraseCards from '../components/PhraseCards.jsx';
+import CultureCards from '../components/CultureCards.jsx';
 import ToneExplorer from '../components/ToneExplorer.jsx';
 import { TrialForm } from '../components/Forms.jsx';
 
@@ -33,7 +33,7 @@ export default function Home() {
         </div>
       </section>
 
-      <PhraseCards />
+      <CultureCards />
       <ToneExplorer />
 
       <section id="courses-home">
@@ -72,3 +72,4 @@ export default function Home() {
     </>
   );
 }
+
