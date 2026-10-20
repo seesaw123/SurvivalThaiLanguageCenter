@@ -5,7 +5,7 @@ import './CultureCards.css';
 
 const copy = {
   en: {
-    eyebrow: 'Beyond the classroom', title: 'Learn the language. Fall in love with Chiang Mai.',
+    eyebrow: 'Beyond the classroom', title: 'Get to know Chiang Mai beyond the classroom.',
     intro: 'Six little stories from the place we call home. Tap a photo to discover the culture—and a little Thai.',
     discover: 'Discover the story', back: 'Tap to return to the photo', count: 'stories discovered', footer: 'A little culture. A little Thai.',
   },
