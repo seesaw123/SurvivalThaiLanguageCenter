@@ -1,73 +1,31 @@
 import { useState } from 'react';
 import { useSettings } from '../context/SettingsContext.jsx';
-import { CATS, RES, RTYPE } from '../data/content.js';
 import { ArrowIcon } from '../components/Icons.jsx';
-import { CtaBand, FilterSelect, PageHero, SectionHead } from '../components/Layout.jsx';
-
-function ResourceCard({ item }) {
-  const { t, lang } = useSettings();
-  const p = t.resources;
-  const [soon, setSoon] = useState(false);
-  const media = item.type === 'audio' || item.type === 'video';
-
-  const onOpen = () => {
-    // TODO: link to the real PDF / audio / video file.
-    setSoon(true);
-    setTimeout(() => setSoon(false), 1400);
-  };
-
-  return (
-    <article className="res">
-      <div className="res-top">
-        <span className={'rtype' + (media ? ' media' : '')}>{RTYPE[item.type][lang]}</span>
-        <span>{item.meta[lang]}</span>
-      </div>
-      <h3>{item.title[lang]}</h3>
-      <p>{item.desc[lang]}</p>
-      <button type="button" className="open" onClick={onOpen}>
-        {soon ? p.soon : <>{p.open}<ArrowIcon /></>}
-      </button>
-    </article>
-  );
-}
+import { CtaBand, PageHero, SectionHead } from '../components/Layout.jsx';
+import AlphabetActivity from '../components/AlphabetActivity.jsx';
 
 export default function Resources() {
-  const { t } = useSettings();
+  const { t, lang } = useSettings();
   const p = t.resources;
-  const [cat, setCat] = useState('all');
-  const items = RES.filter((r) => cat === 'all' || r.cat === cat);
+  const [activityOpen, setActivityOpen] = useState(false);
+  const my = lang === 'my';
 
   return (
     <>
-      <PageHero eyebrow={p.eyebrow} title={p.title}>{p.sub}</PageHero>
-
+      <PageHero eyebrow={p.eyebrow} title={p.title}>{my ? 'ထိုင်းဗျည်းများကို ကစားရင်း လေ့ကျင့်ကြမယ်။' : 'Build your Thai vocabulary with a little interactive practice.'}</PageHero>
       <section>
         <div className="wrap">
-          <div className="potd">
-            <div>
-              <span className="eyebrow">{p.potdL}</span>
-              <span className="th">กินข้าวหรือยัง</span>
-              <span style={{ fontSize: 22, fontWeight: 600 }}>gin khâao rǔe yang</span>
-            </div>
-            <div>
-              <span className="disp h3">{p.potdM}</span>
-              <p>{p.potdT}</p>
-            </div>
-          </div>
+          {activityOpen ? <AlphabetActivity onClose={() => setActivityOpen(false)} /> : <>
+            <SectionHead eyebrow={my ? 'ဝေါဟာရ' : 'Vocabulary'} title={my ? 'ကစားရင်း သင်ယူပါ။' : 'A little practice. A little progress.'} />
+            <article className="res alphabet-resource">
+              <div className="res-top"><span className="rtype">{my ? 'လေ့ကျင့်ခန်း' : 'Activity'}</span><span>{my ? 'ဗျည်း ၁၅ လုံး · တစ်လုံးလျှင် ၅ စက္ကန့်' : '15 cards · 5 seconds each'}</span></div>
+              <h3>{my ? 'ထိုင်းဗျည်း ကတ်လေ့ကျင့်ခန်း' : 'Thai alphabet flashcards'}</h3>
+              <p>{my ? 'ဗျည်း ၄၄ လုံးထဲမှ ကျပန်း ၁၅ လုံးကို ရွေးဖြေပါ။ အဖြေမှန်ကို မှတ်သားပြီး နောက်ကတ်ကို ဆက်ဖြေကြမယ်။' : 'Match each consonant name to its Thai letter. Play 15 random cards from all 44, with reactions and a moment to learn each answer.'}</p>
+              <button type="button" className="open" onClick={() => setActivityOpen(true)}>{my ? 'စတင်ကစားရန်' : 'Open activity'}<ArrowIcon /></button>
+            </article>
+          </>}
         </div>
       </section>
-
-      <section style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <SectionHead eyebrow={p.libE} title={p.libT}
-            aside={<FilterSelect id="catSelect" label={p.filter} value={cat} onChange={setCat}
-              options={CATS.map((k) => ({ value: k, label: p.cats[k] }))} />} />
-          <div className="grid4">
-            {items.map((r) => <ResourceCard key={r.title.en} item={r} />)}
-          </div>
-        </div>
-      </section>
-
       <CtaBand />
     </>
   );
