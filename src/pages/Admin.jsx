@@ -233,7 +233,7 @@ export default function Admin() {
                       <span className={'badge ' + application.status}>{application.status}</span>
                       <span className="inquiry-date">{new Date(application.submitted_at).toLocaleString()}</span>
                     </div>
-                    <p className="inquiry-contact">{application.nationality} · {application.contact}</p>
+                    <p className="inquiry-contact">{application.nationality} · {application.email} · {application.contact}</p>
                     <p className="inquiry-msg">{application.bio}</p>
                     <p className="inquiry-contact">Languages: {(application.languages || []).join(', ') || '—'} · Experience: {application.experience_years} years</p>
                     <p className="inquiry-contact">Courses: {(application.courses || []).join(', ') || '—'}</p>
