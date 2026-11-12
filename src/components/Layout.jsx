@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSettings } from '../context/SettingsContext.jsx';
-import { ORDER, PALETTES } from '../data/content.js';
+import { ORDER } from '../data/content.js';
 import { ArrowIcon, ChevronDownIcon, ChevronIcon, CloseIcon, GlobeIcon, MenuIcon } from './Icons.jsx';
 
 // ---- routing helpers -------------------------------------------------------
@@ -23,21 +23,6 @@ function LanguageToggle() {
         <button type="button" className="en" aria-pressed={target === 'en'} onClick={() => setLang('en')}>EN</button>
         <button type="button" className="mm" aria-pressed={target === 'my'} onClick={() => setLang('my')}>မြန်မာ</button>
       </div>
-    </div>
-  );
-}
-
-// ---- theme swatches --------------------------------------------------------
-export function ThemeSwatches() {
-  const { palette, setPalette, t } = useSettings();
-  return (
-    <div className="swatches" role="group" aria-label={t.theme}>
-      {PALETTES.map(([key, label, dark, accent]) => (
-        <button key={key} type="button" className="sw" aria-pressed={palette === key} aria-label={label} title={label}
-          onClick={() => setPalette(key)}>
-          <span style={{ background: `linear-gradient(135deg, ${dark} 0 50%, ${accent} 50% 100%)` }} />
-        </button>
-      ))}
     </div>
   );
 }
@@ -120,7 +105,6 @@ export function Footer() {
               <Link key={key} to={pathFor(key)} aria-current={key === page ? 'page' : undefined}>{t.pages[key]}</Link>
             ))}
           </nav>
-          <div className="foot-theme"><span>{t.theme}</span><ThemeSwatches /></div>
         </div>
         <div className="foot-row"><span>{t.copy}</span></div>
       </div>
