@@ -65,7 +65,7 @@ export default function Teachers() {
         languages: languageList,
         bio: form.bio.trim(), experience_years: Number(form.experience_years),
         qualifications: form.qualifications.trim(),
-        courses: form.courses, email: form.email.trim(), contact: form.line_contact.trim() || form.email.trim(),
+        courses: form.courses, email: form.email.trim(), contact: form.line_contact.trim() || 'No LINE contact provided',
         availability: form.availability.trim(), photo_path: photoPath,
         certificate_paths: certificatePaths, status: 'pending',
       };
