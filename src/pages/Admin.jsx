@@ -22,6 +22,8 @@ export default function Admin() {
 
   const [inquiries, setInquiries] = useState([]);
   const [loadingInquiries, setLoadingInquiries] = useState(true);
+  const [teacherApplications, setTeacherApplications] = useState([]);
+  const [loadingTeachers, setLoadingTeachers] = useState(true);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => { setSession(data.session); setChecking(false); });
@@ -43,7 +45,38 @@ export default function Admin() {
     setLoadingInquiries(false);
   };
 
-  useEffect(() => { if (session) { loadRows(); loadInquiries(); } }, [session]);
+  const loadTeacherApplications = async () => {
+    setLoadingTeachers(true);
+    const { data, error } = await supabase.from('teacher_applications').select('*').order('created_at', { ascending: false });
+    if (error) setErr(error.message);
+    else setTeacherApplications(data || []);
+    setLoadingTeachers(false);
+  };
+
+  useEffect(() => { if (session) { loadRows(); loadInquiries(); loadTeacherApplications(); } }, [session]);
+
+  const reviewTeacher = async (id, status) => {
+    setErr('');
+    const { error } = await supabase.from('teacher_applications').update({ status, reviewed_at: new Date().toISOString() }).eq('id', id);
+    if (error) setErr(error.message);
+    else loadTeacherApplications();
+  };
+
+  const deleteTeacherApplication = async (application) => {
+    if (!window.confirm('Delete this teacher application and its uploaded files?')) return;
+    setErr('');
+    const { error } = await supabase.from('teacher_applications').delete().eq('id', application.id);
+    if (error) { setErr(error.message); return; }
+    if (application.photo_path) await supabase.storage.from('teacher-photos').remove([application.photo_path]);
+    if (application.certificate_paths?.length) await supabase.storage.from('teacher-certificates').remove(application.certificate_paths);
+    loadTeacherApplications();
+  };
+
+  const openTeacherCertificate = async (path) => {
+    const { data, error } = await supabase.storage.from('teacher-certificates').createSignedUrl(path, 60);
+    if (error) setErr(error.message);
+    else window.open(data.signedUrl, '_blank', 'noopener,noreferrer');
+  };
 
   const setInquiryStatus = async (id, status) => {
     setInquiries((rs) => rs.map((r) => (r.id === id ? { ...r, status } : r)));
@@ -164,6 +197,37 @@ export default function Admin() {
             )}
           </div>
 
+          <h2 className="disp h3" style={{ marginTop: 32 }}>
+            Teacher applications <span className="badge new">{teacherApplications.filter(a => a.status === 'pending').length} pending</span>
+          </h2>
+          <div className="form-box admin-panel">
+            {loadingTeachers ? <p>Loading teacher applications…</p> : teacherApplications.length === 0 ? <p>No teacher applications yet.</p> : (
+              <div className="inquiry-list">
+                {teacherApplications.map(application => (
+                  <article className="inquiry-card teacher-review-card" key={application.id}>
+                    <div className="inquiry-head">
+                      <strong>{application.full_name}</strong>
+                      <span className={'badge ' + application.status}>{application.status}</span>
+                      <span className="inquiry-date">{new Date(application.created_at).toLocaleString()}</span>
+                    </div>
+                    <p className="inquiry-contact">{application.nationality} · {application.email} · {application.line_contact || 'No LINE contact'}</p>
+                    <p className="inquiry-msg">{application.bio}</p>
+                    <p className="inquiry-contact">Languages: {(application.languages || []).join(', ') || '—'} · Experience: {application.experience_years} years</p>
+                    <p className="inquiry-contact">Courses: {(application.courses || []).join(', ') || '—'}</p>
+                    {application.qualifications && <p className="inquiry-contact">Qualifications: {application.qualifications}</p>}
+                    {application.availability && <p className="inquiry-contact">Availability: {application.availability}</p>}
+                    <div className="admin-actions teacher-review-actions">
+                      {application.photo_path && <a className="btn btn-line" href={supabase.storage.from('teacher-photos').getPublicUrl(application.photo_path).data.publicUrl} target="_blank" rel="noreferrer">View photo</a>}
+                      {(application.certificate_paths || []).map((path, index) => <button type="button" className="btn btn-line" key={path} onClick={() => openTeacherCertificate(path)}>Certificate {index + 1}</button>)}
+                      {application.status !== 'approved' && <button type="button" className="btn btn-accent" onClick={() => reviewTeacher(application.id, 'approved')}>Approve</button>}
+                      {application.status !== 'rejected' && <button type="button" className="btn btn-line" onClick={() => reviewTeacher(application.id, 'rejected')}>Reject</button>}
+                      <button type="button" className="btn btn-line" onClick={() => deleteTeacherApplication(application)}>Delete</button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
+          </div>
           <h2 className="disp h3" style={{ marginTop: 32 }}>Class schedule</h2>
           <div className="form-box admin-panel">
             {loading ? <p>Loading…</p> : (
