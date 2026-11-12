@@ -96,9 +96,10 @@ export default function Admin() {
   };
 
   const openTeacherCertificate = async (path) => {
+    const preview = window.open('about:blank', '_blank');
     const { data, error } = await supabase.storage.from('teacher-certificates').createSignedUrl(path, 60);
-    if (error) setErr(error.message);
-    else window.open(data.signedUrl, '_blank', 'noopener,noreferrer');
+    if (error) { preview?.close(); setErr(error.message); }
+    else if (preview) preview.location.href = data.signedUrl;
   };
 
   const setInquiryStatus = async (id, status) => {
