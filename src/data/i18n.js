@@ -34,7 +34,7 @@ export const T ={
   faq:{eyebrow:"FAQ",title:"Questions we hear a lot.",sub:"Can’t find your answer? Message us on LINE and a teacher will reply. Answers below are demo content.",
    askT:"Still have a question?",askS:"Message a teacher directly on LINE. We usually reply the same day.",askB:"Contact us"},
   contact:{eyebrow:"Contact",title:"Say hello, in any language.",subA:"Book a free trial, ask about schedules, or just practise your first ",subB:" with us. Contact details below are demo data.",
-   infoT:"Find us",addrL:"Address",addr:"No. 12, Demo Street, Yangon",phoneL:"Phone",lineL:"LINE · Email",hoursL:"Opening hours",h1:"Mon–Fri · 10:00–20:00",h2:"Sat–Sun · 09:00–17:00",
+   infoT:"Find us",addrL:"Address",addr:"Star City, Yangon, Myanmar",phoneL:"Phone",lineL:"LINE · Email",hoursL:"Opening hours",h1:"Mon–Fri · 10:00–20:00",h2:"Sat–Sun · 09:00–17:00",
    formT:"Send us a message",fTopic:"What’s it about?",topics:["Book a free trial class","Question about a course","Private lessons","Something else"],fMsg:"Message",fMsgPh:"Tell us your level and the times that suit you.",fSubmit:"Send message",
    sentT:"Thank you!",sentB:"We’ll reply within one day.",again:"Send another message",map:"Map placeholder: embed your map here"}
  },
@@ -70,7 +70,7 @@ export const T ={
   faq:{eyebrow:"မေးလေ့ရှိသော မေးခွန်းများ",title:"မကြာခဏ မေးလေ့ရှိတဲ့ မေးခွန်းများ။",sub:"အဖြေ ရှာမတွေ့ဘူးလား? LINE ကနေ မက်ဆေ့ချ်ပို့ပါ၊ ဆရာ၊ ဆရာမတစ်ဦးက ပြန်ဖြေပေးပါမယ်။ အောက်ပါ အဖြေများဟာ နမူနာ ဖြစ်ပါတယ်။",
    askT:"မေးခွန်း ရှိသေးလား?",askS:"LINE ကနေ ဆရာ၊ ဆရာမတွေကို တိုက်ရိုက် မေးနိုင်ပါတယ် — များသောအားဖြင့် ထိုနေ့မှာပဲ ပြန်ဖြေပါတယ်။",askB:"ဆက်သွယ်ရန်"},
   contact:{eyebrow:"ဆက်သွယ်ရန်",title:"ဘယ်ဘာသာစကားနဲ့မဆို နှုတ်ဆက်ပါ။",subA:"အခမဲ့ အစမ်းအတန်း စာရင်းပေးပါ၊ အချိန်ဇယား မေးမြန်းပါ၊ ဒါမှမဟုတ် ပထမဆုံး ",subB:" ကို ကျွန်ုပ်တို့နဲ့ လေ့ကျင့်ကြည့်ပါ။ အောက်ပါ ဆက်သွယ်ရန် အချက်အလက်များဟာ နမူနာ ဖြစ်ပါတယ်။",
-   infoT:"ကျွန်ုပ်တို့ဆီ လာရောက်ရန်",addrL:"လိပ်စာ",addr:"အမှတ် ၁၂၊ နမူနာလမ်း၊ ရန်ကုန်",phoneL:"ဖုန်း",lineL:"LINE · အီးမေးလ်",hoursL:"ဖွင့်ချိန်",h1:"တနင်္လာ–သောကြာ · 10:00–20:00",h2:"စနေ–တနင်္ဂနွေ · 09:00–17:00",
+   infoT:"ကျွန်ုပ်တို့ဆီ လာရောက်ရန်",addrL:"လိပ်စာ",addr:"Star City၊ ရန်ကုန်၊ မြန်မာ",phoneL:"ဖုန်း",lineL:"LINE · အီးမေးလ်",hoursL:"ဖွင့်ချိန်",h1:"တနင်္လာ–သောကြာ · 10:00–20:00",h2:"စနေ–တနင်္ဂနွေ · 09:00–17:00",
    formT:"မက်ဆေ့ချ် ပို့ပါ",fTopic:"ဘာအကြောင်းလဲ?",topics:["အခမဲ့ အစမ်းအတန်း စာရင်းပေးရန်","သင်တန်းအကြောင်း မေးမြန်းရန်","သီးသန့် သင်ခန်းစာ","အခြား"],fMsg:"မက်ဆေ့ချ်",fMsgPh:"သင့်အဆင့်နဲ့ အဆင်ပြေတဲ့ အချိန်တွေကို ပြောပြပါ။",fSubmit:"မက်ဆေ့ချ် ပို့ရန်",
    sentT:"ကျေးဇူးတင်ပါတယ်!",sentB:"တစ်ရက်အတွင်း ပြန်ဆက်သွယ်ပေးပါမယ်။",again:"နောက်ထပ် မက်ဆေ့ချ် ပို့ရန်",map:"မြေပုံနေရာ — သင့်မြေပုံကို ဒီမှာ ထည့်ပါ"}
  }
