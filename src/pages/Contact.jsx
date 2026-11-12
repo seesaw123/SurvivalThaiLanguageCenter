@@ -37,9 +37,14 @@ export default function Contact() {
             <div className="form-box"><ContactForm /></div>
           </div>
 
-          {/* TODO: replace with a real map embed (e.g. Google Maps iframe). */}
-          <div className="map" role="img" aria-label={p.map}>
-            <div><span className="pin"><span /></span><b>{p.map}</b></div>
+          <div className="map">
+            <iframe
+              title="Star City - Thanlyin, Sales Gallery"
+              src="https://www.google.com/maps?q=16.7765325,96.2285128&z=15&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </div>
         </div>
       </section>
