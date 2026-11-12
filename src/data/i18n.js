@@ -14,7 +14,7 @@ export const T ={
    coE:"Courses",coT:"Pick where you start.",seeSched:"See full schedule & prices",meet:"Meet the teachers",
    bkT:"Book a free trial class.",bkS:"Tell us a little about you and we’ll suggest a class time. No experience needed.",faqLink:"Questions? Read the FAQ",
    fName:"Your name",fNamePh:"e.g. Alex",fContact:"Email or LINE ID",fLevel:"Your level",o:["Total beginner","I know a few words","I can hold a simple conversation"],fSubmit:"Request my trial class",
-   sentT:"Request received.",sentB:"We’ll message you within one day to suggest a class time. (Demo: nothing was actually sent.)",again:"Send another request"},
+   sentT:"Request received.",sentB:"We’ll message you within one day to suggest a class time.",again:"Send another request"},
   about:{eyebrow:"About us",title:"Thai for real life, taught by people who’ve lived it.",sub:"SurvivalThai started as a small weekend class for friends heading to Thailand for work and study. Today we teach practical Thai to anyone who needs it, quickly, kindly and in their own language.",
    storyE:"Our story",storyT:"Built around the moments that matter.",s1:"Many of our students move to Thailand with only a few weeks to prepare. Textbooks taught them grammar; what they needed was to rent a room, see a doctor and talk to a boss. So we built our lessons around those moments.",s2:"Every class is explained in Burmese or English, so beginners never feel lost, and every lesson ends with something you can use the same day.",
    facts:[["2024","Founded"],["3","Course levels"],["15","Students per class, at most"],["2","Ways to learn: in person and online"]],
@@ -36,7 +36,7 @@ export const T ={
   contact:{eyebrow:"Contact",title:"Say hello, in any language.",subA:"Book a free trial, ask about schedules, or just practise your first ",subB:" with us. Contact details below are demo data.",
    infoT:"Find us",addrL:"Address",addr:"No. 12, Demo Street, Yangon",phoneL:"Phone",lineL:"LINE · Email",hoursL:"Opening hours",h1:"Mon–Fri · 10:00–20:00",h2:"Sat–Sun · 09:00–17:00",
    formT:"Send us a message",fTopic:"What’s it about?",topics:["Book a free trial class","Question about a course","Private lessons","Something else"],fMsg:"Message",fMsgPh:"Tell us your level and the times that suit you.",fSubmit:"Send message",
-   sentT:"Thank you!",sentB:"We’ll reply within one day. (Demo: nothing was actually sent.)",again:"Send another message",map:"Map placeholder: embed your map here"}
+   sentT:"Thank you!",sentB:"We’ll reply within one day.",again:"Send another message",map:"Map placeholder: embed your map here"}
  },
  my:{
   menu:"မီနူး",cta:"စာရင်းသွင်းရန်",ctaTitle:"ပထမဆုံး အတန်းအတွက် အသင့်ဖြစ်ပြီလား?",ctaSub:"အတန်းတစ်ခု အခမဲ့ စမ်းတက်ကြည့်ပါ — အတွေ့အကြုံ မလိုပါ။",next:"နောက်တစ်ခု - ",theme:"အရောင်ပုံစံ",copy:"© 2026 SurvivalThai",
@@ -50,7 +50,7 @@ export const T ={
    coE:"သင်တန်းများ",coT:"ဘယ်ကစမလဲ ရွေးပါ။",seeSched:"အချိန်ဇယားနှင့် ဈေးနှုန်း အပြည့်အစုံ ကြည့်ရန်",meet:"ဆရာ၊ ဆရာမများနှင့် တွေ့ရန်",
    bkT:"အခမဲ့ အစမ်းသင်တန်း စာရင်းပေးပါ။",bkS:"သင့်အကြောင်း နည်းနည်းပြောပြပါ၊ သင့်တော်တဲ့ အတန်းချိန်ကို အကြံပြုပေးပါမယ်။ အတွေ့အကြုံ မလိုအပ်ပါ။",faqLink:"မေးခွန်းရှိလား? FAQ ဖတ်ရန်",
    fName:"အမည်",fNamePh:"ဥပမာ - မောင်မောင်",fContact:"အီးမေးလ် သို့မဟုတ် LINE ID",fLevel:"သင့်အဆင့်",o:["လုံးဝ အသစ်","စကားလုံး အနည်းငယ် သိတယ်","ရိုးရိုး စကားပြော ပြောနိုင်တယ်"],fSubmit:"အစမ်းသင်တန်း တောင်းဆိုရန်",
-   sentT:"တောင်းဆိုမှု လက်ခံရရှိပါပြီ။",sentB:"သင့်တော်တဲ့ အတန်းချိန်ကို တစ်ရက်အတွင်း ပြန်ဆက်သွယ် အကြံပြုပေးပါမယ်။ (နမူနာဖြစ်လို့ ဘာမှ တကယ် မပို့ရသေးပါ။)",again:"နောက်ထပ် တောင်းဆိုရန်"},
+   sentT:"တောင်းဆိုမှု လက်ခံရရှိပါပြီ။",sentB:"သင့်တော်တဲ့ အတန်းချိန်ကို တစ်ရက်အတွင်း ပြန်ဆက်သွယ် အကြံပြုပေးပါမယ်။",again:"နောက်ထပ် တောင်းဆိုရန်"},
   about:{eyebrow:"ကျွန်ုပ်တို့အကြောင်း",title:"လက်တွေ့ဘဝအတွက် ထိုင်းစကား — ကိုယ်တိုင်ဖြတ်သန်းခဲ့သူတွေက သင်ပေးပါတယ်။",sub:"SurvivalThai ဟာ ထိုင်းနိုင်ငံကို အလုပ်နဲ့ ပညာရေးအတွက် သွားမယ့် သူငယ်ချင်းတွေအတွက် စနေ၊ တနင်္ဂနွေ အတန်းလေးအဖြစ် စတင်ခဲ့တာပါ။ အခုတော့ လိုအပ်တဲ့သူတိုင်းကို လက်တွေ့ကျတဲ့ ထိုင်းစကားကို မြန်မြန်၊ ဖော်ဖော်ရွေရွေနဲ့ သူတို့ရဲ့ ဘာသာစကားနဲ့ သင်ပေးနေပါတယ်။",
    storyE:"ကျွန်ုပ်တို့ရဲ့ ဇာတ်လမ်း",storyT:"အရေးကြီးတဲ့ အခိုက်အတန့်တွေကို အခြေခံထားပါတယ်။",s1:"ကျွန်ုပ်တို့ ကျောင်းသားအများစုဟာ ပြင်ဆင်ချိန် ရက်သတ္တပတ် အနည်းငယ်သာရှိပြီး ထိုင်းနိုင်ငံကို ပြောင်းရွှေ့ကြသူတွေပါ။ စာအုပ်တွေက သဒ္ဒါကို သင်ပေးပေမယ့် သူတို့လိုအပ်တာက အခန်းငှားဖို့၊ ဆရာဝန်ပြဖို့နဲ့ အလုပ်ရှင်နဲ့ စကားပြောဖို့ပါ။ ဒါကြောင့် ဒီအခြေအနေတွေကို အခြေခံပြီး သင်ခန်းစာတွေ ဖန်တီးခဲ့ပါတယ်။",s2:"အတန်းတိုင်းမှာ မြန်မာ သို့မဟုတ် အင်္ဂလိပ်လို ရှင်းပြပေးတဲ့အတွက် အစပြုသူတွေ မရှုပ်ထွေးရပါဘူး — သင်ခန်းစာတိုင်းရဲ့ အဆုံးမှာ ဒီနေ့ပဲ သုံးလို့ရမယ့် တစ်ခုခုကို ရရှိမှာပါ။",
    facts:[["၂၀၂၄","စတင်တည်ထောင်သည့်နှစ်"],["၃","သင်တန်းအဆင့်"],["၁၅","တစ်တန်းလျှင် အများဆုံး ကျောင်းသားဦးရေ"],["၂","သင်ယူနည်း - အတန်းတက် နှင့် အွန်လိုင်း"]],
@@ -72,7 +72,7 @@ export const T ={
   contact:{eyebrow:"ဆက်သွယ်ရန်",title:"ဘယ်ဘာသာစကားနဲ့မဆို နှုတ်ဆက်ပါ။",subA:"အခမဲ့ အစမ်းအတန်း စာရင်းပေးပါ၊ အချိန်ဇယား မေးမြန်းပါ၊ ဒါမှမဟုတ် ပထမဆုံး ",subB:" ကို ကျွန်ုပ်တို့နဲ့ လေ့ကျင့်ကြည့်ပါ။ အောက်ပါ ဆက်သွယ်ရန် အချက်အလက်များဟာ နမူနာ ဖြစ်ပါတယ်။",
    infoT:"ကျွန်ုပ်တို့ဆီ လာရောက်ရန်",addrL:"လိပ်စာ",addr:"အမှတ် ၁၂၊ နမူနာလမ်း၊ ရန်ကုန်",phoneL:"ဖုန်း",lineL:"LINE · အီးမေးလ်",hoursL:"ဖွင့်ချိန်",h1:"တနင်္လာ–သောကြာ · 10:00–20:00",h2:"စနေ–တနင်္ဂနွေ · 09:00–17:00",
    formT:"မက်ဆေ့ချ် ပို့ပါ",fTopic:"ဘာအကြောင်းလဲ?",topics:["အခမဲ့ အစမ်းအတန်း စာရင်းပေးရန်","သင်တန်းအကြောင်း မေးမြန်းရန်","သီးသန့် သင်ခန်းစာ","အခြား"],fMsg:"မက်ဆေ့ချ်",fMsgPh:"သင့်အဆင့်နဲ့ အဆင်ပြေတဲ့ အချိန်တွေကို ပြောပြပါ။",fSubmit:"မက်ဆေ့ချ် ပို့ရန်",
-   sentT:"ကျေးဇူးတင်ပါတယ်!",sentB:"တစ်ရက်အတွင်း ပြန်ဆက်သွယ်ပေးပါမယ်။ (နမူနာဖြစ်လို့ ဘာမှ တကယ် မပို့ရသေးပါ။)",again:"နောက်ထပ် မက်ဆေ့ချ် ပို့ရန်",map:"မြေပုံနေရာ — သင့်မြေပုံကို ဒီမှာ ထည့်ပါ"}
+   sentT:"ကျေးဇူးတင်ပါတယ်!",sentB:"တစ်ရက်အတွင်း ပြန်ဆက်သွယ်ပေးပါမယ်။",again:"နောက်ထပ် မက်ဆေ့ချ် ပို့ရန်",map:"မြေပုံနေရာ — သင့်မြေပုံကို ဒီမှာ ထည့်ပါ"}
  }
 };
 
