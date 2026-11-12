@@ -71,7 +71,6 @@ export default function Teachers() {
       };
       const { error } = await supabase.from('teacher_applications').insert(payload);
       if (error) throw error;
-      e.currentTarget.reset();
       setForm(initialForm); setPhoto(null); setCertificates([]);
       setShowForm(false);
       setNotice(lang === 'my'
