@@ -301,7 +301,8 @@ body.lang-my .res h3{font-family:var(--f-my)}
 .sent{min-height:460px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:16px}
 .sent .ok{width:64px;height:64px;border-radius:999px;display:grid;place-items:center;background:var(--accent);color:var(--on-accent)}
 .sent p{color:var(--on-deep-muted)}
-.line-link{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#06C755;color:#fff;transition:transform .2s ease,filter .2s ease}
+.info-card .ic:has(.line-link){background:transparent}
+.line-link{display:grid;place-items:center;width:100%;height:100%;border-radius:12px;background:#06C755;color:#fff;transition:transform .2s ease,filter .2s ease}
 .line-link:hover{transform:translateY(-2px);filter:brightness(.94)}
 .line-link svg{width:22px;height:22px}
 
