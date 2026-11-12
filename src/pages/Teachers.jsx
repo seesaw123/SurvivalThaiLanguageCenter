@@ -58,9 +58,11 @@ export default function Teachers() {
         if (error) throw error;
         certificatePaths.push(path);
       }
+      const languageList = form.languages.split(',').map(x => x.trim()).filter(Boolean);
+      if (languageList.length < 1 || languageList.length > 6) throw new Error('Please enter between 1 and 6 languages.');
       const payload = {
         full_name: form.full_name.trim(), nationality: form.nationality.trim(),
-        languages: form.languages.split(',').map(x => x.trim()).filter(Boolean),
+        languages: languageList,
         bio: form.bio.trim(), experience_years: Number(form.experience_years),
         qualifications: form.qualifications.trim(),
         courses: form.courses, email: form.email.trim(), contact: form.line_contact.trim() || form.email.trim(),
@@ -69,6 +71,7 @@ export default function Teachers() {
       };
       const { error } = await supabase.from('teacher_applications').insert(payload);
       if (error) throw error;
+      e.currentTarget.reset();
       setForm(initialForm); setPhoto(null); setCertificates([]);
       setShowForm(false);
       setNotice(lang === 'my'
