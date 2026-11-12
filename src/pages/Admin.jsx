@@ -47,7 +47,7 @@ export default function Admin() {
 
   const loadTeacherApplications = async () => {
     setLoadingTeachers(true);
-    const { data, error } = await supabase.from('teacher_applications').select('*').order('created_at', { ascending: false });
+    const { data, error } = await supabase.from('teacher_applications').select('*').order('submitted_at', { ascending: false });
     if (error) setErr(error.message);
     else setTeacherApplications(data || []);
     setLoadingTeachers(false);
@@ -57,7 +57,28 @@ export default function Admin() {
 
   const reviewTeacher = async (id, status) => {
     setErr('');
-    const { error } = await supabase.from('teacher_applications').update({ status, reviewed_at: new Date().toISOString() }).eq('id', id);
+    const application = teacherApplications.find(item => item.id === id);
+    if (!application) return;
+    if (status === 'approved') {
+      const profile = {
+        application_id: application.id,
+        full_name: application.full_name,
+        nationality: application.nationality,
+        bio: application.bio,
+        languages: application.languages,
+        experience_years: application.experience_years,
+        courses: application.courses,
+        photo_path: application.photo_path,
+        qualifications: application.qualifications || '',
+      };
+      const { error: profileError } = await supabase.from('teacher_profiles').upsert(profile, { onConflict: 'application_id' });
+      if (profileError) { setErr(profileError.message); return; }
+    } else {
+      const { error: profileError } = await supabase.from('teacher_profiles').delete().eq('application_id', id);
+      if (profileError) { setErr(profileError.message); return; }
+    }
+    const { error } = await supabase.from('teacher_applications')
+      .update({ status, reviewed_at: new Date().toISOString() }).eq('id', id);
     if (error) setErr(error.message);
     else loadTeacherApplications();
   };
@@ -65,6 +86,8 @@ export default function Admin() {
   const deleteTeacherApplication = async (application) => {
     if (!window.confirm('Delete this teacher application and its uploaded files?')) return;
     setErr('');
+    const { error: profileError } = await supabase.from('teacher_profiles').delete().eq('application_id', application.id);
+    if (profileError) { setErr(profileError.message); return; }
     const { error } = await supabase.from('teacher_applications').delete().eq('id', application.id);
     if (error) { setErr(error.message); return; }
     if (application.photo_path) await supabase.storage.from('teacher-photos').remove([application.photo_path]);
@@ -208,9 +231,9 @@ export default function Admin() {
                     <div className="inquiry-head">
                       <strong>{application.full_name}</strong>
                       <span className={'badge ' + application.status}>{application.status}</span>
-                      <span className="inquiry-date">{new Date(application.created_at).toLocaleString()}</span>
+                      <span className="inquiry-date">{new Date(application.submitted_at).toLocaleString()}</span>
                     </div>
-                    <p className="inquiry-contact">{application.nationality} · {application.email} · {application.line_contact || 'No LINE contact'}</p>
+                    <p className="inquiry-contact">{application.nationality} · {application.contact}</p>
                     <p className="inquiry-msg">{application.bio}</p>
                     <p className="inquiry-contact">Languages: {(application.languages || []).join(', ') || '—'} · Experience: {application.experience_years} years</p>
                     <p className="inquiry-contact">Courses: {(application.courses || []).join(', ') || '—'}</p>
