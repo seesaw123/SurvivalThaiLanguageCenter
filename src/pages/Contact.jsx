@@ -30,7 +30,7 @@ export default function Contact() {
               <InfoCard icon={<PinIcon />} label={p.addrL}><span>{p.addr}</span></InfoCard>
               <InfoCard icon={<PhoneIcon />} label={p.phoneL}><span>+95 9 000 000 000</span></InfoCard>
               <InfoCard icon={<ChatIcon />} label={p.lineL}>
-                <a href="https://line.me/R/ti/p/@665nzuxc" target="_blank" rel="noreferrer">@665nzuxc</a>
+                <a className="line-link" href="https://line.me/R/ti/p/@665nzuxc" target="_blank" rel="noreferrer" aria-label="Chat with SurvivalThai on LINE"><ChatIcon /></a>
               </InfoCard>
               <InfoCard icon={<ClockIcon />} label={p.hoursL}><span>{p.h1}</span><span>{p.h2}</span></InfoCard>
             </div>
