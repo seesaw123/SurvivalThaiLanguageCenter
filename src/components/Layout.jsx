@@ -74,10 +74,6 @@ export function Header() {
                   </Link>
                 ))}
                 <Link className="btn btn-accent" to="/contact" onClick={() => setOpen(false)}>{t.cta}</Link>
-                <div className="sw-row">
-                  <span className="eyebrow" style={{ color: 'var(--muted)' }}>{t.theme}</span>
-                  <ThemeSwatches />
-                </div>
               </nav>
             )}
           </div>
