@@ -350,3 +350,33 @@ body.lang-my .res h3{font-family:var(--f-my)}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
 }
+
+
+/* Teacher applications and verified profiles */
+.teacher-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px}
+.teacher-intro > div{display:flex;flex-direction:column;gap:10px;max-width:680px}
+.teacher-notice{margin:0 0 24px;padding:16px 20px;border:1.5px solid var(--ink);border-radius:14px;background:var(--card);font-weight:600}
+.teacher-apply{margin-bottom:48px}
+.teacher-form-heading{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
+.teacher-form-heading p,.teacher-privacy{color:var(--on-deep-muted)}
+.teacher-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.teacher-form-grid .span-two{grid-column:1 / -1}
+.teacher-form-grid small{font-size:13px;font-weight:400;color:var(--on-deep-muted)}
+.teacher-form-grid input[type="file"]{padding:10px;min-height:48px;font-size:14px}
+.teacher-course-field{min-width:0;margin:0;padding:14px 16px;border:1.5px solid var(--field-border);border-radius:12px}
+.teacher-course-field legend{padding:0 6px;font-size:15px;font-weight:600}
+.teacher-check{display:flex!important;flex-direction:row!important;align-items:center;gap:10px!important;margin:8px 0}
+.teacher-check input{width:18px;height:18px;min-height:0;accent-color:var(--accent)}
+.teacher-privacy{font-size:14px;margin-top:2px}
+.teacher-form-actions{display:flex;flex-wrap:wrap;gap:10px}
+.teacher-empty{min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:42px 20px;border:1.5px dashed var(--muted);border-radius:24px}
+.teacher-empty-mark{width:54px;height:54px;display:grid;place-items:center;border-radius:16px;background:var(--accent);color:var(--on-accent);font-size:28px}
+.teacher-photo{object-fit:cover;border:1.5px solid var(--ink)}
+.teacher-review-card{gap:10px}
+.teacher-review-actions{flex-wrap:wrap;margin-left:0}
+.teacher-review-actions .btn{min-height:40px;padding:0 16px;font-size:14px}
+@media(max-width:700px){
+  .teacher-intro{align-items:flex-start;flex-direction:column}
+  .teacher-form-grid{grid-template-columns:minmax(0,1fr)}
+  .teacher-form-grid .span-two{grid-column:auto}
+}
