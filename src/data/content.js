@@ -87,16 +87,7 @@ export const COURSES =[
   topics:{en:["The 44 consonants and the vowels","Tone rules","Reading signs, menus and forms"],my:["ဗျည်း ၄၄ လုံးနဲ့ သရများ","tone စည်းမျဉ်းများ","ဆိုင်းဘုတ်၊ မီနူးနဲ့ ဖောင်များ ဖတ်ခြင်း"]}}
 ];
 export const LANGN ={th:{en:"Thai",my:"ထိုင်း"},my:{en:"Burmese",my:"မြန်မာ"},en:{en:"English",my:"အင်္ဂလိပ်"}};
-export const TEACHERS =[
- {name:"Kru Ploy",native:"ครูพลอย",cls:"th",ini:"KP",langs:["th","en"],teaches:["Everyday Thai","Read & Write"],role:{en:"Head teacher",my:"ဆရာမကြီး"},
-  bio:{en:"Grew up in Chiang Mai and has taught Thai to newcomers for years. Loves turning tone rules into little songs that stick.",my:"ချင်းမိုင်မှာ ကြီးပြင်းခဲ့ပြီး ထိုင်းနိုင်ငံကို ရောက်လာသူတွေကို ထိုင်းစကား နှစ်ပေါင်းများစွာ သင်ပေးခဲ့ပါတယ်။ tone စည်းမျဉ်းတွေကို မှတ်မိလွယ်တဲ့ သီချင်းလေးတွေအဖြစ် ပြောင်းသင်ရတာ ဝါသနာပါပါတယ်။"}},
- {name:"Aung Min",native:"ဆရာ အောင်မင်း",cls:"mm",ini:"AM",langs:["my","th","en"],teaches:["Survival Starter"],role:{en:"Level 1 teacher",my:"အဆင့် ၁ ဆရာ"},
-  bio:{en:"Moved to Thailand for work and learned Thai the hard way. Now he teaches the shortcuts he wishes he’d had.",my:"အလုပ်အတွက် ထိုင်းနိုင်ငံကို ပြောင်းရွှေ့ခဲ့ပြီး ထိုင်းစကားကို ခက်ခက်ခဲခဲ သင်ယူခဲ့ရပါတယ်။ အခုတော့ သူကိုယ်တိုင် လိုချင်ခဲ့တဲ့ ဖြတ်လမ်းနည်းတွေကို ပြန်သင်ပေးနေပါတယ်။"}},
- {name:"Hnin Wai",native:"ဆရာမ နှင်းဝေ",cls:"mm",ini:"HW",langs:["my","th"],teaches:["Read & Write"],role:{en:"Reading & writing teacher",my:"စာဖတ်၊ စာရေး ဆရာမ"},
-  bio:{en:"Specialist in the Thai alphabet. Her memory tricks make all 44 consonants stick, even for students who say they’re bad at letters.",my:"ထိုင်းအက္ခရာ ကျွမ်းကျင်သူပါ။ သူ့ရဲ့ မှတ်ဉာဏ်နည်းလမ်းတွေက “စာလုံးမှတ်ရခက်တယ်” ဆိုတဲ့ ကျောင်းသားတွေတောင် ဗျည်း ၄၄ လုံးကို မှတ်မိသွားစေပါတယ်။"}},
- {name:"Kru Nok",native:"ครูนก",cls:"th",ini:"KN",langs:["th","en"],teaches:["Survival Starter","Everyday Thai"],role:{en:"Conversation coach",my:"စကားပြော နည်းပြ"},
-  bio:{en:"Runs our role-play sessions: market stalls, clinic visits and job interviews, all in Thai and all at real speed.",my:"ဈေးဆိုင်၊ ဆေးခန်းပြခြင်းနဲ့ အလုပ်အင်တာဗျူး စတဲ့ သရုပ်ဆောင် လေ့ကျင့်ခန်းတွေကို ထိုင်းလိုချည်း၊ တကယ့်အမြန်နှုန်းနဲ့ ဦးဆောင်ပါတယ်။"}}
-];
+export const TEACHERS = [];
 export const CATS =["all","phrases","alphabet","tones","culture"];
 export const RTYPE ={pdf:{en:"PDF",my:"PDF"},audio:{en:"Audio",my:"အသံ"},video:{en:"Video",my:"ဗီဒီယို"},article:{en:"Article",my:"ဆောင်းပါး"}};
 export const RES =[
