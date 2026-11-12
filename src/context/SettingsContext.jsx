@@ -49,7 +49,7 @@ export function SettingsProvider({ children }) {
       // Format numbers in the active language's digits.
       num: (n) => (lang === 'my' ? toMyDigits(n) : String(n)),
     }),
-    [lang, target, fading, palette, setLang, setPalette]
+    [lang, target, fading, setLang]
   );
 
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
