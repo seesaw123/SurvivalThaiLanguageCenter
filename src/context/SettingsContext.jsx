@@ -1,6 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { T } from '../data/i18n.js';
-import { PALETTES } from '../data/content.js';
 import { load, save, toMyDigits } from '../utils.js';
 
 const SettingsContext = createContext(null);
@@ -12,10 +11,6 @@ export function SettingsProvider({ children }) {
   // `target` moves the toggle pill instantly; `lang` swaps the text after the fade-out.
   const [target, setTarget] = useState(lang);
   const [fading, setFading] = useState(false);
-  const [palette, setPaletteState] = useState(() => {
-    const p = load('palette', 'teal');
-    return PALETTES.some(([key]) => key === p) ? p : 'teal';
-  });
   const timer = useRef(null);
 
   const setLang = useCallback(
@@ -36,31 +31,20 @@ export function SettingsProvider({ children }) {
     [lang]
   );
 
-  const setPalette = useCallback((p) => {
-    setPaletteState(p);
-    save('palette', p);
-  }, []);
-
   useEffect(() => () => clearTimeout(timer.current), []);
 
-  // Apply language + palette to <html>/<body> so the CSS tokens switch.
+  // Apply the active language to <html>/<body>.
   useEffect(() => {
     document.documentElement.lang = lang;
     document.body.classList.toggle('lang-my', lang === 'my');
   }, [lang]);
-
-  useEffect(() => {
-    document.body.dataset.palette = palette;
-  }, [palette]);
 
   const value = useMemo(
     () => ({
       lang,
       target,
       fading,
-      palette,
       setLang,
-      setPalette,
       t: T[lang],
       // Format numbers in the active language's digits.
       num: (n) => (lang === 'my' ? toMyDigits(n) : String(n)),
