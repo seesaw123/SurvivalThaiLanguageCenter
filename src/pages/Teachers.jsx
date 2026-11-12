@@ -63,7 +63,7 @@ export default function Teachers() {
         languages: form.languages.split(',').map(x => x.trim()).filter(Boolean),
         bio: form.bio.trim(), experience_years: Number(form.experience_years),
         qualifications: form.qualifications.trim(),
-        courses: form.courses, contact: `Email: ${form.email.trim()} | LINE: ${form.line_contact.trim() || 'Not provided'}`,
+        courses: form.courses, email: form.email.trim(), contact: form.line_contact.trim() || form.email.trim(),
         availability: form.availability.trim(), photo_path: photoPath,
         certificate_paths: certificatePaths, status: 'pending',
       };
