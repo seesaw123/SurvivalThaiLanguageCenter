@@ -41,6 +41,8 @@ export default function Teachers() {
     setNotice('');
     try {
       if (!photo) throw new Error('Please upload a profile photo.');
+      if (photo.size > 3 * 1024 * 1024) throw new Error('Profile photo must be 3 MB or smaller.');
+      if (certificates.some(file => file.size > 10 * 1024 * 1024)) throw new Error('Each certificate file must be 10 MB or smaller.');
       let photoPath = null;
       const certificatePaths = [];
       if (photo) {
@@ -61,7 +63,7 @@ export default function Teachers() {
         languages: form.languages.split(',').map(x => x.trim()).filter(Boolean),
         bio: form.bio.trim(), experience_years: Number(form.experience_years),
         qualifications: form.qualifications.trim(),
-        courses: form.courses, email: form.email.trim(), line_contact: form.line_contact.trim(),
+        courses: form.courses, contact: `Email: ${form.email.trim()} | LINE: ${form.line_contact.trim() || 'Not provided'}`,
         availability: form.availability.trim(), photo_path: photoPath,
         certificate_paths: certificatePaths, status: 'pending',
       };
@@ -107,7 +109,7 @@ export default function Teachers() {
               </div>
               <form className="form" onSubmit={submitApplication}>
                 <div className="teacher-form-grid">
-                  <label>Full name *<input required maxLength="120" value={form.full_name} onChange={e => setForm({...form, full_name:e.target.value})} /></label>
+                  <label>Full name *<input required maxLength="100" value={form.full_name} onChange={e => setForm({...form, full_name:e.target.value})} /></label>
                   <label>Nationality *<input required maxLength="80" value={form.nationality} onChange={e => setForm({...form, nationality:e.target.value})} /></label>
                   <label>Languages spoken *<input required placeholder="Burmese, Thai, English" value={form.languages} onChange={e => setForm({...form, languages:e.target.value})} /><small>Separate languages with commas.</small></label>
                   <label>Teaching experience (years) *<input required type="number" min="0" max="60" step="1" value={form.experience_years} onChange={e => setForm({...form, experience_years:e.target.value})} /></label>
@@ -119,7 +121,7 @@ export default function Teachers() {
                   <label>Email address *<input required type="email" maxLength="254" value={form.email} onChange={e => setForm({...form, email:e.target.value})} /></label>
                   <label>LINE ID / preferred contact<input maxLength="120" value={form.line_contact} onChange={e => setForm({...form, line_contact:e.target.value})} /></label>
                   <label className="span-two">Availability *<textarea required rows="3" minLength="3" maxLength="1000" value={form.availability} onChange={e => setForm({...form, availability:e.target.value})} placeholder="Example: Weekdays after 6 PM; weekends." /></label>
-                  <label>Profile photo<input type="file" accept="image/jpeg,image/png,image/webp" required onChange={e => setPhoto(e.target.files?.[0] || null)} /><small>JPG, PNG or WebP · max 5 MB</small></label>
+                  <label>Profile photo<input type="file" accept="image/jpeg,image/png,image/webp" required onChange={e => setPhoto(e.target.files?.[0] || null)} /><small>JPG, PNG or WebP · max 3 MB</small></label>
                   <label>Certificates / qualifications<input type="file" accept="application/pdf,image/jpeg,image/png" multiple onChange={e => setCertificates(Array.from(e.target.files || []))} /><small>PDF or image · max 10 MB each</small></label>
                 </div>
                 <p className="teacher-privacy">{lang === 'my' ? 'သင်၏ အီးမေးလ်၊ ဆက်သွယ်ရန်အချက်အလက်နှင့် လက်မှတ်ဖိုင်များကို အများမြင်နိုင်မည်မဟုတ်ပါ။' : 'Your email, contact details and certificate files are kept private and are only available to the admin reviewer.'}</p>
