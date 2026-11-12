@@ -26,9 +26,9 @@ export default function Teachers() {
 
   const loadTeachers = async () => {
     setLoading(true);
-    const { data, error } = await supabase.from('teacher_applications')
+    const { data, error } = await supabase.from('teacher_profiles')
       .select('id, full_name, nationality, languages, bio, experience_years, qualifications, courses, photo_path')
-      .eq('status', 'approved').order('created_at', { ascending: true });
+      .order('created_at', { ascending: true });
     if (!error) setTeachers(data || []);
     setLoading(false);
   };
@@ -40,17 +40,18 @@ export default function Teachers() {
     setSending(true);
     setNotice('');
     try {
+      if (!photo) throw new Error('Please upload a profile photo.');
       let photoPath = null;
       const certificatePaths = [];
       if (photo) {
         const ext = photo.name.split('.').pop().toLowerCase();
-        photoPath = `${crypto.randomUUID()}/profile.${ext}`;
+        photoPath = `applications/${crypto.randomUUID()}/profile.${ext}`;
         const { error } = await supabase.storage.from('teacher-photos').upload(photoPath, photo, { contentType: photo.type });
         if (error) throw error;
       }
       for (const file of certificates) {
         const ext = file.name.split('.').pop().toLowerCase();
-        const path = `${crypto.randomUUID()}/${crypto.randomUUID()}.${ext}`;
+        const path = `applications/${crypto.randomUUID()}/${crypto.randomUUID()}.${ext}`;
         const { error } = await supabase.storage.from('teacher-certificates').upload(path, file, { contentType: file.type });
         if (error) throw error;
         certificatePaths.push(path);
@@ -109,16 +110,16 @@ export default function Teachers() {
                   <label>Full name *<input required maxLength="120" value={form.full_name} onChange={e => setForm({...form, full_name:e.target.value})} /></label>
                   <label>Nationality *<input required maxLength="80" value={form.nationality} onChange={e => setForm({...form, nationality:e.target.value})} /></label>
                   <label>Languages spoken *<input required placeholder="Burmese, Thai, English" value={form.languages} onChange={e => setForm({...form, languages:e.target.value})} /><small>Separate languages with commas.</small></label>
-                  <label>Teaching experience (years) *<input required type="number" min="0" max="60" step="0.5" value={form.experience_years} onChange={e => setForm({...form, experience_years:e.target.value})} /></label>
-                  <label className="span-two">Short introduction / biography *<textarea required rows="4" maxLength="1200" value={form.bio} onChange={e => setForm({...form, bio:e.target.value})} placeholder="Tell students about your teaching approach and experience." /></label>
+                  <label>Teaching experience (years) *<input required type="number" min="0" max="60" step="1" value={form.experience_years} onChange={e => setForm({...form, experience_years:e.target.value})} /></label>
+                  <label className="span-two">Short introduction / biography *<textarea required rows="4" minLength="30" maxLength="1200" value={form.bio} onChange={e => setForm({...form, bio:e.target.value})} placeholder="Tell students about your teaching approach and experience." /></label>
                   <label className="span-two">Qualifications and certificates<textarea rows="3" maxLength="1200" value={form.qualifications} onChange={e => setForm({...form, qualifications:e.target.value})} placeholder="List relevant degrees, training and certificates." /></label>
                   <fieldset className="teacher-course-field span-two"><legend>Courses you can teach *</legend>
                     {courseOptions.map(course => <label className="teacher-check" key={course}><input type="checkbox" checked={form.courses.includes(course)} onChange={() => toggleCourse(course)} />{course}</label>)}
                   </fieldset>
                   <label>Email address *<input required type="email" maxLength="254" value={form.email} onChange={e => setForm({...form, email:e.target.value})} /></label>
                   <label>LINE ID / preferred contact<input maxLength="120" value={form.line_contact} onChange={e => setForm({...form, line_contact:e.target.value})} /></label>
-                  <label className="span-two">Availability *<textarea required rows="3" maxLength="1000" value={form.availability} onChange={e => setForm({...form, availability:e.target.value})} placeholder="Example: Weekdays after 6 PM; weekends." /></label>
-                  <label>Profile photo<input type="file" accept="image/jpeg,image/png,image/webp" onChange={e => setPhoto(e.target.files?.[0] || null)} /><small>JPG, PNG or WebP · max 5 MB</small></label>
+                  <label className="span-two">Availability *<textarea required rows="3" minLength="3" maxLength="1000" value={form.availability} onChange={e => setForm({...form, availability:e.target.value})} placeholder="Example: Weekdays after 6 PM; weekends." /></label>
+                  <label>Profile photo<input type="file" accept="image/jpeg,image/png,image/webp" required onChange={e => setPhoto(e.target.files?.[0] || null)} /><small>JPG, PNG or WebP · max 5 MB</small></label>
                   <label>Certificates / qualifications<input type="file" accept="application/pdf,image/jpeg,image/png" multiple onChange={e => setCertificates(Array.from(e.target.files || []))} /><small>PDF or image · max 10 MB each</small></label>
                 </div>
                 <p className="teacher-privacy">{lang === 'my' ? 'သင်၏ အီးမေးလ်၊ ဆက်သွယ်ရန်အချက်အလက်နှင့် လက်မှတ်ဖိုင်များကို အများမြင်နိုင်မည်မဟုတ်ပါ။' : 'Your email, contact details and certificate files are kept private and are only available to the admin reviewer.'}</p>
