@@ -30,6 +30,9 @@ export default function Admin() {
   const [teacherApplications, setTeacherApplications] = useState([]);
   const [loadingTeachers, setLoadingTeachers] = useState(true);
   const [showAddTeacher, setShowAddTeacher] = useState(false);
+  // null = checking, true = on the admin list, false = signed in but not an admin,
+  // 'unknown' = is_admin() isn't installed yet (run supabase/admin-access.sql).
+  const [isAdmin, setIsAdmin] = useState(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => { setSession(data.session); setChecking(false); });
@@ -59,7 +62,20 @@ export default function Admin() {
     setLoadingTeachers(false);
   };
 
-  useEffect(() => { if (session) { loadRows(); loadInquiries(); loadTeacherApplications(); } }, [session]);
+  // The database enforces admin-only access (see supabase/admin-access.sql); this
+  // check just tells a non-admin account clearly that it has no access.
+  useEffect(() => {
+    if (!session) { setIsAdmin(null); return; }
+    let active = true;
+    setIsAdmin(null);
+    supabase.rpc('is_admin').then(({ data, error }) => {
+      if (!active) return;
+      setIsAdmin(error ? 'unknown' : data === true);
+    });
+    return () => { active = false; };
+  }, [session]);
+
+  useEffect(() => { if (session && isAdmin && isAdmin !== null) { loadRows(); loadInquiries(); loadTeacherApplications(); } }, [session, isAdmin]);
 
   const reviewTeacher = async (id, status) => {
     setErr('');
@@ -184,6 +200,22 @@ export default function Admin() {
     );
   }
 
+  if (isAdmin === null) return null;
+
+  if (isAdmin === false) {
+    return (
+      <>
+        <PageHero eyebrow="Admin" title="No admin access">This account is signed in but isn’t on the admin list.</PageHero>
+        <section>
+          <div className="wrap">
+            <p className="muted" style={{ marginBottom: 20 }}>Ask an existing admin to add your email to the admin list in Supabase.</p>
+            <button type="button" className="btn btn-line" onClick={() => supabase.auth.signOut()}>Sign out</button>
+          </div>
+        </section>
+      </>
+    );
+  }
+
   const newCount = inquiries.filter((i) => i.status === 'new').length;
 
   return (
@@ -196,6 +228,7 @@ export default function Admin() {
           <button type="button" className="btn btn-line" onClick={() => supabase.auth.signOut()}>Sign out</button>
 
           {err && <p style={{ color: 'var(--accent-text)', marginTop: 16 }}>{err}</p>}
+          {isAdmin === 'unknown' && <p className="teacher-notice" style={{ marginTop: 16 }}>Admin list not set up yet: run <code>supabase/admin-access.sql</code> in the Supabase SQL Editor so only listed admins can use this page.</p>}
 
           <h2 className="disp h3" style={{ marginTop: 32 }}>
             Inquiries{newCount > 0 && <span className="badge new">{newCount} new</span>}
