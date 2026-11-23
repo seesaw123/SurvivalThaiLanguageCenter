@@ -9,7 +9,7 @@ export const T ={
   home:{eyebrow:"Thai lessons in Myanmar",title:"Speak Thai from First Day.",sub:"Practical lessons for the Thai you actually need: ordering food, bargaining at the market, and getting a songthaew home.",
    cta2:"Discover Chiang Mai",prev:"Previous letter",nextL:"Next letter",show:"Show letter ",roll:"Roll new letters",capA:" means “",capB:"”. Every Thai consonant has a word like this. Move your pointer over the block to tilt it.",
    phE:"Your first week",phT:"Six phrases that get you through week one.",phS:"Tap a card to flip it and see what it means.",flipped:function(n){return n+" of 6 flipped";},means:"Means",flipCard:"Flip card: ",
-   toE:"The five tones",toT:"Same sound, five meanings.",toS:"Thai is tonal: the pitch of your voice changes the word. Pick a tone to see its shape.",high:"high",low:"low",contour:"Pitch contour of the ",
+   toE:"The five tones",toT:"Tones in Thai",toS:"Thai language is a tone language: the pitch of your voice changes the meaning.",high:"high",low:"low",contour:"Pitch contour of the ",
    twA:"Try this tongue twister:",twB:"“New wood doesn’t burn, does it?”",
    coE:"Courses",coT:"Pick where you start.",seeSched:"See full schedule & prices",meet:"Meet the teachers",
    bkT:"Book a free trial class.",bkS:"Tell us a little about you and we’ll suggest a class time. No experience needed.",faqLink:"Questions? Read the FAQ",
