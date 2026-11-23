@@ -7,7 +7,6 @@ import { SectionHead } from '../components/Layout.jsx';
 import LetterCube from '../components/LetterCube.jsx';
 import CultureCards from '../components/CultureCards.jsx';
 import ToneExplorer from '../components/ToneExplorer.jsx';
-import { TrialForm } from '../components/Forms.jsx';
 
 export default function Home() {
   const { t, lang, num } = useSettings();
@@ -24,7 +23,7 @@ export default function Home() {
             <h1 className="disp h1">{h.title}</h1>
             <p className="lead">{h.sub}</p>
             <div className="row">
-              <button type="button" className="btn btn-accent" onClick={() => scrollToId('book')}>{t.cta}</button>
+              <Link className="btn btn-accent" to="/contact">{t.cta}</Link>
               <button type="button" className="btn btn-line" onClick={() => scrollToId('phrases')}>{h.cta2}</button>
             </div>
           </div>
@@ -55,19 +54,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="book" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <div className="book">
-            <div className="book-copy">
-              <h2 className="disp h2">{h.bkT}</h2>
-              <p className="lead">{h.bkS}</p>
-              <Link className="link-u" to="/faq">{h.faqLink}</Link>
-              <div className="contact"><span>[ADDRESS]</span><span>LINE: [LINE ID] · [EMAIL]</span></div>
-            </div>
-            <div><TrialForm /></div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
