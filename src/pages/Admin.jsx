@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient.js';
 import { PageHero } from '../components/Layout.jsx';
 import { COURSES } from '../data/content.js';
+import AddTeacherForm from '../components/AddTeacherForm.jsx';
 
 // Schedule `level` numbers: 1–7 = A1…C2, 8 = Intensive course.
 const LEVEL_OPTIONS = COURSES.map((c, i) => <option key={c.code} value={i + 1}>{c.code === 'INT' ? 'Intensive' : c.code + ' ' + c.name.en}</option>);
@@ -28,6 +29,7 @@ export default function Admin() {
   const [loadingInquiries, setLoadingInquiries] = useState(true);
   const [teacherApplications, setTeacherApplications] = useState([]);
   const [loadingTeachers, setLoadingTeachers] = useState(true);
+  const [showAddTeacher, setShowAddTeacher] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => { setSession(data.session); setChecking(false); });
@@ -225,11 +227,15 @@ export default function Admin() {
             )}
           </div>
 
-          <h2 className="disp h3" style={{ marginTop: 32 }}>
-            Teacher applications <span className="badge new">{teacherApplications.filter(a => a.status === 'pending').length} pending</span>
-          </h2>
+          <div style={{ marginTop: 32, display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center', justifyContent: 'space-between' }}>
+            <h2 className="disp h3">
+              Teachers <span className="badge new">{teacherApplications.filter(a => a.status === 'pending').length} pending</span>
+            </h2>
+            {!showAddTeacher && <button type="button" className="btn btn-accent" onClick={() => setShowAddTeacher(true)}>+ Add a teacher</button>}
+          </div>
+          {showAddTeacher && <AddTeacherForm onCreated={loadTeacherApplications} onCancel={() => setShowAddTeacher(false)} />}
           <div className="form-box admin-panel">
-            {loadingTeachers ? <p>Loading teacher applications…</p> : teacherApplications.length === 0 ? <p>No teacher applications yet.</p> : (
+            {loadingTeachers ? <p>Loading teacher applications…</p> : teacherApplications.length === 0 ? <p>No teachers yet. Use “Add a teacher” to create one.</p> : (
               <div className="inquiry-list">
                 {teacherApplications.map(application => (
                   <article className="inquiry-card teacher-review-card" key={application.id}>
