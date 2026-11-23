@@ -166,3 +166,20 @@ export const FAQS =[
  {q:{en:"What if I miss a class?",my:"အတန်း ပျက်ရင် ဘယ်လိုလုပ်မလဲ?"},a:{en:"Every class comes with a phrase sheet and audio, and you can join another group that week to catch up.",my:"အတန်းတိုင်းအတွက် စကားစုစာရွက်နဲ့ အသံဖိုင် ရှိပြီး အဲဒီအပတ်မှာ တခြားအုပ်စုနဲ့ လိုက်တက်လို့ ရပါတယ်။"}}
 ];
 
+
+// ---- Contact page details ----
+// Fill these in to show the matching contact card at the top of the Contact page.
+// Leave a value empty ('') to hide that card.
+export const CONTACT_INFO = {
+  messenger: '', // e.g. 'https://m.me/yourpage' or 'https://facebook.com/yourpage'
+  phone: '',     // e.g. '+95 9 123 456 789'
+  email: '',     // e.g. 'hello@survivalthai.com'
+  // Map pin + "Get directions" (Star City, Thanlyin)
+  lat: 16.7765325,
+  lng: 96.2285128,
+  // Opening hours in Yangon time. days: 0 = Sunday … 6 = Saturday.
+  hours: [
+    { days: [1, 2, 3, 4, 5], open: '10:00', close: '20:00' },
+    { days: [0, 6], open: '09:00', close: '17:00' },
+  ],
+};

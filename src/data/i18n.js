@@ -35,10 +35,12 @@ export const T ={
    cats:{all:"All",phrases:"Phrases",alphabet:"Alphabet",tones:"Tones",culture:"Culture"}},
   faq:{eyebrow:"FAQ",title:"Questions we hear a lot.",sub:"Can’t find your answer? Message us on LINE and a teacher will reply.",
    askT:"Still have a question?",askS:"Message a teacher directly on Facebook. We usually reply the same day.",askB:"Contact us"},
-  contact:{eyebrow:"Contact",title:"Say hello, in any language.",subA:"Book a free trial, ask about schedules, or just practise your first ",subB:" with us.",
-   infoT:"Find us",addrL:"Address",addr:"Star City, Yangon, Myanmar",phoneL:"Phone",lineL:"LINE · Email",hoursL:"Opening hours",h1:"Mon–Fri · 10:00–20:00",h2:"Sat–Sun · 09:00–17:00",
-   formT:"Send us a message",fTopic:"What’s it about?",topics:["Question about a course","Private lessons","Something else"],fMsg:"Message",fMsgPh:"Tell us your level and the times that suit you.",fSubmit:"Send message",
-   sentT:"Thank you!",sentB:"We’ll reply within one day.",again:"Send another message",map:"Map placeholder: embed your map here"}
+  contact:{eyebrow:"Contact",title:"Let’s talk Thai.",sub:"Questions about levels, schedules or private lessons? Pick the way that suits you. A teacher replies, usually the same day.",
+   openNow:function(t){return "Open now · until "+t+" (Yangon time)";},closedUntil:function(d,t){return "Closed · opens "+(d==="today"?"today":"tomorrow")+" at "+t;},
+   msgr:"Messenger",msgrS:"Fastest reply · chat with a teacher",call:"Call us",mail:"Email",
+   formT:"Send us a message",formS:"Tell us a little about yourself and we’ll get back to you.",fTopic:"What’s it about?",topics:["Question about a course","Private lessons","Something else"],topicLabels:["A course","Private lessons","Something else"],fMsg:"Message",fSubmit:"Send message",privacy:"We never share your details.",
+   visitT:"Visit us",addrL:"Address",addr:"Star City, Thanlyin, Yangon",hoursL:"Opening hours",wk:"Mon–Fri",we:"Sat–Sun",directions:"Get directions",
+   sentT:"Thank you!",sentB:"We’ll reply within one day.",again:"Send another message"}
  },
  my:{
   menu:"မီနူး",cta:"စာရင်းသွင်းရန်",ctaTitle:"ပထမဆုံး အတန်းအတွက် အသင့်ဖြစ်ပြီလား?",ctaSub:"အတန်းတစ်ခု အခမဲ့ စမ်းတက်ကြည့်ပါ — အတွေ့အကြုံ မလိုပါ။",next:"နောက်တစ်ခု - ",theme:"အရောင်ပုံစံ",copy:"© 2026 SurvivalThai",
@@ -73,10 +75,12 @@ export const T ={
    cats:{all:"အားလုံး",phrases:"စကားစု",alphabet:"အက္ခရာ",tones:"Tone",culture:"ယဉ်ကျေးမှု"}},
   faq:{eyebrow:"မေးလေ့ရှိသော မေးခွန်းများ",title:"မကြာခဏ မေးလေ့ရှိတဲ့ မေးခွန်းများ။",sub:"အဖြေ ရှာမတွေ့ဘူးလား? LINE ကနေ မက်ဆေ့ချ်ပို့ပါ၊ ဆရာ၊ ဆရာမတစ်ဦးက ပြန်ဖြေပေးပါမယ်။",
    askT:"မေးခွန်း ရှိသေးလား?",askS:"Facebook ကနေ ဆရာ၊ ဆရာမကို တိုက်ရိုက် မက်ဆေ့ချ်ပို့ပါ။ များသောအားဖြင့် တစ်နေ့တည်း ပြန်ဖြေပေးပါတယ်။",askB:"ဆက်သွယ်ရန်"},
-  contact:{eyebrow:"ဆက်သွယ်ရန်",title:"ဘယ်ဘာသာစကားနဲ့မဆို နှုတ်ဆက်ပါ။",subA:"အခမဲ့ အစမ်းအတန်း စာရင်းပေးပါ၊ အချိန်ဇယား မေးမြန်းပါ၊ ဒါမှမဟုတ် ပထမဆုံး ",subB:" ကို ကျွန်ုပ်တို့နဲ့ လေ့ကျင့်ကြည့်ပါ။",
-   infoT:"ကျွန်ုပ်တို့ဆီ လာရောက်ရန်",addrL:"လိပ်စာ",addr:"Star City၊ ရန်ကုန်၊ မြန်မာ",phoneL:"ဖုန်း",lineL:"LINE · အီးမေးလ်",hoursL:"ဖွင့်ချိန်",h1:"တနင်္လာ–သောကြာ · 10:00–20:00",h2:"စနေ–တနင်္ဂနွေ · 09:00–17:00",
-   formT:"မက်ဆေ့ချ် ပို့ပါ",fTopic:"ဘာအကြောင်းလဲ?",topics:["သင်တန်းအကြောင်း မေးမြန်းရန်","သီးသန့် သင်ခန်းစာ","အခြား"],fMsg:"မက်ဆေ့ချ်",fMsgPh:"သင့်အဆင့်နဲ့ အဆင်ပြေတဲ့ အချိန်တွေကို ပြောပြပါ။",fSubmit:"မက်ဆေ့ချ် ပို့ရန်",
-   sentT:"ကျေးဇူးတင်ပါတယ်!",sentB:"တစ်ရက်အတွင်း ပြန်ဆက်သွယ်ပေးပါမယ်။",again:"နောက်ထပ် မက်ဆေ့ချ် ပို့ရန်",map:"မြေပုံနေရာ — သင့်မြေပုံကို ဒီမှာ ထည့်ပါ"}
+  contact:{eyebrow:"ဆက်သွယ်ရန်",title:"ထိုင်းစကား အတူပြောကြရအောင်။",sub:"အဆင့်၊ အချိန်ဇယား ဒါမှမဟုတ် တစ်ဦးချင်း သင်ခန်းစာအကြောင်း မေးချင်တာ ရှိလား? အဆင်ပြေတဲ့နည်းနဲ့ ဆက်သွယ်ပါ။ ဆရာ၊ ဆရာမက များသောအားဖြင့် တစ်နေ့တည်း ပြန်ဖြေပေးပါတယ်။",
+   openNow:function(t){return "အခု ဖွင့်ထားပါတယ် · "+toMyDigits(t)+" အထိ (ရန်ကုန်စံတော်ချိန်)";},closedUntil:function(d,t){return "ပိတ်ထားပါတယ် · "+(d==="today"?"ဒီနေ့":"မနက်ဖြန်")+" "+toMyDigits(t)+" မှာ ပြန်ဖွင့်ပါမယ်";},
+   msgr:"Messenger",msgrS:"အမြန်ဆုံး ပြန်ဖြေ · ဆရာ၊ ဆရာမနဲ့ chat လုပ်ပါ",call:"ဖုန်းခေါ်ရန်",mail:"အီးမေးလ်",
+   formT:"မက်ဆေ့ချ် ပို့ပါ",formS:"သင့်အကြောင်း နည်းနည်း ပြောပြပါ၊ ပြန်ဆက်သွယ်ပေးပါမယ်။",fTopic:"ဘာအကြောင်းလဲ?",topics:["သင်တန်းအကြောင်း မေးမြန်းရန်","သီးသန့် သင်ခန်းစာ","အခြား"],topicLabels:["သင်တန်း","တစ်ဦးချင်း သင်ခန်းစာ","အခြား"],fMsg:"မက်ဆေ့ချ်",fSubmit:"မက်ဆေ့ချ် ပို့ရန်",privacy:"သင့်အချက်အလက်တွေကို ဘယ်သူ့ကိုမှ မမျှဝေပါဘူး။",
+   visitT:"လာရောက်လည်ပတ်ရန်",addrL:"လိပ်စာ",addr:"Star City၊ သန်လျင်၊ ရန်ကုန်",hoursL:"ဖွင့်ချိန်",wk:"တနင်္လာ–သောကြာ",we:"စနေ–တနင်္ဂနွေ",directions:"လမ်းညွှန် ကြည့်ရန်",
+   sentT:"ကျေးဇူးတင်ပါတယ်!",sentB:"တစ်ရက်အတွင်း ပြန်ဆက်သွယ်ပေးပါမယ်။",again:"နောက်ထပ် မက်ဆေ့ချ် ပို့ရန်"}
  }
 };
 
