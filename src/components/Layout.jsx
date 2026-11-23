@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { ORDER } from '../data/content.js';
+import logoFull from '../assets/brand/logo-full.svg?raw';
+import logoMark from '../assets/brand/logo-mark.svg?raw';
 import { ArrowIcon, ChevronDownIcon, ChevronIcon, CloseIcon, GlobeIcon, MenuIcon } from './Icons.jsx';
 
 // ---- routing helpers -------------------------------------------------------
@@ -52,8 +54,9 @@ export function Header() {
     <header className="site-head">
       <div className="wrap">
         <Link className="logo" to="/" aria-label="SurvivalThai home">
-          <span className="logo-mark">ท</span>
-          <span className="logo-word">SurvivalThai</span>
+          {/* Inline SVG so the wordmark can inherit the header text color (currentColor). */}
+          <span className="logo-full" aria-hidden="true" dangerouslySetInnerHTML={{ __html: logoFull }} />
+          <span className="logo-mark" aria-hidden="true" dangerouslySetInnerHTML={{ __html: logoMark }} />
         </Link>
         <div className="head-tools">
           <LanguageToggle />
