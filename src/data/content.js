@@ -159,7 +159,6 @@ export const RES =[
 ];
 export const FAQS =[
  {q:{en:"I’ve never studied Thai. Can I join?",my:"ထိုင်းစာ တစ်ခါမှ မသင်ဖူးပါဘူး။ တက်လို့ရလား?"},a:{en:"Yes. Survival Starter assumes zero Thai, and everything is explained in Burmese or English.",my:"ရပါတယ်။ Survival Starter က ထိုင်းစကား လုံးဝမသိသူတွေအတွက်ဖြစ်ပြီး အားလုံးကို မြန်မာ သို့မဟုတ် အင်္ဂလိပ်လို ရှင်းပြပေးပါတယ်။"}},
- {q:{en:"Is the trial class really free?",my:"အစမ်းအတန်းက တကယ် အခမဲ့လား?"},a:{en:"Yes. One full class, and we don’t ask for payment details.",my:"ဟုတ်ကဲ့ — အတန်းတစ်ခုလုံး အခမဲ့ဖြစ်ပြီး ငွေပေးချေမှု အချက်အလက် မတောင်းပါဘူး။"}},
  {q:{en:"Can I study online?",my:"အွန်လိုင်းကနေ တက်လို့ရလား?"},a:{en:"Yes. Most courses have a weekend online group. You’ll need a phone or computer with a stable connection.",my:"ရပါတယ်။ သင်တန်းအများစုမှာ စနေ၊ တနင်္ဂနွေ အွန်လိုင်းအုပ်စု ရှိပါတယ်။ အင်တာနက် ကောင်းကောင်းရတဲ့ ဖုန်း သို့မဟုတ် ကွန်ပျူတာ လိုပါတယ်။"}},
  {q:{en:"How long until I can hold a conversation?",my:"စကားပြောနိုင်ဖို့ ဘယ်လောက်ကြာမလဲ?"},a:{en:"Most students handle everyday situations after Survival Starter (8 weeks), and chat comfortably after Everyday Thai.",my:"ကျောင်းသားအများစုဟာ Survival Starter (၈ ပတ်) ပြီးရင် နေ့စဉ်အခြေအနေတွေကို ကိုင်တွယ်နိုင်ပြီး Everyday Thai ပြီးရင် သက်သက်သာသာ စကားပြောနိုင်ပါတယ်။"}},
  {q:{en:"Do I need to learn the Thai alphabet?",my:"ထိုင်းအက္ခရာ သင်ဖို့ လိုသလား?"},a:{en:"Not at first. Levels 1 and 2 use romanization; Level 3 teaches reading and writing.",my:"အစပိုင်းမှာ မလိုပါဘူး။ အဆင့် ၁ နဲ့ ၂ မှာ ရောမန်အက္ခရာ သုံးပြီး အဆင့် ၃ မှာ စာဖတ်၊ စာရေး သင်ပါတယ်။"}},

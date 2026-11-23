@@ -33,7 +33,6 @@ export default function Faq() {
             <ChatIcon width={36} height={36} />
             <h2 className="disp h3">{p.askT}</h2>
             <p>{p.askS}</p>
-            <span style={{ fontSize: 20, fontWeight: 600 }}>LINE: @survivalthai</span>
             <Link className="btn btn-accent" to="/contact">{p.askB}</Link>
           </aside>
         </div>
