@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient.js';
 import { PageHero } from '../components/Layout.jsx';
+import { COURSES } from '../data/content.js';
+
+// Schedule `level` numbers: 1–7 = A1…C2, 8 = Intensive course.
+const LEVEL_OPTIONS = COURSES.map((c, i) => <option key={c.code} value={i + 1}>{c.code === 'INT' ? 'Intensive' : c.code + ' ' + c.name.en}</option>);
 
 const emptyDraft = { day_en: '', day_my: '', time: '', level: 1, online: false, seats: 0, sort_order: 0 };
 
@@ -269,7 +273,7 @@ export default function Admin() {
                     </label>
                     <label className="admin-field">Level
                       <select value={r.level} onChange={(e) => patchRow(r.id, { level: +e.target.value })}>
-                        <option value={1}>1</option><option value={2}>2</option><option value={3}>3</option>
+                        {LEVEL_OPTIONS}
                       </select>
                     </label>
                     <label className="admin-field chk">Online
@@ -304,7 +308,7 @@ export default function Admin() {
               </label>
               <label>Level
                 <select value={draft.level} onChange={(e) => setDraft({ ...draft, level: +e.target.value })}>
-                  <option value={1}>1</option><option value={2}>2</option><option value={3}>3</option>
+                  {LEVEL_OPTIONS}
                 </select>
               </label>
               <label className="admin-field chk" style={{ fontSize: 15 }}>Online

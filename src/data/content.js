@@ -75,16 +75,72 @@ export const TONES =[
  {name:{en:"High tone",my:"အမြင့်အသံ"},word:"ม้า",rom:"máa",mean:{en:"horse",my:"မြင်း"},path:"M30 70 C150 68 260 55 370 30",desc:{en:"Starts high and climbs a touch higher.",my:"မြင့်မြင့်က စပြီး နည်းနည်း ပိုမြင့်သွားပါတယ်။"}},
  {name:{en:"Rising tone",my:"အတက်အသံ"},word:"หมา",rom:"mǎa",mean:{en:"dog",my:"ခွေး"},path:"M30 115 C130 155 240 150 370 40",desc:{en:"Dips, then rises, like asking “really?” in English.",my:"အရင် နိမ့်ကျပြီး ပြန်တက်လာပါတယ် — အင်္ဂလိပ်လို “really?” လို့ မေးသလိုပါ။"}}
 ];
-export const COURSES =[
- {name:"Survival Starter",price:{en:"120,000 MMK",my:"၁၂၀,၀၀၀ ကျပ်"},dur:{en:"8 weeks · 16 classes",my:"၈ ပတ် · အတန်း ၁၆ ကြိမ်"},
-  desc:{en:"Greetings, numbers, prices, ordering food and giving directions to a driver.",my:"နှုတ်ဆက်ခြင်း၊ ဂဏန်းများ၊ ဈေးနှုန်းမေးခြင်း၊ အစားအသောက်မှာခြင်းနဲ့ ယာဉ်မောင်းကို လမ်းညွှန်ခြင်း။"},
-  topics:{en:["Greetings and polite particles","Numbers, money and prices","Food, taxis and directions"],my:["နှုတ်ဆက်စကားနဲ့ ယဉ်ကျေးစကား","ဂဏန်း၊ ငွေနဲ့ ဈေးနှုန်း","အစားအသောက်၊ တက္ကစီနဲ့ လမ်းညွှန်"]}},
- {name:"Everyday Thai",price:{en:"160,000 MMK",my:"၁၆၀,၀၀၀ ကျပ်"},dur:{en:"10 weeks · 20 classes",my:"၁၀ ပတ် · အတန်း ၂၀ ကြိမ်"},
-  desc:{en:"Small talk, market bargaining, tones you can hear, and sentences beyond the basics.",my:"နေ့စဉ်စကားပြော၊ ဈေးဆစ်ခြင်း၊ tone ခွဲခြားနားထောင်ခြင်းနဲ့ အခြေခံထက် ပိုတဲ့ ဝါကျများ။"},
-  topics:{en:["Hearing and saying the five tones","Work, housing and clinic talk","Bargaining and small talk"],my:["tone ၅ မျိုးကို ကြားပြီး ပြောနိုင်ခြင်း","အလုပ်၊ အိမ်ငှားနဲ့ ဆေးခန်း စကားပြော","ဈေးဆစ်ခြင်းနဲ့ နေ့စဉ်စကားပြော"]}},
- {name:"Read & Write",price:{en:"200,000 MMK",my:"၂၀၀,၀၀၀ ကျပ်"},dur:{en:"12 weeks · 24 classes",my:"၁၂ ပတ် · အတန်း ၂၄ ကြိမ်"},
-  desc:{en:"The 44 consonants, vowels and tone rules, so you can read menus, signs and street names.",my:"ဗျည်း ၄၄ လုံး၊ သရများနဲ့ tone စည်းမျဉ်းများ — မီနူး၊ ဆိုင်းဘုတ်နဲ့ လမ်းနာမည်တွေကို ဖတ်နိုင်အောင်။"},
-  topics:{en:["The 44 consonants and the vowels","Tone rules","Reading signs, menus and forms"],my:["ဗျည်း ၄၄ လုံးနဲ့ သရများ","tone စည်းမျဉ်းများ","ဆိုင်းဘုတ်၊ မီနူးနဲ့ ဖောင်များ ဖတ်ခြင်း"]}}
+// ---- Courses: CEFR levels, the intensive bridging class, and class formats ----
+// LEVEL_BANDS colour the level picker (Basic / Independent / Proficient).
+export const LEVEL_BANDS = {
+ basic:{en:"Basic",my:"အခြေခံ"},
+ indep:{en:"Independent",my:"ကိုယ်တိုင်ပြောနိုင်"},
+ prof:{en:"Proficient",my:"ကျွမ်းကျင်"}
+};
+// Seven CEFR levels. `glyph` is the faint Thai letter shown on the detail card.
+export const LEVELS = [
+ {code:"A1",band:"basic",glyph:"ก",name:{en:"Beginner",my:"အစပြုသူ"},
+  summary:{en:"Read and write the Thai alphabet, and get through everyday situations from day one.",my:"ထိုင်းအက္ခရာကို ဖတ်တတ်၊ ရေးတတ်ပြီး ပထမနေ့ကစပြီး နေ့စဉ်အခြေအနေတွေမှာ ပြောဆိုနိုင်မယ်။"},
+  topics:{en:["All 44 consonants, 32 vowels and 5 tones","Introductions, numbers, time and dates","Thai money, 7-Eleven shopping, ordering food and drinks"],
+          my:["ဗျည်း ၄၄ လုံး၊ သရ ၃၂ လုံးနဲ့ tone ၅ မျိုး","မိတ်ဆက်ခြင်း၊ ဂဏန်း၊ အချိန်နဲ့ ရက်စွဲ","ထိုင်းငွေ၊ 7-Eleven မှာ ဈေးဝယ်ခြင်း၊ အစားအသောက်နဲ့ အဖျော်ယမကာ မှာခြင်း"]},
+  who:{en:"Start here if you've never studied Thai.",my:"ထိုင်းစကား တစ်ခါမှ မလေ့လာဖူးရင် ဒီကနေ စပါ။"}},
+ {code:"A2",band:"basic",glyph:"ข",name:{en:"Elementary",my:"အခြေခံ"},
+  summary:{en:"Read real words and short sentences, and talk about your daily life.",my:"စကားလုံးတွေနဲ့ ဝါကျတိုတွေကို ဖတ်နိုင်ပြီး သင့်နေ့စဉ်ဘဝအကြောင်း ပြောနိုင်မယ်။"},
+  topics:{en:["Final consonants, changed vowels and consonant clusters","Family, jobs, emotions, directions and places","Fresh food and noodles, basic health and medicine"],
+          my:["အသတ်ဗျည်း၊ ပုံပြောင်းသရနဲ့ ဗျည်းတွဲများ","မိသားစု၊ အလုပ်၊ ခံစားချက်၊ လမ်းညွှန်နဲ့ နေရာများ","လတ်ဆတ်တဲ့ အစားအစာနဲ့ ခေါက်ဆွဲ၊ အခြေခံ ကျန်းမာရေးနဲ့ ဆေးဝါး"]},
+  who:{en:"After A1.",my:"A1 ပြီးရင် ဆက်တက်ပါ။"}},
+ {code:"A2+",band:"basic",glyph:"ค",name:{en:"Pre-Intermediate",my:"အလယ်အလတ်အောက်"},
+  summary:{en:"Write accurately, read short paragraphs, and handle real-life tasks in Thailand.",my:"မှန်မှန်ကန်ကန် ရေးနိုင်၊ စာပိုဒ်တိုတွေ ဖတ်နိုင်ပြီး ထိုင်းနိုင်ငံမှာ လက်တွေ့ကိစ္စတွေကို ကိုယ်တိုင် ဆောင်ရွက်နိုင်မယ်။"},
+  topics:{en:["The 8 parts of speech and Thai sentence structure","Renting a condo, banking, visa extensions","Hospital and dental visits, travel check-ins, repairs, wet markets"],
+          my:["ဝါစင်္ဂ ၈ မျိုးနဲ့ ထိုင်းဝါကျ ဖွဲ့စည်းပုံ","ကွန်ဒိုငှားခြင်း၊ ဘဏ်ကိစ္စနဲ့ ဗီဇာသက်တမ်းတိုးခြင်း","ဆေးရုံနဲ့ သွားဆေးခန်း၊ ခရီးသွား check-in၊ ပြုပြင်ရေးနဲ့ ဈေးများ"]},
+  who:{en:"After A2.",my:"A2 ပြီးရင် ဆက်တက်ပါ။"}},
+ {code:"B1",band:"indep",glyph:"ง",name:{en:"Intermediate",my:"အလယ်အလတ်"},
+  summary:{en:"Read longer texts, understand the main idea of audio, and talk about your own experiences.",my:"စာပိုဒ်ရှည်တွေ ဖတ်နိုင်၊ အသံဖိုင်ရဲ့ အဓိကအချက်ကို နားလည်ပြီး ကိုယ်တွေ့အကြောင်း ပြောနိုင်မယ်။"},
+  topics:{en:["Longer paragraphs and critical reading","Topic-based vocabulary","Listening for the main idea, speaking about personal experiences"],
+          my:["စာပိုဒ်ရှည်များနဲ့ ဝေဖန်ပိုင်းခြား ဖတ်ရှုခြင်း","ခေါင်းစဉ်အလိုက် ဝေါဟာရ","အဓိကအချက်ကို နားထောင်ခြင်း၊ ကိုယ်တွေ့အကြောင်း ပြောခြင်း"]},
+  who:{en:"After A2+.",my:"A2+ ပြီးရင် ဆက်တက်ပါ။"}},
+ {code:"B2",band:"indep",glyph:"จ",name:{en:"Upper-Intermediate",my:"အလယ်အလတ်အထက်"},
+  summary:{en:"Use formal Thai and express your opinions clearly.",my:"တရားဝင် ထိုင်းစကားကို သုံးနိုင်ပြီး ကိုယ့်အမြင်ကို ရှင်းရှင်းလင်းလင်း ပြောနိုင်မယ်။"},
+  topics:{en:["Formal vocabulary","Writing paragraphs and summaries","Expressing and defending opinions"],
+          my:["တရားဝင် ဝေါဟာရ","စာပိုဒ်နဲ့ အနှစ်ချုပ် ရေးသားခြင်း","ကိုယ့်အမြင်ကို ဖော်ပြပြီး ခိုင်ခိုင်မာမာ တင်ပြခြင်း"]},
+  who:{en:"After B1.",my:"B1 ပြီးရင် ဆက်တက်ပါ။"}},
+ {code:"C1",band:"prof",glyph:"ฉ",name:{en:"Advanced",my:"အဆင့်မြင့်"},
+  summary:{en:"Business Thai, news, and confident speaking without preparation.",my:"စီးပွားရေး ထိုင်းစာ၊ သတင်းနဲ့ ကြိုမပြင်ဆင်ဘဲ ယုံကြည်စွာ ပြောဆိုနိုင်မယ်။"},
+  topics:{en:["Formal Business Thai writing","Reading news and texts from different fields","Impromptu speaking with well-structured opinions"],
+          my:["တရားဝင် စီးပွားရေး ထိုင်းစာ ရေးသားခြင်း","သတင်းနဲ့ နယ်ပယ်စုံ စာများ ဖတ်ခြင်း","စနစ်တကျ အမြင်များနဲ့ ချက်ချင်း ပြောဆိုခြင်း"]},
+  who:{en:"After B2.",my:"B2 ပြီးရင် ဆက်တက်ပါ။"}},
+ {code:"C2",band:"prof",glyph:"ช",name:{en:"Proficient",my:"ကျွမ်းကျင်"},
+  summary:{en:"Near-native reading, writing and conversation.",my:"မူရင်းစကားပြောသူနီးပါး ဖတ်၊ ရေး၊ ပြောနိုင်မယ်။"},
+  topics:{en:["Highly complex reading and writing","Debates and formal reporting","Advanced conversation"],
+          my:["အလွန်ရှုပ်ထွေးတဲ့ စာဖတ်ခြင်းနဲ့ ရေးသားခြင်း","ငြင်းခုံဆွေးနွေးခြင်းနဲ့ တရားဝင် အစီရင်ခံခြင်း","အဆင့်မြင့် စကားပြော"]},
+  who:{en:"After C1.",my:"C1 ပြီးရင် ဆက်တက်ပါ။"}}
+];
+export const INTENSIVE = {code:"INT",name:{en:"Intensive Course (Bridging Class)",my:"အထူးသင်တန်း (Bridging Class)"},
+ badge:{en:"Special course · Entrance interview",my:"အထူးသင်တန်း · ဝင်ခွင့် အင်တာဗျူး"},
+ desc:{en:"For learners who can already read and write Thai. A fast-paced course to build speaking fluency and listening through everyday discussions and personal-experience topics, while strengthening practical reading and writing.",
+       my:"ထိုင်းစာ ဖတ်တတ်၊ ရေးတတ်ပြီးသူများအတွက်။ နေ့စဉ်ဆွေးနွေးမှုတွေနဲ့ ကိုယ်တွေ့ခေါင်းစဉ်တွေကနေတဆင့် စကားပြောနဲ့ နားထောင်စွမ်းရည်ကို မြှင့်တင်ပေးပြီး လက်တွေ့ စာဖတ်၊ စာရေး စွမ်းရည်ကိုလည်း ခိုင်မာစေတဲ့ အရှိန်မြန် သင်တန်းပါ။"},
+ cta:{en:"Book an interview",my:"အင်တာဗျူး ချိန်းရန်"}};
+// Schedule rows in Supabase store `level` as a number: 1–7 = A1…C2, 8 = Intensive.
+export const COURSES = [...LEVELS, INTENSIVE];
+// Three class formats; every level runs in all three.
+export const FORMATS = [
+ {key:"group",kind:{en:"Group class",my:"အုပ်စု အတန်း"},title:{en:"Learn together",my:"အတူတူ လေ့လာမယ်"},
+  size:{en:"10–15 students",my:"ကျောင်းသား ၁၀–၁၅ ဦး"},people:15,perClass:1.5,perWeek:3,classes:40,hours:60,
+  note:{en:"Lots of speaking practice with classmates at the same level.",my:"အဆင့်တူ အတန်းဖော်တွေနဲ့ စကားပြော လေ့ကျင့်ခွင့် များများ ရမယ်။"},
+  cta:{en:"Join a group",my:"အုပ်စုအတန်း ဝင်ရန်"}},
+ {key:"special",kind:{en:"Special class",my:"အထူး အတန်း"},title:{en:"Small & focused",my:"လူနည်း၊ အာရုံစိုက်"},
+  size:{en:"3–5 students",my:"ကျောင်းသား ၃–၅ ဦး"},people:5,perClass:1.5,perWeek:3,classes:30,hours:45,
+  note:{en:"More time with the teacher, while still learning with others.",my:"ဆရာနဲ့ အချိန်ပိုရပြီး တခြားသူတွေနဲ့လည်း အတူ လေ့လာနိုင်မယ်။"},
+  cta:{en:"Join a small class",my:"အတန်းငယ် ဝင်ရန်"}},
+ {key:"private",kind:{en:"Private class",my:"တစ်ဦးချင်း အတန်း"},title:{en:"Just for you",my:"သင့်အတွက် သီးသန့်"},
+  size:{en:"One-on-one",my:"တစ်ယောက်ချင်း"},people:1,perClass:1,perWeek:3,classes:30,hours:30,
+  note:{en:"Your pace, your topics, your schedule.",my:"သင့်အရှိန်၊ သင့်ခေါင်းစဉ်၊ သင့်အချိန်ဇယား။"},
+  cta:{en:"Book private lessons",my:"တစ်ဦးချင်း သင်ခန်းစာ ချိန်းရန်"}}
 ];
 export const LANGN ={th:{en:"Thai",my:"ထိုင်း"},my:{en:"Burmese",my:"မြန်မာ"},en:{en:"English",my:"အင်္ဂလိပ်"}};
 export const TEACHERS = [];

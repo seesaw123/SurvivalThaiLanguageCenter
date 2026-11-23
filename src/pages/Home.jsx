@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSettings } from '../context/SettingsContext.jsx';
-import { COURSES } from '../data/content.js';
+import { LEVEL_BANDS, LEVELS } from '../data/content.js';
 import { scrollToId } from '../utils.js';
 import { ArrowIcon, PinIcon } from '../components/Icons.jsx';
 import { SectionHead } from '../components/Layout.jsx';
@@ -9,7 +9,7 @@ import CultureCards from '../components/CultureCards.jsx';
 import ToneExplorer from '../components/ToneExplorer.jsx';
 
 export default function Home() {
-  const { t, lang, num } = useSettings();
+  const { t, lang } = useSettings();
   const h = t.home;
 
   return (
@@ -38,12 +38,14 @@ export default function Home() {
         <div className="wrap">
           <SectionHead eyebrow={h.coE} title={h.coT} />
           <div className="grid3">
-            {COURSES.map((k, i) => (
-              <article key={k.name} className={'course home-course' + (i === 0 ? ' feat' : '')}>
-                <span className="lv">{t.level}{num(i + 1)}</span>
-                <h3 className="name">{k.name}</h3>
-                <p>{k.desc[lang]}</p>
-                <div className="foot"><span>{k.dur[lang]}</span><span>{k.price[lang]}</span></div>
+            {Object.keys(LEVEL_BANDS).map((b) => (
+              <article key={b} className={'course home-course home-band ' + b}>
+                <span className="lv">{LEVEL_BANDS[b][lang]}</span>
+                <div className="cl-chips">
+                  {LEVELS.filter((l) => l.band === b).map((l) => <span key={l.code}>{l.code}</span>)}
+                </div>
+                <p>{h.bandBlurb[b]}</p>
+                <div className="foot">{LEVELS.filter((l) => l.band === b).map((l) => l.name[lang]).join(' · ')}</div>
               </article>
             ))}
           </div>
