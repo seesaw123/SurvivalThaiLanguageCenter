@@ -113,13 +113,14 @@ export function Footer() {
 }
 
 // ---- shared page sections --------------------------------------------------
-export function PageHero({ eyebrow, title, children }) {
+// `wide` lets a short intro run as one line on desktop instead of wrapping at 62ch.
+export function PageHero({ eyebrow, title, children, wide = false }) {
   return (
     <section className="band-dark page-hero">
       <div className="wrap">
         <span className="eyebrow">{eyebrow}</span>
         <h1 className="disp h1">{title}</h1>
-        <p className="lead">{children}</p>
+        <p className={'lead' + (wide ? ' wide' : '')}>{children}</p>
       </div>
     </section>
   );

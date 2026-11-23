@@ -208,6 +208,7 @@ body.lang-my .course .price{font-family:var(--f-my)}
 /* page hero */
 .page-hero .wrap{display:flex;flex-direction:column;gap:20px}
 .page-hero .lead{color:var(--on-dark-muted);max-width:62ch}
+.page-hero .lead.wide{max-width:none}
 .page-hero{padding-block:clamp(56px,7vw,96px)}
 
 /* about */

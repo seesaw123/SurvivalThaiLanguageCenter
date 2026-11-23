@@ -124,7 +124,7 @@ export default function Courses() {
 
   return (
     <>
-      <PageHero eyebrow={p.eyebrow} title={p.title}>{p.sub}</PageHero>
+      <PageHero eyebrow={p.eyebrow} title={p.title} wide>{p.sub}</PageHero>
 
       <section>
         <div className="wrap">
