@@ -38,16 +38,23 @@ export default function Home() {
         <div className="wrap">
           <SectionHead eyebrow={h.coE} title={h.coT} />
           <div className="grid3">
-            {Object.keys(LEVEL_BANDS).map((b) => (
-              <article key={b} className={'course home-course home-band ' + b}>
-                <span className="lv">{LEVEL_BANDS[b][lang]}</span>
-                <div className="cl-chips">
-                  {LEVELS.filter((l) => l.band === b).map((l) => <span key={l.code}>{l.code}</span>)}
-                </div>
-                <p>{h.bandBlurb[b]}</p>
-                <div className="foot">{LEVELS.filter((l) => l.band === b).map((l) => l.name[lang]).join(' · ')}</div>
-              </article>
-            ))}
+            {Object.keys(LEVEL_BANDS).map((b) => {
+              const levels = LEVELS.filter((l) => l.band === b);
+              return (
+                <article key={b} className={'home-band ' + b}>
+                  <div className="hb-head">
+                    <span className="hb-band">{LEVEL_BANDS[b][lang]}</span>
+                    <span className="hb-count">{h.lvCount(levels.length)}</span>
+                  </div>
+                  <p className="hb-blurb">{h.bandBlurb[b]}</p>
+                  <ul className="hb-levels">
+                    {/* U+2011 keeps hyphenated names (Pre-Intermediate) on one line */}
+                    {levels.map((l) => <li key={l.code}><span className="hb-code">{l.code}</span><span className="hb-name">{l.name[lang].replace(/-/g, '\u2011')}</span></li>)}
+                  </ul>
+                  <Link className="hb-more" to="/courses">{h.seeBand(LEVEL_BANDS[b][lang])}<ArrowIcon /></Link>
+                </article>
+              );
+            })}
           </div>
           <div className="row after-grid">
             <Link className="btn btn-ink" to="/courses">{h.seeSched}<ArrowIcon /></Link>
