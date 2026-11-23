@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from '../components/Link.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { supabase } from '../lib/supabaseClient.js';
-import { CtaBand, PageHero } from '../components/Layout.jsx';
+import { PageHero } from '../components/Layout.jsx';
 
 const initialForm = {
   full_name: '', nationality: '', languages: '', bio: '', experience_years: '',
@@ -178,7 +178,6 @@ export default function Teachers() {
           )}
         </div>
       </section>
-      <CtaBand />
     </>
   );
 }

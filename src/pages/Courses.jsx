@@ -4,7 +4,7 @@ import { useSettings } from '../context/SettingsContext.jsx';
 import { COURSES, FORMATS, INTENSIVE, LEVEL_BANDS, LEVELS } from '../data/content.js';
 import { useSchedule } from '../hooks/useSchedule.js';
 import { ArrowIcon } from '../components/Icons.jsx';
-import { CtaBand, FilterSelect, PageHero, SectionHead } from '../components/Layout.jsx';
+import { FilterSelect, PageHero, SectionHead } from '../components/Layout.jsx';
 import { scrollToId } from '../utils.js';
 
 const BAND_KEYS = Object.keys(LEVEL_BANDS);
@@ -179,7 +179,6 @@ export default function Courses() {
         </div>
       </section>
 
-      <CtaBand />
     </>
   );
 }

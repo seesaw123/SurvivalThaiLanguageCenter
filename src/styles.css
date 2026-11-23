@@ -311,10 +311,6 @@ body.lang-my .res h3{font-family:var(--f-my)}
 .map b{padding:10px 18px;border-radius:999px;background:var(--paper);border:1.5px solid var(--ink);font-weight:600;text-align:center}
 
 /* cta + footer */
-.cta{padding:clamp(28px,4vw,56px) clamp(24px,5vw,64px);border-radius:32px;background:var(--deep);color:var(--on-deep);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
-.cta > div{display:flex;flex-direction:column;gap:10px;max-width:760px;min-width:0}
-.cta p{color:var(--on-deep-muted)}
-.cta-sec{padding-block:0 clamp(64px,8vw,96px)}
 .site-foot{border-top:1.5px solid var(--ink);padding-block:40px 48px;color:var(--muted)}
 .site-foot .wrap{display:flex;flex-direction:column;gap:28px}
 .foot-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}

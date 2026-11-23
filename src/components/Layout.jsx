@@ -125,22 +125,6 @@ export function PageHero({ eyebrow, title, children }) {
   );
 }
 
-export function CtaBand() {
-  const { t } = useSettings();
-  return (
-    <section className="cta-sec">
-      <div className="wrap">
-        <div className="cta">
-          <div>
-            <h2 className="disp h2">{t.ctaTitle}</h2>
-            <p>{t.ctaSub}</p>
-          </div>
-          <Link className="btn btn-accent" to="/contact">{t.cta}</Link>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export function FilterSelect({ id, label, value, onChange, options }) {
   return (

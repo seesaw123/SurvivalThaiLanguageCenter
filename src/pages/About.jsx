@@ -1,5 +1,5 @@
 import { useSettings } from '../context/SettingsContext.jsx';
-import { CtaBand, PageHero } from '../components/Layout.jsx';
+import { PageHero } from '../components/Layout.jsx';
 
 export default function About() {
   const { t, num } = useSettings();
@@ -60,7 +60,6 @@ export default function About() {
       </section>
 
       <div style={{ height: 'clamp(64px,8vw,96px)' }} />
-      <CtaBand />
     </>
   );
 }

@@ -3,7 +3,7 @@ import { Link } from '../components/Link.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { FAQS } from '../data/content.js';
 import { ChatIcon, PlusIcon } from '../components/Icons.jsx';
-import { CtaBand, PageHero } from '../components/Layout.jsx';
+import { PageHero } from '../components/Layout.jsx';
 
 export default function Faq() {
   const { t, lang } = useSettings();
@@ -39,7 +39,6 @@ export default function Faq() {
         </div>
       </section>
 
-      <CtaBand />
     </>
   );
 }
