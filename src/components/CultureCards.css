@@ -21,11 +21,16 @@
 .culture-back .culture-category{color:var(--accent-text)}
 .culture-back .culture-title{font-size:28px}
 .culture-description{display:block;font-size:15px;line-height:1.7;color:var(--muted);margin-bottom:18px}
+.culture-link{display:block;margin:-6px 0 18px;padding:10px 12px;border-radius:12px;background:var(--paper);font-size:13.5px;line-height:1.6;color:var(--ink)}
+body.lang-my .culture-link{font-size:13.5px;line-height:1.9}
 .culture-word{display:block;margin-top:auto;padding-top:14px;border-top:1px solid var(--line);color:var(--accent-text);font-family:var(--f-thai);font-size:22px;line-height:1.6}
 .culture-gloss{font-family:var(--f-body);font-size:12px;line-height:1.6;color:var(--muted);margin-top:2px}
 .culture-return{font-size:11px;color:var(--muted);margin-top:14px}
+.culture-credit{display:block;margin-top:8px;font-size:10.5px;line-height:1.4;color:var(--muted);opacity:.85}
 .culture-footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:24px;font-size:13px;color:var(--muted)}
 .culture-footer strong{color:var(--accent-text);font-weight:600}
+body.lang-my .culture-category{font-family:var(--f-my);font-size:12.5px;letter-spacing:0;line-height:1.7}
+body.lang-my .culture-location,body.lang-my .culture-gloss{font-family:var(--f-my);font-size:13.5px;line-height:1.7}
 body.lang-my .culture-title{font-family:var(--f-my);font-size:26px;line-height:1.6}
 body.lang-my .culture-description{font-size:14px;line-height:1.9}
 body.lang-my .culture-flip{height:460px}
