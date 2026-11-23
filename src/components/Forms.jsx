@@ -75,8 +75,8 @@ export function TrialForm() {
   return (
     <form className="form" noValidate onSubmit={onSubmit}>
       <Honeypot id="tfCompany" />
-      <label htmlFor="tfName">{h.fName}<input id="tfName" name="name" type="text" autoComplete="name" placeholder={h.fNamePh} required /></label>
-      <label htmlFor="tfContact">{h.fContact}<input id="tfContact" name="contact" type="text" placeholder="you@example.com" required /></label>
+      <label htmlFor="tfName">{h.fName}<input id="tfName" name="name" type="text" autoComplete="name" required /></label>
+      <label htmlFor="tfContact">{h.fContact}<input id="tfContact" name="contact" type="text" required /></label>
       <label htmlFor="tfLevel">{h.fLevel}
         <select id="tfLevel" name="level">{h.o.map((o) => <option key={o}>{o}</option>)}</select>
       </label>
@@ -120,12 +120,12 @@ export function ContactForm() {
     <form className="form" noValidate onSubmit={onSubmit}>
       <Honeypot id="cfCompany" />
       <h2 className="disp h3">{p.formT}</h2>
-      <label htmlFor="cfName">{h.fName}<input id="cfName" name="name" type="text" autoComplete="name" placeholder={h.fNamePh} required /></label>
-      <label htmlFor="cfContact">{h.fContact}<input id="cfContact" name="contact" type="text" placeholder="you@example.com" required /></label>
+      <label htmlFor="cfName">{h.fName}<input id="cfName" name="name" type="text" autoComplete="name" required /></label>
+      <label htmlFor="cfContact">{h.fContact}<input id="cfContact" name="contact" type="text" required /></label>
       <label htmlFor="cfTopic">{p.fTopic}
         <select id="cfTopic" name="topic">{p.topics.map((o) => <option key={o}>{o}</option>)}</select>
       </label>
-      <label htmlFor="cfMsg">{p.fMsg}<textarea id="cfMsg" name="message" rows={4} placeholder={p.fMsgPh} required /></label>
+      <label htmlFor="cfMsg">{p.fMsg}<textarea id="cfMsg" name="message" rows={4} required /></label>
       <div ref={turnstile.containerRef} />
       {err && <p style={{ color: 'var(--accent-text)' }}>{err}</p>}
       <button type="submit" className="btn btn-accent" disabled={sending || !turnstile.token}>{p.fSubmit}</button>
