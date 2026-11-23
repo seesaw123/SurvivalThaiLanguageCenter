@@ -1,29 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { useSettings } from './context/SettingsContext.jsx';
 import { Footer, Header, usePageKey } from './components/Layout.jsx';
-import Home from './pages/Home.jsx';
-import Courses from './pages/Courses.jsx';
-import Teachers from './pages/Teachers.jsx';
-import Resources from './pages/Resources.jsx';
-import Faq from './pages/Faq.jsx';
-import Contact from './pages/Contact.jsx';
-import About from './pages/About.jsx';
-import Admin from './pages/Admin.jsx';
 
+// Shared shell for every page. Page changes animate via View Transitions (see the
+// site Link component); <ScrollRestoration> starts new pages at the top and puts
+// Back/Forward visits back where the visitor left off.
 export default function App() {
   const { fading, t } = useSettings();
-  const location = useLocation();
   const page = usePageKey();
-  const [pageFade, setPageFade] = useState(false);
-
-  // Brief fade + scroll to top whenever the page changes.
-  useEffect(() => {
-    setPageFade(true);
-    window.scrollTo(0, 0);
-    const id = requestAnimationFrame(() => setPageFade(false));
-    return () => cancelAnimationFrame(id);
-  }, [location.pathname]);
 
   useEffect(() => {
     document.title = page === 'home' ? 'SurvivalThai' : `${t.pages[page]} · SurvivalThai`;
@@ -32,20 +17,11 @@ export default function App() {
   return (
     <>
       <Header />
-      <main id="app" className={fading || pageFade ? 'fading' : ''}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/teachers" element={<Teachers />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+      <main id="app" className={fading ? 'fading' : ''}>
+        <Outlet />
         <Footer />
       </main>
+      <ScrollRestoration />
     </>
   );
 }

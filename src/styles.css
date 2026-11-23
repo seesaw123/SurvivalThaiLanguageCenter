@@ -457,3 +457,27 @@ body.lang-my .cl-stats b,body.lang-my .cl-hours-lbl strong{font-family:var(--f-m
   .cl-path,.cl-detail,.cl-formats{grid-template-columns:minmax(0,1fr)}
   .cl-progress{display:none}
 }
+
+/* ---- Page transitions (View Transitions API, triggered by the site Link) ----
+   The header is captured on its own so it stays still; only the page content
+   fades out and slides in. Browsers without support switch instantly. */
+.site-head{view-transition-name:site-head}
+::view-transition-group(site-head){animation:none}
+::view-transition-old(site-head),::view-transition-new(site-head){animation-duration:.15s}
+::view-transition-old(root){animation:vt-out .16s ease-in both}
+::view-transition-new(root){animation:vt-in .3s cubic-bezier(.2,.8,.2,1) .08s both}
+@keyframes vt-out{to{opacity:0;transform:translateY(-8px)}}
+@keyframes vt-in{from{opacity:0;transform:translateY(12px)}}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}
+
+/* ---- Loading placeholders (same size as the real content, so nothing jumps) ---- */
+.skel{display:block;height:14px;border-radius:8px;background:linear-gradient(90deg,var(--line) 25%,var(--card) 50%,var(--line) 75%);background-size:200% 100%;animation:skel 1.3s ease-in-out infinite}
+@keyframes skel{from{background-position:100% 0}to{background-position:-100% 0}}
+.srow.skel-row{min-height:81px}
+.srow.skel-row .skel.w1{width:70%}.srow.skel-row .skel.w2{width:55%}.srow.skel-row .skel.w3{width:80%}.srow.skel-row .skel.w4{width:60%}.srow.skel-row .skel.w5{width:50%}
+.srow.skel-row .skel.btn-skel{height:44px;border-radius:999px;width:100%}
+.teacher.skel-card .avatar{background:var(--line)}
+.teacher.skel-card .skel-lines{flex:1;display:flex;flex-direction:column;gap:10px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

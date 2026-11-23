@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Link.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { supabase } from '../lib/supabaseClient.js';
 import { CtaBand, PageHero } from '../components/Layout.jsx';
@@ -9,13 +9,16 @@ const initialForm = {
   qualifications: '', courses: [], email: '', line_contact: '', availability: '',
 };
 
+// Approved profiles from the last visit, so returning to this page is instant.
+let teacherCache = null;
+
 const courseOptions = ['Spoken Thai Foundation', 'Thai Literacy Bridge', 'Accelerated Literacy'];
 
 export default function Teachers() {
   const { t, lang } = useSettings();
   const p = t.teachers;
-  const [teachers, setTeachers] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [teachers, setTeachers] = useState(teacherCache || []);
+  const [loading, setLoading] = useState(teacherCache === null);
   const [openBio, setOpenBio] = useState({});
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(initialForm);
@@ -25,11 +28,10 @@ export default function Teachers() {
   const [notice, setNotice] = useState('');
 
   const loadTeachers = async () => {
-    setLoading(true);
     const { data, error } = await supabase.from('teacher_profiles')
       .select('id, full_name, nationality, languages, bio, experience_years, qualifications, courses, photo_path')
       .order('created_at', { ascending: true });
-    if (!error) setTeachers(data || []);
+    if (!error) { teacherCache = data || []; setTeachers(teacherCache); }
     setLoading(false);
   };
 
@@ -135,7 +137,19 @@ export default function Teachers() {
             </div>
           )}
 
-          {loading ? <p className="muted teacher-empty">Loading teacher profiles…</p> : teachers.length === 0 ? (
+          {loading ? (
+            <div className="grid2" aria-busy="true">
+              <span className="sr-only" role="status">{lang === 'my' ? 'ဆရာ၊ ဆရာမ အချက်အလက်များ ဖွင့်နေသည်…' : 'Loading teacher profiles…'}</span>
+              {[0, 1].map((k) => (
+                <div className="teacher skel-card" key={k} aria-hidden="true">
+                  <div className="t-top"><span className="avatar" /><div className="skel-lines"><span className="skel" style={{ width: '60%', height: 22 }} /><span className="skel" style={{ width: '40%' }} /><span className="skel" style={{ width: '50%' }} /></div></div>
+                  <span className="skel" style={{ width: '80%' }} />
+                  <span className="skel" style={{ width: '65%' }} />
+                  <span className="skel" style={{ width: 150, height: 40, borderRadius: 999 }} />
+                </div>
+              ))}
+            </div>
+          ) : teachers.length === 0 ? (
             <div className="teacher-empty">
               <div className="teacher-empty-mark" aria-hidden="true">✦</div>
               <h3 className="disp h3">{lang === 'my' ? 'ဆရာ၊ ဆရာမ မိတ်ဆက်စာ မရှိသေးပါ' : 'Teacher profiles are coming soon'}</h3>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Link } from './Link.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { ORDER } from '../data/content.js';
 import logoFull from '../assets/brand/logo-full.svg?raw';

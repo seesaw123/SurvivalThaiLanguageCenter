@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Link.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { COURSES, FORMATS, INTENSIVE, LEVEL_BANDS, LEVELS } from '../data/content.js';
 import { useSchedule } from '../hooks/useSchedule.js';
@@ -140,11 +140,22 @@ export default function Courses() {
           <SectionHead eyebrow={p.schE} title={p.schT}
             aside={<FilterSelect id="lvSelect" label={p.filter} value={level} onChange={(v) => setLevel(+v)} options={levelOptions} />} />
 
-          <div className="sched">
+          <div className="sched" aria-busy={loading}>
             <div className="srow head">
               {p.cols.map((c) => <span key={c}>{c}</span>)}
               <span />
             </div>
+            {loading && (
+              <>
+                <span className="sr-only" role="status">{p.loading}</span>
+                {[0, 1, 2, 3].map((k) => (
+                  <div className="srow skel-row" key={k} aria-hidden="true">
+                    <span className="skel w1" /><span className="skel w2" /><span className="skel w3" /><span className="skel w4" /><span className="skel w5" />
+                    <span className="act"><span className="skel btn-skel" /></span>
+                  </div>
+                ))}
+              </>
+            )}
             {rows.map((r) => {
               const full = r.seats === 0;
               const seatClass = full ? 'full' : r.seats <= 3 ? 'low' : '';
@@ -163,7 +174,6 @@ export default function Courses() {
                 </div>
               );
             })}
-            {loading && <p className="note">{p.loading}</p>}
           </div>
           <p className="note">{p.note}</p>
         </div>

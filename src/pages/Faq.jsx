@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Link.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { FAQS } from '../data/content.js';
 import { ChatIcon, PlusIcon } from '../components/Icons.jsx';

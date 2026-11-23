@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Link.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { LEVEL_BANDS, LEVELS } from '../data/content.js';
 import { scrollToId } from '../utils.js';
