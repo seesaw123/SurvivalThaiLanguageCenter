@@ -85,7 +85,6 @@ section{padding-block:clamp(64px,8vw,112px)}
 /* home hero */
 .hero .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;align-items:center}
 .hero-copy{display:flex;flex-direction:column;gap:24px;min-width:0}
-.hero-thai{font-family:var(--f-thai);font-size:clamp(22px,2.2vw,30px);color:var(--on-dark-accent)}
 .hero-copy .lead{color:var(--on-dark-muted)}
 .row{display:flex;flex-wrap:wrap;gap:14px}
 .cube-side{display:flex;flex-direction:column;align-items:center;gap:24px;min-width:0}

@@ -6,7 +6,7 @@ export const T ={
   menu:"Menu",cta:"Register",ctaTitle:"Ready for your first class?",ctaSub:"Try one class free. No experience needed.",next:"Next: ",theme:"Color theme",copy:"© 2026 SurvivalThai",
   pages:{home:"Home",courses:"Courses & schedule",teachers:"Teachers",resources:"Learning resources",faq:"FAQ",contact:"Contact",about:"About us"},
   level:"Level ",
-  home:{eyebrow:"Thai lessons in Myanmar",title:"Speak Thai from day one.",sub:"Practical lessons for the Thai you actually need: ordering food, bargaining at the market, and getting a songthaew home.",
+  home:{eyebrow:"Thai lessons in Myanmar",title:"Speak Thai from First Day.",sub:"Practical lessons for the Thai you actually need: ordering food, bargaining at the market, and getting a songthaew home.",
    cta2:"Discover Chiang Mai",prev:"Previous letter",nextL:"Next letter",show:"Show letter ",roll:"Roll new letters",capA:" means “",capB:"”. Every Thai consonant has a word like this. Move your pointer over the block to tilt it.",
    phE:"Your first week",phT:"Six phrases that get you through week one.",phS:"Tap a card to flip it and see what it means.",flipped:function(n){return n+" of 6 flipped";},means:"Means",flipCard:"Flip card: ",
    toE:"The five tones",toT:"Same sound, five meanings.",toS:"Thai is tonal: the pitch of your voice changes the word. Pick a tone to see its shape.",high:"high",low:"low",contour:"Pitch contour of the ",

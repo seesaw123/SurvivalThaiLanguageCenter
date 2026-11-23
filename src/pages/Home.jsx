@@ -22,7 +22,6 @@ export default function Home() {
               <PinIcon />{h.eyebrow}
             </span>
             <h1 className="disp h1">{h.title}</h1>
-            <p className="hero-thai">พูดไทยได้ตั้งแต่วันแรก</p>
             <p className="lead">{h.sub}</p>
             <div className="row">
               <button type="button" className="btn btn-accent" onClick={() => scrollToId('book')}>{t.cta}</button>
