@@ -77,7 +77,6 @@ export function Header() {
                     <span>{t.pages[key]}</span><ChevronIcon />
                   </Link>
                 ))}
-                <Link className="btn btn-accent" to="/contact" onClick={() => setOpen(false)}>{t.cta}</Link>
               </nav>
             )}
           </div>

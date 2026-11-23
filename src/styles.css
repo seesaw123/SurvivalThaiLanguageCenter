@@ -77,7 +77,6 @@ section{padding-block:clamp(64px,8vw,112px)}
 .menu-panel a.item:hover{background:var(--line)}
 .menu-panel a.item[aria-current="page"]{background:var(--line);font-weight:700}
 .menu-panel .item svg{opacity:.5}
-.menu-panel .btn{margin-top:8px}
 
 /* page fade */
 #app{transition:opacity .2s ease,transform .2s ease,filter .2s ease}
