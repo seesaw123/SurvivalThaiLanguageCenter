@@ -315,7 +315,6 @@ body.lang-my .res h3{font-family:var(--f-my)}
 .site-foot .wrap{display:flex;flex-direction:column;gap:28px}
 .foot-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
 .foot-brand{font-family:var(--f-display);font-size:20px;font-weight:800;color:var(--ink)}
-.foot-brand .th{font-weight:700}
 .foot-links{display:flex;flex-wrap:wrap;gap:6px 22px}
 .foot-links a{text-decoration:none;font-weight:500;min-height:32px;display:inline-flex;align-items:center}
 .foot-links a:hover{color:var(--ink)}

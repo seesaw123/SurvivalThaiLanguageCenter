@@ -96,7 +96,7 @@ export function Footer() {
     <footer className="site-foot">
       <div className="wrap">
         <div className="foot-row">
-          <span className="foot-brand">SurvivalThai <span className="th">ภาษาไทย</span></span>
+          <span className="foot-brand">SurvivalThai</span>
           <Link className="btn btn-line next" to={pathFor(next)}>{t.next}{t.pages[next]}<ArrowIcon /></Link>
         </div>
         <div className="foot-row">
