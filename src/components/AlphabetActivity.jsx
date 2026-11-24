@@ -71,12 +71,12 @@ export default function AlphabetActivity({ onClose }) {
             })}
           </div>
           <div className="alphabet-feedback" aria-live="polite">
-            {feedback && <><div className="alphabet-reaction"><span className={'alphabet-reactionicon ' + (result.correct ? 'cheer' : 'sad')} aria-hidden="true">{result.correct ? '👏' : '😢'}</span><span>{result.correct ? text.praise[game.index % text.praise.length] : result.chosen === null ? text.timeout : text.wrong}</span></div><p><span lang="th">{current.target.g}</span> — {current.target.name} · {current.target.mean[lang]}</p></>}
+            {feedback && <><div className="alphabet-reaction"><span className={'alphabet-reactionicon ' + (result.correct ? 'cheer' : 'sad')} aria-hidden="true">{result.correct ? '👏' : '😢'}</span><span>{result.correct ? text.praise[game.index % text.praise.length] : result.chosen === null ? text.timeout : text.wrong}</span></div><p><span lang="th">{current.target.g}</span> — <span className="ipa">{current.target.name}</span> · {current.target.mean[lang]}</p></>}
           </div>
         </div>
         <div className="alphabet-gamefoot"><span>{text.helper}</span>{feedback && <span>{game.index === 14 ? text.resultsIn : text.next} {num(Math.max(1, Math.ceil((game.advanceAt - game.now) / 1000)))} {text.sec}…</span>}</div>
       </>}
-      {game.phase === 'done' && <div className="alphabet-result"><span className="eyebrow">{text.done}</span><h2 className="disp h3">{text.resultTitle}</h2><div className="alphabet-resultscore">{num(score)} / {num(15)}</div><p>{score === 15 ? text.perfect : text.review}</p><div className="alphabet-review">{game.results.filter((entry) => !entry.correct).map((entry) => <div key={entry.target.g}><span className="alphabet-reviewletter" lang="th">{entry.target.g}</span><span>{entry.target.name} · {entry.target.mean[lang]}{entry.chosen === null ? ` · ${text.timedOut}` : ''}</span></div>)}</div><button type="button" className="btn btn-ink" onClick={start}>{text.again} →</button></div>}
+      {game.phase === 'done' && <div className="alphabet-result"><span className="eyebrow">{text.done}</span><h2 className="disp h3">{text.resultTitle}</h2><div className="alphabet-resultscore">{num(score)} / {num(15)}</div><p>{score === 15 ? text.perfect : text.review}</p><div className="alphabet-review">{game.results.filter((entry) => !entry.correct).map((entry) => <div key={entry.target.g}><span className="alphabet-reviewletter" lang="th">{entry.target.g}</span><span><span className="ipa">{entry.target.name}</span> · {entry.target.mean[lang]}{entry.chosen === null ? ` · ${text.timedOut}` : ''}</span></div>)}</div><button type="button" className="btn btn-ink" onClick={start}>{text.again} →</button></div>}
     </div>
   );
 }

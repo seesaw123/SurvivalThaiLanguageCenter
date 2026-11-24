@@ -3,8 +3,9 @@ import { useSettings } from '../context/SettingsContext.jsx';
 import { supabase } from '../lib/supabaseClient.js';
 import { useTurnstile } from '../hooks/useTurnstile.js';
 import { CheckIcon } from './Icons.jsx';
+import { CONTACT_INFO } from '../data/content.js';
 
-// Both forms below call the submit-inquiry Edge Function, which checks the
+// The contact form below calls the submit-inquiry Edge Function, which checks the
 // Cloudflare Turnstile token and only then writes to the `inquiries` table
 // (using the service role -- the table itself has no public insert policy).
 // Submissions show up live in /admin.
@@ -44,49 +45,6 @@ async function submitInquiry(fields, turnstileToken) {
   return { ok: true };
 }
 
-export function TrialForm() {
-  const { t } = useSettings();
-  const h = t.home;
-  const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [err, setErr] = useState('');
-  const turnstile = useTurnstile();
-
-  if (sent) return <Sent title={h.sentT} body={h.sentB} again={h.again} onAgain={() => setSent(false)} />;
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    if (data.get('company')) { setSent(true); return; }
-    setSending(true);
-    setErr('');
-    const result = await submitInquiry({
-      name: data.get('name'),
-      contact: data.get('contact'),
-      topic: 'Trial class request',
-      message: data.get('level'),
-      source: 'trial',
-    }, turnstile.token);
-    setSending(false);
-    if (result.ok) setSent(true);
-    else { setErr(result.error); turnstile.reset(); }
-  };
-
-  return (
-    <form className="form" noValidate onSubmit={onSubmit}>
-      <Honeypot id="tfCompany" />
-      <label htmlFor="tfName">{h.fName}<input id="tfName" name="name" type="text" autoComplete="name" placeholder={h.fNamePh} required /></label>
-      <label htmlFor="tfContact">{h.fContact}<input id="tfContact" name="contact" type="text" placeholder="you@example.com" required /></label>
-      <label htmlFor="tfLevel">{h.fLevel}
-        <select id="tfLevel" name="level">{h.o.map((o) => <option key={o}>{o}</option>)}</select>
-      </label>
-      <div ref={turnstile.containerRef} />
-      {err && <p style={{ color: 'var(--on-dark-accent)' }}>{err}</p>}
-      <button type="submit" className="btn btn-accent" disabled={sending || !turnstile.token}>{h.fSubmit}</button>
-    </form>
-  );
-}
-
 export function ContactForm() {
   const { t } = useSettings();
   const h = t.home;
@@ -94,6 +52,7 @@ export function ContactForm() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [err, setErr] = useState('');
+  const [topic, setTopic] = useState(0);
   const turnstile = useTurnstile();
 
   if (sent) return <Sent big title={p.sentT} body={p.sentB} again={p.again} onAgain={() => setSent(false)} />;
@@ -107,7 +66,7 @@ export function ContactForm() {
     const result = await submitInquiry({
       name: data.get('name'),
       contact: data.get('contact'),
-      topic: data.get('topic'),
+      topic: p.topics[topic],
       message: data.get('message'),
       source: 'contact',
     }, turnstile.token);
@@ -120,15 +79,32 @@ export function ContactForm() {
     <form className="form" noValidate onSubmit={onSubmit}>
       <Honeypot id="cfCompany" />
       <h2 className="disp h3">{p.formT}</h2>
-      <label htmlFor="cfName">{h.fName}<input id="cfName" name="name" type="text" autoComplete="name" placeholder={h.fNamePh} required /></label>
-      <label htmlFor="cfContact">{h.fContact}<input id="cfContact" name="contact" type="text" placeholder="you@example.com" required /></label>
-      <label htmlFor="cfTopic">{p.fTopic}
-        <select id="cfTopic" name="topic">{p.topics.map((o) => <option key={o}>{o}</option>)}</select>
-      </label>
-      <label htmlFor="cfMsg">{p.fMsg}<textarea id="cfMsg" name="message" rows={4} placeholder={p.fMsgPh} required /></label>
+      <p className="ct-sub">{p.formS}</p>
+      <label className="half" htmlFor="cfName">{h.fName}<input id="cfName" name="name" type="text" autoComplete="name" required /></label>
+      <label className="half" htmlFor="cfContact">{h.fContact}<input id="cfContact" name="contact" type="text" autoComplete="email" required /></label>
+      <fieldset className="ct-topics">
+        <legend>{p.fTopic}</legend>
+        {p.topicLabels.map((label, i) => (
+          <button key={label} type="button" className="ct-topic" aria-pressed={i === topic} onClick={() => setTopic(i)}>{label}</button>
+        ))}
+      </fieldset>
+      <label htmlFor="cfMsg">{p.fMsg}<textarea id="cfMsg" name="message" rows={4} required /></label>
       <div ref={turnstile.containerRef} />
-      {err && <p style={{ color: 'var(--accent-text)' }}>{err}</p>}
-      <button type="submit" className="btn btn-accent" disabled={sending || !turnstile.token}>{p.fSubmit}</button>
+      {err && <p className="ct-err">{err}</p>}
+      {turnstile.error && (
+        <p className="ct-err" role="alert">
+          {p.tsError(turnstile.error)}
+          {(CONTACT_INFO.messenger || CONTACT_INFO.phone) && <> {p.tsAlt}{' '}
+            {CONTACT_INFO.messenger && <a href={CONTACT_INFO.messenger} target="_blank" rel="noreferrer">Messenger</a>}
+            {CONTACT_INFO.messenger && CONTACT_INFO.phone && ' · '}
+            {CONTACT_INFO.phone && <a href={'tel:' + CONTACT_INFO.phone.replace(/[^\d+]/g, '')}>{CONTACT_INFO.phone}</a>}
+          </>}
+        </p>
+      )}
+      <div className="ct-send">
+        <small>{p.privacy}</small>
+        <button type="submit" className="btn btn-accent" disabled={sending || !turnstile.token}>{p.fSubmit}</button>
+      </div>
     </form>
   );
 }

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Link.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { FAQS } from '../data/content.js';
 import { ChatIcon, PlusIcon } from '../components/Icons.jsx';
-import { CtaBand, PageHero } from '../components/Layout.jsx';
+import { PageHero } from '../components/Layout.jsx';
 
 export default function Faq() {
   const { t, lang } = useSettings();
@@ -33,13 +33,11 @@ export default function Faq() {
             <ChatIcon width={36} height={36} />
             <h2 className="disp h3">{p.askT}</h2>
             <p>{p.askS}</p>
-            <span style={{ fontSize: 20, fontWeight: 600 }}>LINE: @survivalthai</span>
             <Link className="btn btn-accent" to="/contact">{p.askB}</Link>
           </aside>
         </div>
       </section>
 
-      <CtaBand />
     </>
   );
 }

@@ -1,17 +1,15 @@
-# Culture card image references
+# Culture card photos
 
-Images selected for the approved homepage concept, resized and converted to WebP.
+All photos are from Wikimedia Commons under free licences, resized to 900 px wide and
+converted to WebP. The photographer and licence are also shown on the back of each card.
 
-- Flower Festival: Fan Club Thailand / Tourism Authority of Thailand photo — https://fanclubthailand.co.uk/chiang-mai-flower-festival/
-- Songkran: TopHotel — https://www.tophotel.co.th/north/chiangmai/songkran-chiangmai-water-spots
-- Doi Suthep: Outdooractive — https://www.outdooractive.com/en/poi/chiang-mai/wat-phra-that-doi-suthep/802140708/
-- Ang Kaew: BringYou — https://www.bring-you.info/zh-hans/chiangmai-attractions
-- Nimman: Wongnai contributor — https://www.wongnai.com/attractions/340131EJ-one-nimman/photos/45afef2f8ced4c18b6e59d4dfee5287a
-- Mae Kampong: Lemon8 contributor — https://www.lemon8-app.com/%40horstyle_/7393285760696287760?region=th
+| Card | Photo | Author | Licence |
+|---|---|---|---|
+| Songkran | [Chiang-Mai Thailand Songkran-Festival-2017-02.jpg](https://commons.wikimedia.org/wiki/File:Chiang-Mai_Thailand_Songkran-Festival-2017-02.jpg) | CEphoto, Uwe Aranas | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| Loy Krathong | [Loy Krathong A Celebration of Light and Renewal.jpg](https://commons.wikimedia.org/wiki/File:Loy_Krathong_A_Celebration_of_Light_and_Renewal.jpg) | Rockybgonzales | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| Yi Peng | [Festival Yi Peng. ChiangMai, Tailandia. (16786888573).jpg](https://commons.wikimedia.org/wiki/File:Festival_Yi_Peng._ChiangMai,_Tailandia._(16786888573).jpg) | Carlos Adampol Galindo | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) |
+| Phi Ta Khon | [Phitakon masks.JPG](https://commons.wikimedia.org/wiki/File:Phitakon_masks.JPG) | E.D.W. | Public domain |
+| Candle Festival | [Candle Festival in Ubon Ratchathani.jpg](https://commons.wikimedia.org/wiki/File:Candle_Festival_in_Ubon_Ratchathani.jpg) | Warmbloodydew | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| Bun Bang Fai | [Rocket festival kalasin thailand 2024.jpg](https://commons.wikimedia.org/wiki/File:Rocket_festival_kalasin_thailand_2024.jpg) (Kalasin, Isan) | Ian Taylor (iantaylor.ca) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 
-Story references:
-- Flower Festival / Nong Buak Haad: https://www.thailand.go.th/issue-focus-detail/chiang-mai-flower-festival-2026
-- CMU freshmen trek: https://www.cmu.ac.th/en/article/993e7218-2b32-41ea-b9d6-e492b2d59e40
-- Ang Kaew: https://www.cmu.ac.th/en/article/f54d0574-5967-4310-a665-84e94592b298
-
-The Mae Kampong card describes a dining experience, not a claim that mookata originated in the village.
+Changes: resized and recompressed only (no other edits).

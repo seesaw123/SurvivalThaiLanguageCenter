@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Link } from './Link.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { ORDER } from '../data/content.js';
+import logoFull from '../assets/brand/logo-full.svg?raw';
+import logoMark from '../assets/brand/logo-mark.svg?raw';
 import { ArrowIcon, ChevronDownIcon, ChevronIcon, CloseIcon, GlobeIcon, MenuIcon } from './Icons.jsx';
 
 // ---- routing helpers -------------------------------------------------------
@@ -52,8 +55,9 @@ export function Header() {
     <header className="site-head">
       <div className="wrap">
         <Link className="logo" to="/" aria-label="SurvivalThai home">
-          <span className="logo-mark">ท</span>
-          <span className="logo-word">SurvivalThai</span>
+          {/* Inline SVG so the wordmark can inherit the header text color (currentColor). */}
+          <span className="logo-full" aria-hidden="true" dangerouslySetInnerHTML={{ __html: logoFull }} />
+          <span className="logo-mark" aria-hidden="true" dangerouslySetInnerHTML={{ __html: logoMark }} />
         </Link>
         <div className="head-tools">
           <LanguageToggle />
@@ -73,7 +77,6 @@ export function Header() {
                     <span>{t.pages[key]}</span><ChevronIcon />
                   </Link>
                 ))}
-                <Link className="btn btn-accent" to="/contact" onClick={() => setOpen(false)}>{t.cta}</Link>
               </nav>
             )}
           </div>
@@ -92,7 +95,7 @@ export function Footer() {
     <footer className="site-foot">
       <div className="wrap">
         <div className="foot-row">
-          <span className="foot-brand">SurvivalThai <span className="th">ภาษาไทย</span></span>
+          <span className="foot-brand">SurvivalThai</span>
           <Link className="btn btn-line next" to={pathFor(next)}>{t.next}{t.pages[next]}<ArrowIcon /></Link>
         </div>
         <div className="foot-row">
@@ -109,34 +112,19 @@ export function Footer() {
 }
 
 // ---- shared page sections --------------------------------------------------
-export function PageHero({ eyebrow, title, children }) {
+// `wide` lets a short intro run as one line on desktop instead of wrapping at 62ch.
+export function PageHero({ eyebrow, title, children, wide = false }) {
   return (
     <section className="band-dark page-hero">
       <div className="wrap">
         <span className="eyebrow">{eyebrow}</span>
         <h1 className="disp h1">{title}</h1>
-        <p className="lead">{children}</p>
+        <p className={'lead' + (wide ? ' wide' : '')}>{children}</p>
       </div>
     </section>
   );
 }
 
-export function CtaBand() {
-  const { t } = useSettings();
-  return (
-    <section className="cta-sec">
-      <div className="wrap">
-        <div className="cta">
-          <div>
-            <h2 className="disp h2">{t.ctaTitle}</h2>
-            <p>{t.ctaSub}</p>
-          </div>
-          <Link className="btn btn-accent" to="/contact">{t.cta}</Link>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export function FilterSelect({ id, label, value, onChange, options }) {
   return (

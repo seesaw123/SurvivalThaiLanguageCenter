@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient.js';
 import { PageHero } from '../components/Layout.jsx';
+import { COURSES } from '../data/content.js';
+import AddTeacherForm from '../components/AddTeacherForm.jsx';
 
-const emptyDraft = { day_en: '', day_my: '', time: '', level: 1, online: false, seats: 0, sort_order: 0 };
+// Schedule `level` numbers: 1–7 = A1…C2, 8 = Intensive course.
+const LEVEL_OPTIONS = COURSES.map((c, i) => <option key={c.code} value={i + 1}>{c.code === 'INT' ? 'Intensive' : c.code + ' ' + c.name.en}</option>);
+
+// All classes are online, so new slots are saved with online: true.
+const emptyDraft = { day_en: '', day_my: '', time: '', level: 1, online: true, seats: 0, sort_order: 0 };
 
 // Hidden admin tool (not linked from the nav): sign in with a Supabase account to
 // add, edit or remove class slots. Writes are allowed only for signed-in users —
@@ -24,6 +30,10 @@ export default function Admin() {
   const [loadingInquiries, setLoadingInquiries] = useState(true);
   const [teacherApplications, setTeacherApplications] = useState([]);
   const [loadingTeachers, setLoadingTeachers] = useState(true);
+  const [showAddTeacher, setShowAddTeacher] = useState(false);
+  // null = checking, true = on the admin list, false = signed in but not an admin,
+  // 'unknown' = is_admin() isn't installed yet (run supabase/admin-access.sql).
+  const [isAdmin, setIsAdmin] = useState(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => { setSession(data.session); setChecking(false); });
@@ -53,7 +63,20 @@ export default function Admin() {
     setLoadingTeachers(false);
   };
 
-  useEffect(() => { if (session) { loadRows(); loadInquiries(); loadTeacherApplications(); } }, [session]);
+  // The database enforces admin-only access (see supabase/admin-access.sql); this
+  // check just tells a non-admin account clearly that it has no access.
+  useEffect(() => {
+    if (!session) { setIsAdmin(null); return; }
+    let active = true;
+    setIsAdmin(null);
+    supabase.rpc('is_admin').then(({ data, error }) => {
+      if (!active) return;
+      setIsAdmin(error ? 'unknown' : data === true);
+    });
+    return () => { active = false; };
+  }, [session]);
+
+  useEffect(() => { if (session && isAdmin && isAdmin !== null) { loadRows(); loadInquiries(); loadTeacherApplications(); } }, [session, isAdmin]);
 
   const reviewTeacher = async (id, status) => {
     setErr('');
@@ -178,6 +201,22 @@ export default function Admin() {
     );
   }
 
+  if (isAdmin === null) return null;
+
+  if (isAdmin === false) {
+    return (
+      <>
+        <PageHero eyebrow="Admin" title="No admin access">This account is signed in but isn’t on the admin list.</PageHero>
+        <section>
+          <div className="wrap">
+            <p className="muted" style={{ marginBottom: 20 }}>Ask an existing admin to add your email to the admin list in Supabase.</p>
+            <button type="button" className="btn btn-line" onClick={() => supabase.auth.signOut()}>Sign out</button>
+          </div>
+        </section>
+      </>
+    );
+  }
+
   const newCount = inquiries.filter((i) => i.status === 'new').length;
 
   return (
@@ -190,6 +229,7 @@ export default function Admin() {
           <button type="button" className="btn btn-line" onClick={() => supabase.auth.signOut()}>Sign out</button>
 
           {err && <p style={{ color: 'var(--accent-text)', marginTop: 16 }}>{err}</p>}
+          {isAdmin === 'unknown' && <p className="teacher-notice" style={{ marginTop: 16 }}>Admin list not set up yet: run <code>supabase/admin-access.sql</code> in the Supabase SQL Editor so only listed admins can use this page.</p>}
 
           <h2 className="disp h3" style={{ marginTop: 32 }}>
             Inquiries{newCount > 0 && <span className="badge new">{newCount} new</span>}
@@ -221,11 +261,15 @@ export default function Admin() {
             )}
           </div>
 
-          <h2 className="disp h3" style={{ marginTop: 32 }}>
-            Teacher applications <span className="badge new">{teacherApplications.filter(a => a.status === 'pending').length} pending</span>
-          </h2>
+          <div style={{ marginTop: 32, display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center', justifyContent: 'space-between' }}>
+            <h2 className="disp h3">
+              Teachers <span className="badge new">{teacherApplications.filter(a => a.status === 'pending').length} pending</span>
+            </h2>
+            {!showAddTeacher && <button type="button" className="btn btn-accent" onClick={() => setShowAddTeacher(true)}>+ Add a teacher</button>}
+          </div>
+          {showAddTeacher && <AddTeacherForm onCreated={loadTeacherApplications} onCancel={() => setShowAddTeacher(false)} />}
           <div className="form-box admin-panel">
-            {loadingTeachers ? <p>Loading teacher applications…</p> : teacherApplications.length === 0 ? <p>No teacher applications yet.</p> : (
+            {loadingTeachers ? <p>Loading teacher applications…</p> : teacherApplications.length === 0 ? <p>No teachers yet. Use “Add a teacher” to create one.</p> : (
               <div className="inquiry-list">
                 {teacherApplications.map(application => (
                   <article className="inquiry-card teacher-review-card" key={application.id}>
@@ -269,11 +313,8 @@ export default function Admin() {
                     </label>
                     <label className="admin-field">Level
                       <select value={r.level} onChange={(e) => patchRow(r.id, { level: +e.target.value })}>
-                        <option value={1}>1</option><option value={2}>2</option><option value={3}>3</option>
+                        {LEVEL_OPTIONS}
                       </select>
-                    </label>
-                    <label className="admin-field chk">Online
-                      <input type="checkbox" checked={r.online} onChange={(e) => patchRow(r.id, { online: e.target.checked })} />
                     </label>
                     <label className="admin-field">Seats
                       <input type="number" min={0} value={r.seats} onChange={(e) => patchRow(r.id, { seats: +e.target.value })} />
@@ -304,11 +345,8 @@ export default function Admin() {
               </label>
               <label>Level
                 <select value={draft.level} onChange={(e) => setDraft({ ...draft, level: +e.target.value })}>
-                  <option value={1}>1</option><option value={2}>2</option><option value={3}>3</option>
+                  {LEVEL_OPTIONS}
                 </select>
-              </label>
-              <label className="admin-field chk" style={{ fontSize: 15 }}>Online
-                <input type="checkbox" checked={draft.online} onChange={(e) => setDraft({ ...draft, online: e.target.checked })} />
               </label>
               <label>Seats
                 <input type="number" min={0} value={draft.seats} onChange={(e) => setDraft({ ...draft, seats: +e.target.value })} />

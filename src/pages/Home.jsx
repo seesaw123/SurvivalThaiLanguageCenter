@@ -1,16 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Link.jsx';
 import { useSettings } from '../context/SettingsContext.jsx';
-import { COURSES } from '../data/content.js';
+import { LEVEL_BANDS, LEVELS } from '../data/content.js';
 import { scrollToId } from '../utils.js';
 import { ArrowIcon, PinIcon } from '../components/Icons.jsx';
 import { SectionHead } from '../components/Layout.jsx';
 import LetterCube from '../components/LetterCube.jsx';
 import CultureCards from '../components/CultureCards.jsx';
 import ToneExplorer from '../components/ToneExplorer.jsx';
-import { TrialForm } from '../components/Forms.jsx';
 
 export default function Home() {
-  const { t, lang, num } = useSettings();
+  const { t, lang } = useSettings();
   const h = t.home;
 
   return (
@@ -22,10 +21,9 @@ export default function Home() {
               <PinIcon />{h.eyebrow}
             </span>
             <h1 className="disp h1">{h.title}</h1>
-            <p className="hero-thai">พูดไทยได้ตั้งแต่วันแรก</p>
             <p className="lead">{h.sub}</p>
             <div className="row">
-              <button type="button" className="btn btn-accent" onClick={() => scrollToId('book')}>{t.cta}</button>
+              <Link className="btn btn-accent" to="/contact">{t.cta}</Link>
               <button type="button" className="btn btn-line" onClick={() => scrollToId('phrases')}>{h.cta2}</button>
             </div>
           </div>
@@ -40,14 +38,23 @@ export default function Home() {
         <div className="wrap">
           <SectionHead eyebrow={h.coE} title={h.coT} />
           <div className="grid3">
-            {COURSES.map((k, i) => (
-              <article key={k.name} className={'course home-course' + (i === 0 ? ' feat' : '')}>
-                <span className="lv">{t.level}{num(i + 1)}</span>
-                <h3 className="name">{k.name}</h3>
-                <p>{k.desc[lang]}</p>
-                <div className="foot"><span>{k.dur[lang]}</span><span>{k.price[lang]}</span></div>
-              </article>
-            ))}
+            {Object.keys(LEVEL_BANDS).map((b) => {
+              const levels = LEVELS.filter((l) => l.band === b);
+              return (
+                <article key={b} className={'home-band ' + b}>
+                  <div className="hb-head">
+                    <span className="hb-band">{LEVEL_BANDS[b][lang]}</span>
+                    <span className="hb-count">{h.lvCount(levels.length)}</span>
+                  </div>
+                  <p className="hb-blurb">{h.bandBlurb[b]}</p>
+                  <ul className="hb-levels">
+                    {/* U+2011 keeps hyphenated names (Pre-Intermediate) on one line */}
+                    {levels.map((l) => <li key={l.code}><span className="hb-code">{l.code}</span><span className="hb-name">{l.name[lang].replace(/-/g, '\u2011')}</span></li>)}
+                  </ul>
+                  <Link className="hb-more" to="/courses">{h.seeBand(LEVEL_BANDS[b][lang])}<ArrowIcon /></Link>
+                </article>
+              );
+            })}
           </div>
           <div className="row after-grid">
             <Link className="btn btn-ink" to="/courses">{h.seeSched}<ArrowIcon /></Link>
@@ -56,19 +63,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="book" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <div className="book">
-            <div className="book-copy">
-              <h2 className="disp h2">{h.bkT}</h2>
-              <p className="lead">{h.bkS}</p>
-              <Link className="link-u" to="/faq">{h.faqLink}</Link>
-              <div className="contact"><span>[ADDRESS]</span><span>LINE: [LINE ID] · [EMAIL]</span></div>
-            </div>
-            <div><TrialForm /></div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

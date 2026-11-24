@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSettings } from '../context/SettingsContext.jsx';
 import { ArrowIcon } from '../components/Icons.jsx';
-import { CtaBand, PageHero, SectionHead } from '../components/Layout.jsx';
+import { PageHero, SectionHead } from '../components/Layout.jsx';
 import AlphabetActivity from '../components/AlphabetActivity.jsx';
 
 export default function Resources() {
@@ -26,7 +26,6 @@ export default function Resources() {
           </>}
         </div>
       </section>
-      <CtaBand />
     </>
   );
 }
