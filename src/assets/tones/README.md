@@ -4,11 +4,11 @@ Put one short recording (about 1 second) of each word in this folder, named exac
 
 | File name | Word | Tone |
 |---|---|---|
-| `khaa-mid.mp3`     | คา  (khaa) "to be stuck" | Mid |
-| `khaa-low.mp3`     | ข่า (khàa) "galangal"    | Low |
-| `khaa-falling.mp3` | ค่า (khâa) "price"       | Falling |
-| `khaa-high.mp3`    | ค้า (kháa) "to trade"    | High |
-| `khaa-rising.mp3`  | ขา  (khǎa) "leg"         | Rising |
+| `paa-mid.mp3`     | ปา  (paa)  "to throw" | Mid |
+| `paa-low.mp3`     | ป่า (pàa)  "forest"      | Low |
+| `paa-falling.mp3` | ป้า (pâa)  "aunt"        | Falling |
+| `paa-high.mp3`    | ป๊า (páa)  "dad"         | High |
+| `paa-rising.mp3`  | ป๋า (pǎa)  "papa"        | Rising |
 
 `.m4a`, `.wav`, `.ogg` and `.webm` also work (same names, different extension).
 The site picks them up automatically on the next build; until a file exists, that

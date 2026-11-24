@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSettings } from '../context/SettingsContext.jsx';
-import { TONES } from '../data/content.js';
+import { TONE_MARK_NONE, TONES } from '../data/content.js';
 import './ToneExplorer.css';
 
-// Teacher recordings: src/assets/tones/khaa-<id>.mp3 (see the README there).
+// Teacher recordings: src/assets/tones/paa-<id>.mp3 (see the README there).
 // Any file found at build time is used; otherwise the browser's Thai voice speaks.
 const FILES = import.meta.glob('../assets/tones/*.{mp3,m4a,wav,ogg,webm}', { eager: true, query: '?url', import: 'default' });
 const RECORDING = Object.fromEntries(
-  Object.entries(FILES).map(([path, url]) => [path.split('/').pop().replace(/^khaa-|\.\w+$/g, ''), url]),
+  Object.entries(FILES).map(([path, url]) => [path.split('/').pop().replace(/^paa-|\.\w+$/g, ''), url]),
 );
 
 const GRID_Y = [20, 62, 104, 146, 188];
@@ -114,30 +114,55 @@ export default function ToneExplorer() {
           </div>
         </div>
 
+        <div className="tx-marks" role="group" aria-label={h.toE}>
+          {TONES.map((x, i) => (
+            <button key={x.id} type="button" className="tx-mk" aria-pressed={mode === 'learn' && i === active}
+              onClick={() => (mode === 'learn' ? choose(i) : play(i, false))} aria-label={`${h.toPlayW}${x.word} · ${x.name[lang]}`}>
+              <span className="sym th" aria-hidden="true">◌{x.mark}</span>
+              <span className="name">{x.markName || TONE_MARK_NONE[lang]}</span>
+              <span className="tn">{x.name[lang]}</span>
+            </button>
+          ))}
+        </div>
+
         <div className="tx-stage">
-          <div className="tx-syll">
-            <div className="tx-big"><b>khaa</b><span>{h.toSyll}</span></div>
-            <div className="tx-list">
+          <div className="tx-build">
+            <div className="tx-eq" aria-label={`ป + ${tone.markName || TONE_MARK_NONE[lang]} + า = ${tone.word}`}>
+              <div className="part"><div className="box th">ป</div><small>{h.toLetter}</small></div>
+              <span className="op" aria-hidden="true">+</span>
+              <div className="part"><div className="box mark th">{tone.mark ? '◌' + tone.mark : '—'}</div><small>{tone.markName || TONE_MARK_NONE[lang]}</small></div>
+              <span className="op" aria-hidden="true">+</span>
+              <div className="part"><div className="box th">า</div><small>{h.toVowel}</small></div>
+              <span className="op" aria-hidden="true">=</span>
+              <div className="part"><div className="box result th">{tone.word}</div><small>{tone.name[lang]}</small></div>
+            </div>
+            <div className="tx-words">
               {TONES.map((x, i) => (
-                <button key={x.id} type="button" className="tx-tone" aria-pressed={mode === 'learn' && i === active}
-                  onClick={() => (mode === 'learn' ? choose(i) : play(i, false))} aria-label={`${h.toPlayW}${x.word} · ${x.name[lang]}`}>
-                  <i style={{ background: x.color }} aria-hidden="true" />
-                  <span className="nm"><b>{x.name[lang]}</b><span>{x.short[lang]}</span></span>
-                  <span className="th">{x.word}</span>
-                  <span className="play" aria-hidden="true">▶</span>
+                <button key={x.id} type="button" className="tx-w" aria-pressed={mode === 'learn' && i === active}
+                  onClick={() => (mode === 'learn' ? choose(i) : play(i, false))}>
+                  <span className="th">{x.word}</span><span>{x.name[lang]}</span>
                 </button>
               ))}
             </div>
+            <p className="tx-rule">
+              <b>{h.toRuleA}</b> {h.toRuleB}
+              <span className="pairs">
+                {TONES.map((x) => (
+                  <span key={x.id} className="pair">
+                    {x.mark ? <span className="th mk">◌{x.mark}</span> : TONE_MARK_NONE[lang]} → <b>{x.name[lang]}</b>
+                  </span>
+                ))}
+              </span>
+            </p>
           </div>
 
           {mode === 'learn' ? (
             <div className="tx-card">
               <div className="tx-word">
-                <span className="th">{tone.word}</span>
+                <span className="tname"><i style={{ background: tone.color }} aria-hidden="true" />{tone.name[lang]}</span>
                 <div className="meta">
                   <span className="rom">{tone.rom}</span>
                   <span className="mean">“{tone.mean[lang]}”</span>
-                  <span className="mark">{tone.mark[lang]}</span>
                 </div>
               </div>
               <button type="button" className="tx-hear" onClick={() => play(active)} disabled={!canPlay}>
