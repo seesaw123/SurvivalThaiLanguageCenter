@@ -23,7 +23,7 @@
 .alphabet-rounddot.miss{background:var(--accent-text)}
 .alphabet-question{padding:30px;background:var(--card);border:1px solid var(--line);border-radius:24px;text-align:center;animation:alphabet-deal .38s cubic-bezier(.2,.8,.2,1)}
 .alphabet-questionlabel{font-size:12px;letter-spacing:1px;color:var(--muted)}
-.alphabet-clue{font-family:var(--f-display);font-size:38px;line-height:1.4;margin:20px 0 8px}
+.alphabet-clue{font-family:var(--f-ipa);font-weight:700;font-size:38px;line-height:1.4;margin:20px 0 8px}
 .alphabet-question>p{color:var(--muted)}
 .alphabet-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:28px}
 .alphabet-answer{position:relative;border:1.5px solid var(--line);border-radius:17px;background:var(--paper);color:var(--ink);font-family:var(--f-thai);font-size:52px;min-height:112px;padding:10px;transition:transform .16s,background-color .16s}

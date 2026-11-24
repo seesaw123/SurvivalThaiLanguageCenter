@@ -9,6 +9,8 @@
   --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-thai:"Noto Serif Thai","Thonburi","Leelawadee UI","Noto Sans Thai",serif;
   --f-my:"Noto Sans Myanmar","Myanmar Text","Padauk",sans-serif;
+  /* phonetic letter names (ɔ̄ ŋ ɨ ə ɛ ʔ + tone marks) need a font with full IPA coverage */
+  --f-ipa:"Noto Sans","Segoe UI","Helvetica Neue",Arial,sans-serif;
   --gut:clamp(16px,5vw,80px);
   --cube:240px;
   color-scheme:light;
@@ -97,7 +99,8 @@ section{padding-block:clamp(64px,8vw,112px)}
 .face{position:absolute;inset:0;border-radius:26px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;backface-visibility:hidden;transition:background-color .35s ease}
 .face.on{background:var(--accent);color:var(--on-accent)}
 .face b{font-family:var(--f-thai);font-size:calc(var(--cube) * .55);line-height:1;font-weight:700}
-.face small{font-size:15px;font-weight:600;letter-spacing:.04em}
+.face small{font-family:var(--f-ipa);font-size:15px;font-weight:600;letter-spacing:0}
+.ipa{font-family:var(--f-ipa);letter-spacing:0}
 .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .chip-btn{width:48px;height:48px;border-radius:12px;border:1.5px solid var(--on-dark);background:transparent;color:var(--on-dark);font-family:var(--f-thai);font-size:22px;font-weight:700;display:grid;place-items:center}
 .chip-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
