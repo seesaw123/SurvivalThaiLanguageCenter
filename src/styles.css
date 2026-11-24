@@ -57,6 +57,8 @@ section{padding-block:clamp(64px,8vw,112px)}
 .logo-full,.logo-mark{display:block;height:44px;flex-shrink:0}
 .logo-full svg,.logo-mark svg{display:block;height:100%;width:auto}
 .logo-mark{display:none}
+/* Very small phones: the full logo would overlap the language switch, so show the mark only. */
+@media (max-width:339px){.logo-full{display:none}.logo-mark{display:block;height:36px}}
 .head-tools{display:flex;align-items:center;gap:14px}
 .lang{--seg:72px;display:flex;align-items:center;padding:4px;border-radius:999px;border:1.5px solid var(--on-dark)}
 .lang .globe{display:flex;padding:0 8px;color:var(--on-dark)}
@@ -319,8 +321,7 @@ body.lang-my .res h3{font-family:var(--f-my)}
 }
 @media (max-width:600px){
   .site-head .wrap{height:72px}
-  .logo-full{display:none}
-  .logo-mark{display:block;height:40px}
+  .logo-full{height:30px}
   .lang{--seg:60px}
   .lang .globe{display:none}
   .menu-btn{padding:0 14px}
