@@ -27,7 +27,7 @@ body.lang-my .ab-founder-body{line-height:1.95}
 .ab-timeline .step-1::after{background:linear-gradient(var(--lv-basic),var(--lv-indep))}
 .ab-timeline .step-2::after{background:linear-gradient(var(--lv-indep),var(--lv-prof))}
 .ab-timeline li{position:relative;display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:center}
-.ab-timeline .node{position:relative;z-index:1;width:56px;height:56px;border-radius:18px;display:grid;place-items:center;font-size:26px;box-shadow:0 0 0 6px var(--dark)}
+.ab-timeline .node{position:relative;z-index:1;width:56px;height:56px;border-radius:18px;display:grid;place-items:center;color:var(--ink);box-shadow:0 0 0 6px var(--dark)}
 .ab-timeline .step-1 .node{background:var(--lv-basic)}
 .ab-timeline .step-2 .node{background:var(--lv-indep)}
 .ab-timeline .step-3 .node{background:var(--lv-prof)}

@@ -13,9 +13,9 @@ export const ABOUT = {
     quoteA: 'Every lesson is personally developed and taught by', quoteB: 'our founder.',
     founder: 'Every lesson is personally developed and taught by our founder, a well-qualified Thai language specialist who graduated in Thai as a Foreign Language from Chiang Mai University and is currently pursuing a Master’s Degree in Thai as a Foreign Language at Chulalongkorn University in Bangkok. Backed by an Advanced Plus certification on the official CU-TFL Thai proficiency exam, our teaching combines university-level academic rigor with real-world experience living in Thailand.',
     timeline: [
-      { icon: '🎓', k: 'Degree', b: 'Chiang Mai University', s: 'Thai as a Foreign Language' },
-      { icon: '🏅', k: 'Certification', b: 'CU-TFL Advanced Plus', s: 'Official Thai proficiency exam' },
-      { icon: '📚', k: 'Now', b: 'Chulalongkorn University', s: 'Master’s in Thai as a Foreign Language, Bangkok', now: true },
+      { icon: 'degree', k: 'Degree', b: 'Chiang Mai University', s: 'Thai as a Foreign Language' },
+      { icon: 'award', k: 'Certification', b: 'CU-TFL Advanced Plus', s: 'Official Thai proficiency exam' },
+      { icon: 'study', k: 'Now', b: 'Chulalongkorn University', s: 'Master’s in Thai as a Foreign Language, Bangkok', now: true },
     ],
 
     teachE: 'How we teach',
@@ -48,9 +48,9 @@ export const ABOUT = {
     quoteA: 'သင်ခန်းစာတိုင်းကို', quoteB: 'တည်ထောင်သူကိုယ်တိုင် ရေးဆွဲသင်ကြားပေးပါသည်။',
     founder: 'သင်ခန်းစာများအားလုံးကို ချင်းမိုင်တက္ကသိုလ် (Chiang Mai University) မှ နိုင်ငံခြားသားများအတွက် ထိုင်းဘာသာစကား (Thai as a Foreign Language) ဘွဲ့ရရှိထားပြီး၊ လက်ရှိတွင် ဘန်ကောက်မြို့ရှိ ချူလာလောင်ကွန်းတက္ကသိုလ် (Chulalongkorn University) ၌ နိုင်ငံခြားသားများအတွက် ထိုင်းဘာသာစကား မဟာဝိဇ္ဇာဘွဲ့ (Master’s Degree) တက်ရောက်သင်ကြားလျက်ရှိသော Survival Thai တည်ထောင်သူကိုယ်တိုင် စနစ်တကျ ရေးဆွဲသင်ကြားပေးခြင်း ဖြစ်ပါသည်။ ထို့အပြင် တရားဝင် CU-TFL ထိုင်းဘာသာစကား ကျွမ်းကျင်မှုစာမေးပွဲတွင် Advanced Plus အဆင့် အောင်မြင်ထားသူဖြစ်သည့်အတွက် ပညာရပ်ဆိုင်ရာ အရည်အသွေးနှင့် လက်တွေ့အတွေ့အကြုံကို ပေါင်းစပ်၍ ယုံကြည်စိတ်ချစွာ သင်ယူနိုင်မည် ဖြစ်ပါသည်။',
     timeline: [
-      { icon: '🎓', k: 'ဘွဲ့', b: 'ချင်းမိုင်တက္ကသိုလ်', s: 'Thai as a Foreign Language' },
-      { icon: '🏅', k: 'အောင်လက်မှတ်', b: 'CU-TFL Advanced Plus', s: 'တရားဝင် ထိုင်းဘာသာစကား ကျွမ်းကျင်မှုစာမေးပွဲ' },
-      { icon: '📚', k: 'လက်ရှိ', b: 'ချူလာလောင်ကွန်းတက္ကသိုလ်', s: 'Thai as a Foreign Language မဟာဝိဇ္ဇာဘွဲ့၊ ဘန်ကောက်', now: true },
+      { icon: 'degree', k: 'ဘွဲ့', b: 'ချင်းမိုင်တက္ကသိုလ်', s: 'Thai as a Foreign Language' },
+      { icon: 'award', k: 'အောင်လက်မှတ်', b: 'CU-TFL Advanced Plus', s: 'တရားဝင် ထိုင်းဘာသာစကား ကျွမ်းကျင်မှုစာမေးပွဲ' },
+      { icon: 'study', k: 'လက်ရှိ', b: 'ချူလာလောင်ကွန်းတက္ကသိုလ်', s: 'Thai as a Foreign Language မဟာဝိဇ္ဇာဘွဲ့၊ ဘန်ကောက်', now: true },
     ],
 
     teachE: 'သင်ကြားပုံ',
