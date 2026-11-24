@@ -37,8 +37,15 @@ export default function About() {
             <p className="ab-founder-body">{a.founder}</p>
           </div>
           <ol className="ab-timeline">
-            {a.timeline.map((x) => (
-              <li key={x.b} className={x.now ? 'now' : ''}><small>{x.k}</small><b>{x.b}</b><span>{x.s}</span></li>
+            {a.timeline.map((x, i) => (
+              <li key={x.b} className={'step-' + (i + 1) + (x.now ? ' now' : '')}>
+                <span className="node" aria-hidden="true">{x.icon}</span>
+                <div className="card">
+                  <div className="top"><small>{x.k}</small>{x.now && <span className="live"><i aria-hidden="true" />{a.inProgress}</span>}</div>
+                  <b>{x.b}</b>
+                  <span>{x.s}</span>
+                </div>
+              </li>
             ))}
           </ol>
         </div>
