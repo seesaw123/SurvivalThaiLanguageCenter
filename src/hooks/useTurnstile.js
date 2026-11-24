@@ -9,6 +9,9 @@ export function useTurnstile() {
   const containerRef = useRef(null);
   const widgetIdRef = useRef(null);
   const [token, setToken] = useState('');
+  // Cloudflare error code when the widget fails (e.g. 110200 = this website's domain
+  // isn't in the widget's hostname list), so the form can explain what happened.
+  const [error, setError] = useState('');
 
   useEffect(() => {
     let cancelled = false;
@@ -19,9 +22,9 @@ export function useTurnstile() {
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: SITE_KEY,
         theme: 'dark',
-        callback: (t) => setToken(t),
+        callback: (t) => { setToken(t); setError(''); },
         'expired-callback': () => setToken(''),
-        'error-callback': () => setToken(''),
+        'error-callback': (code) => { setToken(''); setError(String(code || 'unknown')); },
       });
     };
 
@@ -38,7 +41,8 @@ export function useTurnstile() {
   const reset = () => {
     if (widgetIdRef.current != null && window.turnstile) window.turnstile.reset(widgetIdRef.current);
     setToken('');
+    setError('');
   };
 
-  return { containerRef, token, reset };
+  return { containerRef, token, error, reset };
 }

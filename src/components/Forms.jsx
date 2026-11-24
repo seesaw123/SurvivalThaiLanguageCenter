@@ -3,6 +3,7 @@ import { useSettings } from '../context/SettingsContext.jsx';
 import { supabase } from '../lib/supabaseClient.js';
 import { useTurnstile } from '../hooks/useTurnstile.js';
 import { CheckIcon } from './Icons.jsx';
+import { CONTACT_INFO } from '../data/content.js';
 
 // The contact form below calls the submit-inquiry Edge Function, which checks the
 // Cloudflare Turnstile token and only then writes to the `inquiries` table
@@ -90,6 +91,16 @@ export function ContactForm() {
       <label htmlFor="cfMsg">{p.fMsg}<textarea id="cfMsg" name="message" rows={4} required /></label>
       <div ref={turnstile.containerRef} />
       {err && <p className="ct-err">{err}</p>}
+      {turnstile.error && (
+        <p className="ct-err" role="alert">
+          {p.tsError(turnstile.error)}
+          {(CONTACT_INFO.messenger || CONTACT_INFO.phone) && <> {p.tsAlt}{' '}
+            {CONTACT_INFO.messenger && <a href={CONTACT_INFO.messenger} target="_blank" rel="noreferrer">Messenger</a>}
+            {CONTACT_INFO.messenger && CONTACT_INFO.phone && ' · '}
+            {CONTACT_INFO.phone && <a href={'tel:' + CONTACT_INFO.phone.replace(/[^\d+]/g, '')}>{CONTACT_INFO.phone}</a>}
+          </>}
+        </p>
+      )}
       <div className="ct-send">
         <small>{p.privacy}</small>
         <button type="submit" className="btn btn-accent" disabled={sending || !turnstile.token}>{p.fSubmit}</button>

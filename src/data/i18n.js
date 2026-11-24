@@ -34,7 +34,7 @@ export const T ={
   contact:{eyebrow:"Contact",title:"Let’s talk Thai.",sub:"Questions about levels, schedules or private lessons? Pick the way that suits you. A teacher replies, usually the same day.",
    openNow:function(t){return "Open now · until "+t+" (Yangon time)";},closedUntil:function(d,t){return "Closed · opens "+(d==="today"?"today":"tomorrow")+" at "+t;},
    msgr:"Messenger",msgrS:"Fastest reply · chat with a teacher",call:"Call us",mail:"Email",
-   formT:"Send us a message",formS:"Tell us a little about yourself and we’ll get back to you.",fTopic:"What’s it about?",topics:["Question about a course","Private lessons","Something else"],topicLabels:["A course","Private lessons","Something else"],fMsg:"Message",fSubmit:"Send message",privacy:"We never share your details.",
+   formT:"Send us a message",formS:"Tell us a little about yourself and we’ll get back to you.",fTopic:"What’s it about?",topics:["Question about a course","Private lessons","Something else"],topicLabels:["A course","Private lessons","Something else"],fMsg:"Message",fSubmit:"Send message",privacy:"We never share your details.",tsError:function(c){return "The spam check couldn’t load (code "+c+"), so the form can’t be sent right now. Please refresh the page and try again.";},tsAlt:"Or reach us directly:",
    visitT:"Visit us",addrL:"Address",addr:"Star City, Thanlyin, Yangon",hoursL:"Opening hours",wk:"Mon–Fri",we:"Sat–Sun",directions:"Get directions",
    sentT:"Thank you!",sentB:"We’ll reply within one day.",again:"Send another message"}
  },
@@ -70,7 +70,7 @@ export const T ={
   contact:{eyebrow:"ဆက်သွယ်ရန်",title:"ထိုင်းစကား အတူပြောကြရအောင်။",sub:"အဆင့်၊ အချိန်ဇယား ဒါမှမဟုတ် တစ်ဦးချင်း သင်ခန်းစာအကြောင်း မေးချင်တာ ရှိလား? အဆင်ပြေတဲ့နည်းနဲ့ ဆက်သွယ်ပါ။ ဆရာ၊ ဆရာမက များသောအားဖြင့် တစ်နေ့တည်း ပြန်ဖြေပေးပါတယ်။",
    openNow:function(t){return "အခု ဖွင့်ထားပါတယ် · "+toMyDigits(t)+" အထိ (ရန်ကုန်စံတော်ချိန်)";},closedUntil:function(d,t){return "ပိတ်ထားပါတယ် · "+(d==="today"?"ဒီနေ့":"မနက်ဖြန်")+" "+toMyDigits(t)+" မှာ ပြန်ဖွင့်ပါမယ်";},
    msgr:"Messenger",msgrS:"အမြန်ဆုံး ပြန်ဖြေ · ဆရာ၊ ဆရာမနဲ့ chat လုပ်ပါ",call:"ဖုန်းခေါ်ရန်",mail:"အီးမေးလ်",
-   formT:"မက်ဆေ့ချ် ပို့ပါ",formS:"သင့်အကြောင်း နည်းနည်း ပြောပြပါ၊ ပြန်ဆက်သွယ်ပေးပါမယ်။",fTopic:"ဘာအကြောင်းလဲ?",topics:["သင်တန်းအကြောင်း မေးမြန်းရန်","သီးသန့် သင်ခန်းစာ","အခြား"],topicLabels:["သင်တန်း","တစ်ဦးချင်း သင်ခန်းစာ","အခြား"],fMsg:"မက်ဆေ့ချ်",fSubmit:"မက်ဆေ့ချ် ပို့ရန်",privacy:"သင့်အချက်အလက်တွေကို ဘယ်သူ့ကိုမှ မမျှဝေပါဘူး။",
+   formT:"မက်ဆေ့ချ် ပို့ပါ",formS:"သင့်အကြောင်း နည်းနည်း ပြောပြပါ၊ ပြန်ဆက်သွယ်ပေးပါမယ်။",fTopic:"ဘာအကြောင်းလဲ?",topics:["သင်တန်းအကြောင်း မေးမြန်းရန်","သီးသန့် သင်ခန်းစာ","အခြား"],topicLabels:["သင်တန်း","တစ်ဦးချင်း သင်ခန်းစာ","အခြား"],fMsg:"မက်ဆေ့ချ်",fSubmit:"မက်ဆေ့ချ် ပို့ရန်",privacy:"သင့်အချက်အလက်တွေကို ဘယ်သူ့ကိုမှ မမျှဝေပါဘူး။",tsError:function(c){return "Spam စစ်ဆေးမှု ဖွင့်လို့ မရသေးပါ (code "+c+")၊ ဒါကြောင့် အခု မက်ဆေ့ချ် ပို့လို့ မရသေးပါဘူး။ စာမျက်နှာကို refresh လုပ်ပြီး ထပ်ကြိုးစားကြည့်ပါ။";},tsAlt:"ဒါမှမဟုတ် တိုက်ရိုက် ဆက်သွယ်ပါ -",
    visitT:"လာရောက်လည်ပတ်ရန်",addrL:"လိပ်စာ",addr:"Star City၊ သန်လျင်၊ ရန်ကုန်",hoursL:"ဖွင့်ချိန်",wk:"တနင်္လာ–သောကြာ",we:"စနေ–တနင်္ဂနွေ",directions:"လမ်းညွှန် ကြည့်ရန်",
    sentT:"ကျေးဇူးတင်ပါတယ်!",sentB:"တစ်ရက်အတွင်း ပြန်ဆက်သွယ်ပေးပါမယ်။",again:"နောက်ထပ် မက်ဆေ့ချ် ပို့ရန်"}
  }
