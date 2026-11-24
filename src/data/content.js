@@ -69,12 +69,20 @@ export const PHRASES =[
  {pic:"toilet",th:"ห้องน้ำอยู่ที่ไหน",rom:"hâwng-náam yùu thîi-nǎi",en:{en:"Where is the bathroom?",my:"အိမ်သာ ဘယ်မှာလဲ?"},tip:{en:"Word for word: “water room is where?”",my:"စကားလုံးအတိုင်းဆိုရင် “ရေခန်း ဘယ်မှာလဲ?” ပါ။"}},
  {pic:"smile",th:"ไม่เป็นไร",rom:"mâi pen rai",en:{en:"No worries",my:"ကိစ္စမရှိပါဘူး"},tip:{en:"It’s okay, never mind, you’re welcome. You’ll hear it every day.",my:"ရပါတယ်၊ ကိစ္စမရှိဘူး၊ ဘာမှမဖြစ်ပါဘူး — နေ့တိုင်း ကြားရမယ့် စကားပါ။"}}
 ];
+// The five tones, shown with one syllable "khaa" and its five meanings.
+// `id` matches the recording file name: src/assets/tones/khaa-<id>.mp3
+// `path` is the pitch contour in a 520×210 chart (y=20 high … y=188 low).
 export const TONES =[
- {name:{en:"Mid tone",my:"အလယ်အသံ"},word:"มา",rom:"maa",mean:{en:"come",my:"လာ"},path:"M30 100 C150 100 260 100 370 100",desc:{en:"Flat and relaxed, in your normal speaking voice.",my:"ပုံမှန် စကားပြောသံအတိုင်း ညီညီညာညာ ပြောပါ။"}},
- {name:{en:"Low tone",my:"အနိမ့်အသံ"},word:"ไก่",rom:"gài",mean:{en:"chicken",my:"ကြက်"},path:"M30 120 C150 130 260 148 370 160",desc:{en:"Starts a little low and sinks lower.",my:"နည်းနည်း နိမ့်နိမ့်က စပြီး ပိုနိမ့်သွားပါတယ်။"}},
- {name:{en:"Falling tone",my:"အကျအသံ"},word:"ข้าว",rom:"khâao",mean:{en:"rice",my:"ထမင်း"},path:"M30 75 C130 40 230 55 370 165",desc:{en:"Rises briefly, then drops sharply, like a firm statement.",my:"ခဏတက်ပြီး ရုတ်တရက် ပြန်ကျသွားပါတယ် — ပြတ်ပြတ်သားသား ပြောသလိုပါ။"}},
- {name:{en:"High tone",my:"အမြင့်အသံ"},word:"ม้า",rom:"máa",mean:{en:"horse",my:"မြင်း"},path:"M30 70 C150 68 260 55 370 30",desc:{en:"Starts high and climbs a touch higher.",my:"မြင့်မြင့်က စပြီး နည်းနည်း ပိုမြင့်သွားပါတယ်။"}},
- {name:{en:"Rising tone",my:"အတက်အသံ"},word:"หมา",rom:"mǎa",mean:{en:"dog",my:"ခွေး"},path:"M30 115 C130 155 240 150 370 40",desc:{en:"Dips, then rises, like asking “really?” in English.",my:"အရင် နိမ့်ကျပြီး ပြန်တက်လာပါတယ် — အင်္ဂလိပ်လို “really?” လို့ မေးသလိုပါ။"}}
+ {id:"mid",color:"#7FD1A8",name:{en:"Mid tone",my:"အလယ်အသံ"},short:{en:"flat, in the middle",my:"ညီညာ၊ အလယ်အမြင့်"},word:"คา",rom:"khaa",mean:{en:"to be stuck",my:"ညပ်နေတယ်"},mark:{en:"no tone mark",my:"tone အမှတ်အသား မပါ"},
+  path:"M50 104 C 200 100, 360 106, 500 110",desc:{en:"Flat and relaxed, in your normal speaking voice.",my:"ပုံမှန် စကားပြောသံအတိုင်း ညီညီညာညာ ပြောပါ။"}},
+ {id:"low",color:"#6FA8FF",name:{en:"Low tone",my:"အနိမ့်အသံ"},short:{en:"steady and low",my:"နိမ့်ပြီး ညီ"},word:"ข่า",rom:"khàa",mean:{en:"galangal (a spice)",my:"ပဒဲကော (ဟင်းခတ်အမွှေး)"},mark:{en:"tone mark ◌่ (mai ek)",my:"tone အမှတ်အသား ◌่ (mai ek)"},
+  path:"M50 140 C 200 150, 360 165, 500 175",desc:{en:"Starts a little low and sinks lower.",my:"နည်းနည်း နိမ့်နိမ့်က စပြီး ပိုနိမ့်သွားပါတယ်။"}},
+ {id:"falling",color:"#FF7A59",name:{en:"Falling tone",my:"အကျအသံ"},short:{en:"high, then drops",my:"မြင့်ရာက ကျ"},word:"ค่า",rom:"khâa",mean:{en:"price, value",my:"ဈေးနှုန်း၊ တန်ဖိုး"},mark:{en:"tone mark ◌่ (mai ek)",my:"tone အမှတ်အသား ◌่ (mai ek)"},
+  path:"M50 62 C 160 30, 260 30, 330 80 S 450 180, 500 182",desc:{en:"Rises briefly, then drops sharply, like a firm statement.",my:"ခဏတက်ပြီး ရုတ်တရက် ပြန်ကျသွားပါတယ် — ပြတ်ပြတ်သားသား ပြောသလိုပါ။"}},
+ {id:"high",color:"#FFC857",name:{en:"High tone",my:"အမြင့်အသံ"},short:{en:"high and rising",my:"မြင့်ပြီး တက်"},word:"ค้า",rom:"kháa",mean:{en:"to trade",my:"ကုန်သွယ်တယ်"},mark:{en:"tone mark ◌้ (mai tho)",my:"tone အမှတ်အသား ◌้ (mai tho)"},
+  path:"M50 62 C 200 58, 360 40, 500 22",desc:{en:"Starts high and climbs a touch higher.",my:"မြင့်မြင့်က စပြီး နည်းနည်း ပိုမြင့်သွားပါတယ်။"}},
+ {id:"rising",color:"#C08BFF",name:{en:"Rising tone",my:"အတက်အသံ"},short:{en:"dips, then rises",my:"နိမ့်ပြီးမှ တက်"},word:"ขา",rom:"khǎa",mean:{en:"leg",my:"ခြေထောက်"},mark:{en:"no tone mark",my:"tone အမှတ်အသား မပါ"},
+  path:"M50 120 C 170 160, 300 170, 380 120 S 470 40, 500 26",desc:{en:"Dips, then rises, like asking “really?” in English.",my:"အရင် နိမ့်ကျပြီး ပြန်တက်လာပါတယ် — အင်္ဂလိပ်လို “really?” လို့ မေးသလိုပါ။"}}
 ];
 // ---- Courses: CEFR levels, the intensive bridging class, and class formats ----
 // LEVEL_BANDS colour the level picker (Basic / Independent / Proficient).
