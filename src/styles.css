@@ -210,7 +210,7 @@ body.lang-my .course .price{font-family:var(--f-my)}
 .level-select{appearance:none;-webkit-appearance:none;min-height:48px;min-width:200px;padding:0 48px 0 20px;border-radius:999px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);font-size:16px;font-weight:600;cursor:pointer}
 .sel-wrap svg{position:absolute;right:18px;pointer-events:none}
 .sched{border-radius:24px;overflow:hidden;background:var(--card);border:1.5px solid var(--ink)}
-.srow{display:grid;grid-template-columns:2fr 1.3fr 1.7fr 1.3fr 1.3fr 150px;gap:16px;align-items:center;padding:18px 28px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.srow{display:grid;grid-template-columns:2fr 1.3fr 2fr 1.3fr 150px;gap:16px;align-items:center;padding:18px 28px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
 .srow:last-child{border-bottom:0}
 .srow.head{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1.5px solid var(--ink)}
 .srow .day{font-weight:600}

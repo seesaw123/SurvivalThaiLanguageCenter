@@ -150,7 +150,7 @@ export default function Courses() {
                 <span className="sr-only" role="status">{p.loading}</span>
                 {[0, 1, 2, 3].map((k) => (
                   <div className="srow skel-row" key={k} aria-hidden="true">
-                    <span className="skel w1" /><span className="skel w2" /><span className="skel w3" /><span className="skel w4" /><span className="skel w5" />
+                    <span className="skel w1" /><span className="skel w2" /><span className="skel w3" /><span className="skel w5" />
                     <span className="act"><span className="skel btn-skel" /></span>
                   </div>
                 ))}
@@ -166,8 +166,7 @@ export default function Courses() {
                   <span className="course-cell" data-label={p.cols[2]}>
                     <span style={{ fontWeight: 600 }}>{courseLabel(r.level, lang)}</span>
                   </span>
-                  <span data-label={p.cols[3]}><span className="tag">{r.online ? p.online : p.inPerson}</span></span>
-                  <span className={'seats ' + seatClass} data-label={p.cols[4]}>{full ? p.full : p.left(r.seats)}</span>
+                  <span className={'seats ' + seatClass} data-label={p.cols[3]}>{full ? p.full : p.left(r.seats)}</span>
                   <span className="act">
                     {full ? <span className="full-lbl">{p.fullL}</span> : <Link className="btn btn-accent" to="/contact">{p.reserveS}</Link>}
                   </span>

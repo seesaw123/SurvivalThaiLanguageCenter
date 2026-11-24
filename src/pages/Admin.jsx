@@ -7,7 +7,8 @@ import AddTeacherForm from '../components/AddTeacherForm.jsx';
 // Schedule `level` numbers: 1–7 = A1…C2, 8 = Intensive course.
 const LEVEL_OPTIONS = COURSES.map((c, i) => <option key={c.code} value={i + 1}>{c.code === 'INT' ? 'Intensive' : c.code + ' ' + c.name.en}</option>);
 
-const emptyDraft = { day_en: '', day_my: '', time: '', level: 1, online: false, seats: 0, sort_order: 0 };
+// All classes are online, so new slots are saved with online: true.
+const emptyDraft = { day_en: '', day_my: '', time: '', level: 1, online: true, seats: 0, sort_order: 0 };
 
 // Hidden admin tool (not linked from the nav): sign in with a Supabase account to
 // add, edit or remove class slots. Writes are allowed only for signed-in users —
@@ -315,9 +316,6 @@ export default function Admin() {
                         {LEVEL_OPTIONS}
                       </select>
                     </label>
-                    <label className="admin-field chk">Online
-                      <input type="checkbox" checked={r.online} onChange={(e) => patchRow(r.id, { online: e.target.checked })} />
-                    </label>
                     <label className="admin-field">Seats
                       <input type="number" min={0} value={r.seats} onChange={(e) => patchRow(r.id, { seats: +e.target.value })} />
                     </label>
@@ -349,9 +347,6 @@ export default function Admin() {
                 <select value={draft.level} onChange={(e) => setDraft({ ...draft, level: +e.target.value })}>
                   {LEVEL_OPTIONS}
                 </select>
-              </label>
-              <label className="admin-field chk" style={{ fontSize: 15 }}>Online
-                <input type="checkbox" checked={draft.online} onChange={(e) => setDraft({ ...draft, online: e.target.checked })} />
               </label>
               <label>Seats
                 <input type="number" min={0} value={draft.seats} onChange={(e) => setDraft({ ...draft, seats: +e.target.value })} />
