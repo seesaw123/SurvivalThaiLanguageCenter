@@ -393,7 +393,7 @@ body.lang-my .cl-topics li::before{content:counter(tp,myanmar)}
 .cl-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .cl-stats > div{background:var(--paper);border-radius:14px;padding:12px 14px}
 .cl-stats b{display:block;font-family:var(--f-display);font-size:26px;font-weight:800;line-height:1.1;white-space:nowrap}
-.cl-stats span{font-size:13px;color:var(--muted)}
+.cl-stats span{display:block;font-size:13px;line-height:1.35;color:var(--muted)}
 .cl-hours{display:flex;flex-direction:column;gap:8px}
 .cl-hours-lbl{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px;color:var(--muted)}
 .cl-hours-lbl strong{color:var(--ink);font-family:var(--f-display);font-size:22px}

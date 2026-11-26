@@ -96,7 +96,7 @@ function Formats() {
               <div className="cl-fmt-body">
                 <div className="cl-stats">
                   <div><b>{p.hrs(f.perClass)}</b><span>{p.perClass}</span></div>
-                  <div><b>{num(f.perWeek)}×</b><span>{p.perWeek}</span></div>
+                  <div><b>{p.days(f.perWeek)}</b><span>{p.perWeek}</span></div>
                   <div><b>{num(f.classes)}</b><span>{p.classesL}</span></div>
                 </div>
                 <div className="cl-hours">
